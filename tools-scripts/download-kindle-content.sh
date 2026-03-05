@@ -14,15 +14,14 @@ FAILED=0
 SKIPPED=0
 
 dl() {
-    local dir="$1" file="$2" url="$3"
-    mkdir -p "$BASE/$dir"
-    local dest="$BASE/$dir/$file"
+    local cat="$1" file="$2" url="$3"
+    local dest="$BASE/${cat}--${file}"
     if [ -f "$dest" ]; then
-        echo "  SKIP (exists) $file"
+        echo "  SKIP (exists) ${cat}--${file}"
         ((SKIPPED++)) || true
         return
     fi
-    echo "  GET  $file"
+    echo "  GET  ${cat}--${file}"
     if $CURL "$dest" "$url" 2>/dev/null; then
         local size=$(du -h "$dest" | cut -f1)
         echo "       -> $size"
@@ -311,6 +310,148 @@ dl "08-Mechanical" "Valuable_Curious_Arts_Experiments.epub" \
     "https://www.gutenberg.org/ebooks/38067.epub.images"
 
 # ============================================================
+# 7. BLACKSMITHING & METALWORKING (Public Domain)
+# ============================================================
+echo ""
+echo "=== BLACKSMITHING & METALWORKING ==="
+
+dl "11-Metalworking" "Practical_Forging_Art_Smithing_Googerty.epub" \
+    "https://www.gutenberg.org/ebooks/69488.epub.images"
+
+dl "11-Metalworking" "Forge_Work_Ilgen.epub" \
+    "https://www.gutenberg.org/ebooks/53854.epub.images"
+
+dl "11-Metalworking" "Working_in_Metals_Sleffel.epub" \
+    "https://www.gutenberg.org/ebooks/45004.epub.images"
+
+# ============================================================
+# 8. MIDWIFERY & CHILDBIRTH
+# ============================================================
+echo ""
+echo "=== MIDWIFERY & CHILDBIRTH ==="
+
+# NOTE: Hesperian books require manual download from https://hesperian.org/books-and-resources/
+# Download "A Book for Midwives" PDF and save as: 01-Medical--Hesperian_Book_for_Midwives.pdf
+echo "  NOTE: Download 'A Book for Midwives' manually from https://hesperian.org/books-and-resources/"
+
+# ============================================================
+# 9. PSYCHOLOGICAL FIRST AID & LEADERSHIP
+# ============================================================
+echo ""
+echo "=== PSYCHOLOGICAL FIRST AID ==="
+
+dl "01-Medical" "WHO_Psychological_First_Aid_Guide.pdf" \
+    "https://iris.who.int/server/api/core/bitstreams/e7e129fb-b306-496d-84a5-67bb70abc130/content"
+
+dl "02-Survival" "FEMA_IS240_Leadership_Influence.pdf" \
+    "https://training.fema.gov/emiweb/is/is240b/ig%20files/ig_complete.pdf"
+
+dl "01-Medical" "FEMA_Crisis_Counseling_Guide.pdf" \
+    "https://www.samhsa.gov/sites/default/files/dtac/ccptoolkit/fema-ccp-guidance.pdf"
+
+# ============================================================
+# 10. FISHING & AQUATIC FOOD
+# ============================================================
+echo ""
+echo "=== FISHING ==="
+
+dl "03-Food-Water" "Favorite_Fish_and_Fishing_Henshall.epub" \
+    "https://www.gutenberg.org/ebooks/43797.epub.images"
+
+dl "03-Food-Water" "Experienced_Angler_Venables.epub" \
+    "https://www.gutenberg.org/ebooks/67474.epub.images"
+
+# ============================================================
+# 11. BUTCHERING & MEAT PROCESSING
+# ============================================================
+echo ""
+echo "=== BUTCHERING & MEAT ==="
+
+dl "03-Food-Water" "USDA_Beef_Slaughtering_Cutting_Preserving.epub" \
+    "https://www.gutenberg.org/ebooks/62848.epub.images"
+
+dl "03-Food-Water" "USDA_Lamb_Slaughtering_Cutting_Preserving.epub" \
+    "https://www.gutenberg.org/ebooks/62838.epub.images"
+
+dl "03-Food-Water" "Home_Pork_Making_Fulton.epub" \
+    "https://www.gutenberg.org/ebooks/32414.epub.images"
+
+dl "03-Food-Water" "Secrets_Meat_Curing_Sausage_Making.epub" \
+    "https://www.gutenberg.org/ebooks/58495.epub.images"
+
+# ============================================================
+# 12. FERMENTATION & DISTILLATION
+# ============================================================
+echo ""
+echo "=== FERMENTATION & DISTILLATION ==="
+
+dl "03-Food-Water" "Practical_Distillation_Alcohol_Farm_Products.epub" \
+    "https://www.gutenberg.org/ebooks/46377.epub.images"
+
+dl "03-Food-Water" "Complete_Distiller_Cooper.epub" \
+    "https://www.gutenberg.org/ebooks/65020.epub.images"
+
+dl "03-Food-Water" "Treatise_Brewing_Beer_Hughes.epub" \
+    "https://www.gutenberg.org/ebooks/35597.epub.images"
+
+# ============================================================
+# 13. POTTERY & CERAMICS
+# ============================================================
+echo ""
+echo "=== POTTERY & CERAMICS ==="
+
+dl "11-Metalworking" "How_to_Make_Pottery_White.epub" \
+    "https://www.gutenberg.org/ebooks/64281.epub.images"
+
+dl "11-Metalworking" "Pottery_Artists_Craftsmen_Cox.epub" \
+    "https://www.gutenberg.org/ebooks/38248.epub.images"
+
+# ============================================================
+# 14. WEATHER & METEOROLOGY
+# ============================================================
+echo ""
+echo "=== WEATHER ==="
+
+dl "09-Navigation" "Weather_Explained_McPherson.epub" \
+    "https://www.gutenberg.org/ebooks/38928.epub.images"
+
+dl "09-Navigation" "Wind_and_Weather_McAdie.epub" \
+    "https://www.gutenberg.org/ebooks/38072.epub.images"
+
+# ============================================================
+# 15. LOG BUILDING & EARTH CONSTRUCTION
+# ============================================================
+echo ""
+echo "=== LOG BUILDING & CONSTRUCTION ==="
+
+dl "10-Construction" "USDA_Building_with_Logs.epub" \
+    "https://www.gutenberg.org/ebooks/59380.epub.images"
+
+dl "10-Construction" "Small_House_Construction_Walsh.epub" \
+    "https://www.gutenberg.org/ebooks/61880.epub.images"
+
+dl "10-Construction" "Science_of_Brickmaking_Harris.epub" \
+    "https://www.gutenberg.org/ebooks/60550.epub.images"
+
+dl "10-Construction" "Plank_Frame_Barn_Construction_Shawver.epub" \
+    "https://www.gutenberg.org/ebooks/65399.epub.images"
+
+# ============================================================
+# 16. FIREARMS MAINTENANCE (US Military, Public Domain)
+# ============================================================
+echo ""
+echo "=== FIREARMS ==="
+
+dl "02-Survival" "FM3-22.9_Rifle_Marksmanship_M16_M4.pdf" \
+    "https://www.bits.de/NRANEU/others/amd-us-archive/FM3-22.9(03).pdf"
+
+dl "02-Survival" "FM3-23.35_Combat_Training_Pistols.pdf" \
+    "https://www.globalsecurity.org/military/library/policy/army/fm/3-23-35/fm3-23-35.pdf"
+
+dl "02-Survival" "TC3-22.9_Rifle_Carbine.pdf" \
+    "https://irp.fas.org/doddir/army/tc3-22-9.pdf"
+
+# ============================================================
 # SUMMARY
 # ============================================================
 echo ""
@@ -325,10 +466,15 @@ echo "=== FINAL SIZE ==="
 du -sh "$BASE"
 echo ""
 echo "=== BY CATEGORY ==="
-for d in "$BASE"/*/; do
-    count=$(find "$d" -type f | wc -l | tr -d ' ')
-    size=$(du -sh "$d" | cut -f1)
-    echo "  $size  ($count files)  $(basename "$d")"
+for cat in 01 02 03 04 05 06 07 08 09 10 11; do
+    files=("$BASE"/${cat}-*)
+    if [ -e "${files[0]}" ]; then
+        count=$(echo "${files[@]}" | wc -w | tr -d ' ')
+        size=$(du -shc "${files[@]}" 2>/dev/null | tail -1 | cut -f1)
+        # Get category name from first file
+        catname=$(basename "${files[0]}" | sed 's/--.*//;s/^[0-9]*-//')
+        echo "  $size  ($count files)  ${cat}-${catname}"
+    fi
 done
 echo ""
 echo "Total files:"
