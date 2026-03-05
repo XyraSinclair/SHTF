@@ -1,0 +1,25 @@
+# Large binary data files - see DOWNLOADS.md for how to obtain these
+
+# ZIM files (Wikipedia, StackExchange, DevDocs, medical wiki)
+*.zim
+*.meta4
+
+# AI model weights
+*.safetensors
+kimi-k2.5/
+models/
+
+# OpenStreetMap data
+*.osm.pbf
+
+# USGS topographic map PDFs (66GB, 1729 files)
+maps/topo/pdfs/
+
+# Topographic map archives
+maps/topo/*.zip
+
+# Video tutorials
+*.mp4
+
+# macOS junk
+.DS_Store

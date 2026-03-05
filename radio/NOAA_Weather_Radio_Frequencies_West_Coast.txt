@@ -1,0 +1,90 @@
+NOAA WEATHER RADIO FREQUENCIES - WEST COAST & SOUTHWEST
+========================================================
+
+7 Standard NOAA Weather Channels:
+  WX1: 162.550 MHz    WX5: 162.450 MHz
+  WX2: 162.400 MHz    WX6: 162.500 MHz
+  WX3: 162.475 MHz    WX7: 162.525 MHz
+  WX4: 162.425 MHz
+
+WASHINGTON
+----------
+  Seattle .............. 162.550 MHz (WX1)
+  Spokane .............. 162.400 MHz (WX2)
+  Olympia .............. 162.475 MHz (WX3)
+  Yakima ............... 162.550 MHz (WX1)
+  Richland ............. 162.450 MHz (WX5)
+  Wenatchee ............ 162.475 MHz (WX3)
+  Neah Bay ............. 162.550 MHz (WX1)
+  Okanagan (Funk Mt) ... 162.525 MHz (WX7)
+  Port Angeles Marine .. 162.425 MHz (WX4)
+
+OREGON
+------
+  Portland ............. 162.550 MHz (WX1)
+  Eugene ............... 162.400 MHz (WX2)
+  Salem ................ 162.475 MHz (WX3)
+  Bend/Redmond ......... 162.500 MHz (WX6)
+  Medford .............. 162.400 MHz (WX2)
+  Astoria .............. 162.400 MHz (WX2)
+  Coos Bay ............. 162.400 MHz (WX2)
+  Newport .............. 162.550 MHz (WX1)
+  Pendleton ............ 162.400 MHz (WX2)
+  Hermiston ............ 162.425 MHz (WX4)
+  Klamath Falls ........ 162.550 MHz (WX1)
+  Roseburg ............. 162.550 MHz (WX1)
+  Brookings ............ 162.550 MHz (WX1)
+  Tillamook ............ 162.475 MHz (WX3)
+  Mt Ashland ........... 162.475 MHz (WX3)
+  Umatilla ............. 162.500 MHz (WX6)
+
+CALIFORNIA
+----------
+  Los Angeles .......... 162.550 MHz (WX1)
+  San Francisco ........ 162.400 MHz (WX2)
+  San Francisco Marine . 162.450 MHz (WX5)
+  San Diego ............ 162.400 MHz (WX2)
+  Sacramento ........... 162.550 MHz (WX1)
+  Fresno ............... 162.400 MHz (WX2)
+  Bakersfield .......... 162.550 MHz (WX1)
+  Redding .............. 162.550 MHz (WX1)
+  Eureka ............... 162.400 MHz (WX2)
+  Monterey ............. 162.550 MHz (WX1)
+  Monterey Marine ...... 162.450 MHz (WX5)
+  San Luis Obispo ...... 162.550 MHz (WX1)
+  Santa Barbara ........ 162.400 MHz (WX2)
+  Santa Barbara Marine . 162.475 MHz (WX3)
+  Santa Ana Mountains .. 162.450 MHz (WX5)
+  Pt Arena/Ukiah ....... 162.550 MHz (WX1)
+  Grass Valley (Wolf Mt) 162.400 MHz (WX2)
+  Coachella ............ 162.400 MHz (WX2)
+
+NEVADA
+------
+  Las Vegas (Boulder City) 162.550 MHz (WX1)
+  Reno ................... 162.550 MHz (WX1)
+  Elko ................... 162.550 MHz (WX1)
+  Winnemucca ............. 162.400 MHz (WX2)
+  Ely (Cave Mtn) ......... 162.400 MHz (WX2)
+  Eureka ................. 162.550 MHz (WX1)
+  Hawthorne .............. 162.475 MHz (WX3)
+  Northwest Nevada ....... 162.450 MHz (WX5)
+
+ARIZONA
+-------
+  Phoenix .............. 162.550 MHz (WX1)
+  Tucson ............... 162.400 MHz (WX2)
+  Flagstaff ............ 162.400 MHz (WX2)
+  Prescott ............. 162.525 MHz (WX7)
+  Yuma ................. 162.550 MHz (WX1)
+  Grand Canyon (Hopi Pt) 162.475 MHz (WX3)
+  Window Rock .......... 162.550 MHz (WX1)
+
+NOAA WEATHER SATELLITE FREQUENCIES (APT)
+-----------------------------------------
+  NOAA 15: 137.6200 MHz
+  NOAA 18: 137.9125 MHz
+  NOAA 19: 137.1000 MHz
+
+Note: Program these into your Baofeng for weather monitoring.
+The UV-5R can receive NOAA weather frequencies in FM mode.
