@@ -5,7 +5,7 @@
 
 set -euo pipefail
 
-BASE="/Users/xyra/Desktop/SHTF/kindle-ready"
+BASE="$(cd "$(dirname "$0")/.." && pwd)/kindle-ready"
 CURL="curl -fSL --connect-timeout 15 --max-time 120 --retry 2 -o"
 
 # Track stats

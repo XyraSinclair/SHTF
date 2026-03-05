@@ -2,7 +2,7 @@
 """Convert newly downloaded PDFs to EPUB, keeping smaller format."""
 import os, subprocess, shutil, fitz
 
-BASE = "/Users/xyra/Desktop/SHTF/kindle-ready"
+BASE = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "kindle-ready")
 
 # PDFs that are scanned images - skip conversion
 IMAGE_HEAVY = {

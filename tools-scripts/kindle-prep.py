@@ -12,8 +12,8 @@ import shutil
 import hashlib
 import fitz  # pymupdf
 
-BASE = "/Users/xyra/Desktop/SHTF"
-OUTPUT = "/Users/xyra/Desktop/SHTF/kindle-ready"
+BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+OUTPUT = os.path.join(BASE, "kindle-ready")
 SKIP_DIRS = {"maps", "kimi-k2.5", "models", "software", "tools-scripts", "wikipedia", "reference", "kindle-ready"}
 
 # Categories for Kindle organization

@@ -178,7 +178,7 @@ HOW TO USE EACH RESOURCE
 WIKIPEDIA OFFLINE:
   1. Open Kiwix.app (already installed in /Applications)
   2. File > Open ZIM File
-  3. Browse to ~/Desktop/shtf/wikipedia/ and open any .zim file
+  3. Browse to the wikipedia/ folder in this kit and open any .zim file
   4. Search and browse just like online Wikipedia
   5. All Stack Exchange and DevDocs ZIMs also open in Kiwix
 
