@@ -3,30 +3,44 @@
 How to use each resource in this kit. Everything works offline.
 
 For the fastest path:
-- ./tools-scripts/get-squared-away.sh
-- START-HERE.md
-- FIELD-INDEX.md
-- ./tools-scripts/verify-all.sh --essential
+- `./tools-scripts/get-squared-away.sh` — canonical bootstrap
+- `./tools-scripts/household-setup.sh` — personal checklist
+- `./tools-scripts/print-cards.sh` — printable emergency cards
+- [START-HERE.md](START-HERE.md) — problem-to-file map
+- [playbooks/README.md](playbooks/README.md) — runbooks and frameworks
+- [FIELD-INDEX.md](FIELD-INDEX.md) — file index
+- `./tools-scripts/verify-all.sh --essential` — what's ready now
+
+## Layers: playbook, then library
+
+The repo has two layers. The playbook is what you **do**. The library is what you **read when you need a number or detail**.
+
+1. **Playbook first**: open [`playbooks/`](playbooks/). Scenario runbooks, tier-1 prep, decision frameworks, printable cards.
+2. **Library second**: the PDFs, Kindle books, and ZIMs below back the playbook up with specifics.
 
 ## Use by problem, not by folder
 
 ### I need medical help
-- Open `medical/Where_There_Is_No_Doctor_FULL.pdf`
-- Then open `survival-guides/FM4-25.11_First_Aid_Manual.pdf`
-- For dental issues, open `medical/Where_There_Is_No_Dentist_FULL.pdf`
-- For larger offline medical reference, use Kiwix with `medical/mdwiki_en_all_2025-11.zim`
+- Card: [playbooks/cards/first-aid.md](playbooks/cards/first-aid.md) + [playbooks/cards/stop-the-bleed.md](playbooks/cards/stop-the-bleed.md)
+- Framework: [playbooks/frameworks/triage.md](playbooks/frameworks/triage.md)
+- Reference: `medical/Where_There_Is_No_Doctor_FULL.pdf`
+- First aid manual: `survival-guides/FM4-25.11_First_Aid_Manual.pdf`
+- Dental: `medical/Where_There_Is_No_Dentist_FULL.pdf`
+- Full offline medical: Kiwix with `medical/mdwiki_en_all_2025-11.zim`
 
 ### I need safe water and sanitation
-- Open `survival-guides/Emergency_Water_Purification_Guide.pdf`
-- Open `survival-guides/Water_Purification_Methods.pdf`
-- Open `survival-guides/sanitation/Emergency_Toilet_Guidebook.pdf`
-- Open `survival-guides/FM21-10_Field_Hygiene_Sanitation.pdf`
+- Card: [playbooks/cards/water-purification.md](playbooks/cards/water-purification.md)
+- Reference: `survival-guides/Emergency_Water_Purification_Guide.pdf`
+- Reference: `survival-guides/Water_Purification_Methods.pdf`
+- Sanitation: `survival-guides/sanitation/Emergency_Toilet_Guidebook.pdf`
+- Sanitation: `survival-guides/FM21-10_Field_Hygiene_Sanitation.pdf`
 
 ### I need radio/comms
-- Open `radio/UV-5R_Quick_Reference_Card.pdf`
-- Open `radio/UV-5R_Programming_Cheat_Sheet.pdf`
-- Open `radio/Baofeng_UV-5R_Programming_Guide.pdf`
-- Open `radio/ARRL_ARES_Field_Resources_Manual.pdf`
+- Card: [playbooks/cards/radio-frequencies.md](playbooks/cards/radio-frequencies.md)
+- Quick ref: `radio/UV-5R_Quick_Reference_Card.pdf`
+- Programming: `radio/UV-5R_Programming_Cheat_Sheet.pdf`
+- Programming: `radio/Baofeng_UV-5R_Programming_Guide.pdf`
+- Emergency nets: `radio/ARRL_ARES_Field_Resources_Manual.pdf`
 
 ### I need maps/navigation
 - Open `survival-guides/FM3-25.26_Map_Reading_Land_Navigation.pdf`

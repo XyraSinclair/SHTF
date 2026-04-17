@@ -1,7 +1,43 @@
 # Field Index
 
-This is the fastest file-level index for the highest-value parts of the repo.
-It is intentionally short and practical.
+Fastest file-level index for the highest-value parts of the repo. Intentionally short.
+
+## Playbooks — do these, don't just read
+
+- playbooks/README.md
+- playbooks/tier-1-setup/00-first-weekend.md
+- playbooks/tier-1-setup/01-household-roster.md
+- playbooks/tier-1-setup/02-go-bag.md
+- playbooks/tier-1-setup/03-water-food-stockpile.md
+- playbooks/tier-1-setup/04-cash-and-documents.md
+- playbooks/tier-1-setup/05-family-comms-plan.md
+- playbooks/tier-1-setup/06-digital-hardening.md
+
+### Scenarios
+- playbooks/scenarios/01-house-fire.md
+- playbooks/scenarios/02-severe-weather.md
+- playbooks/scenarios/03-earthquake-cascadia.md
+- playbooks/scenarios/04-wildfire-evacuation.md
+- playbooks/scenarios/05-grid-down-extended.md
+- playbooks/scenarios/06-pandemic.md
+- playbooks/scenarios/07-cyber-collapse.md
+- playbooks/scenarios/08-nuclear.md
+- playbooks/scenarios/09-civil-unrest-bug-in.md
+- playbooks/scenarios/10-stranded-or-lost.md
+
+### Decision frameworks
+- playbooks/frameworks/stay-or-go.md
+- playbooks/frameworks/triage.md
+- playbooks/frameworks/signalling-and-rescue.md
+- playbooks/frameworks/myths-that-kill.md
+
+### Emergency cards (print + laminate)
+- playbooks/cards/first-aid.md
+- playbooks/cards/stop-the-bleed.md
+- playbooks/cards/water-purification.md
+- playbooks/cards/radiation-shelter.md
+- playbooks/cards/radio-frequencies.md
+- playbooks/cards/family-comms.md (fill in)
 
 ## Medical
 - medical/Where_There_Is_No_Doctor_FULL.pdf
@@ -73,8 +109,10 @@ It is intentionally short and practical.
 
 ## Fastest orientation path for a new user
 1. ./tools-scripts/get-squared-away.sh
-2. ./tools-scripts/get-squared-away.sh --json   # preferred for AI agents
-3. START-HERE.md
-4. FIELD-INDEX.md
-5. USAGE.md
-6. DOWNLOADS.md
+2. ./tools-scripts/household-setup.sh          # personal checklist
+3. ./tools-scripts/print-cards.sh              # printable emergency cards
+4. START-HERE.md
+5. playbooks/README.md
+6. FIELD-INDEX.md
+7. USAGE.md
+8. DOWNLOADS.md

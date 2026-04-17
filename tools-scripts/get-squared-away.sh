@@ -114,17 +114,28 @@ log "- a practical local-AI bundle with Gemma 4 and llama.cpp workflows"
 log "- a laptop/Kindle/household preparedness kit, not just a document dump"
 log ""
 log "Canonical orientation path in this repo:"
-log "1. ./tools-scripts/get-squared-away.sh"
-log "2. START-HERE.md"
-log "3. FIELD-INDEX.md"
-log "4. USAGE.md"
-log "5. DOWNLOADS.md"
+log "1. ./tools-scripts/get-squared-away.sh   (this script)"
+log "2. ./tools-scripts/household-setup.sh    (build your personal checklist)"
+log "3. ./tools-scripts/print-cards.sh        (print emergency cards)"
+log "4. START-HERE.md"
+log "5. playbooks/README.md"
+log "6. FIELD-INDEX.md"
+log "7. USAGE.md"
+log "8. DOWNLOADS.md"
 log ""
-log "Immediate emergency priorities inside this repo:"
+log "Playbooks (what to DO):"
+log "- playbooks/tier-1-setup/00-first-weekend.md   # one-weekend foundation"
+log "- playbooks/scenarios/                         # 10 scenario runbooks"
+log "- playbooks/frameworks/stay-or-go.md           # the single most important call"
+log "- playbooks/frameworks/myths-that-kill.md      # bad advice to unlearn"
+log "- playbooks/cards/                             # print-ready single-page refs"
+log ""
+log "Library (what the playbooks point INTO):"
 log "- medical/Where_There_Is_No_Doctor_FULL.pdf"
 log "- survival-guides/FM4-25.11_First_Aid_Manual.pdf"
 log "- survival-guides/Emergency_Water_Purification_Guide.pdf"
 log "- survival-guides/sanitation/Emergency_Toilet_Guidebook.pdf"
+log "- survival-guides/Nuclear_War_Survival_Skills.pdf"
 log "- radio/UV-5R_Quick_Reference_Card.pdf"
 log "- power-electrical/NREL_Off_Grid_Solar_Installation_Maintenance.pdf"
 
@@ -171,6 +182,15 @@ fi
 log ""
 log "Next commands by goal:"
 log ""
+log "If this is your first session (not an emergency):"
+log "  ./tools-scripts/household-setup.sh       # personal checklist"
+log "  ./tools-scripts/print-cards.sh           # printable emergency cards"
+log "  less playbooks/tier-1-setup/00-first-weekend.md"
+log ""
+log "If something is happening RIGHT NOW:"
+log "  less START-HERE.md                       # problem → open-this table"
+log "  less playbooks/frameworks/stay-or-go.md  # the single most important call"
+log ""
 log "If you need emergency docs right now:"
 log "  open medical/Where_There_Is_No_Doctor_FULL.pdf"
 log "  open survival-guides/Emergency_Water_Purification_Guide.pdf"
@@ -213,6 +233,13 @@ if [[ $JSON_MODE -eq 1 ]]; then
   export USAGE_PRESENT="$(path_status "$ROOT/USAGE.md")"
   export DOWNLOADS_PRESENT="$(path_status "$ROOT/DOWNLOADS.md")"
   export AGENTS_PRESENT="$(path_status "$ROOT/AGENTS.md")"
+  export PLAYBOOKS_README_PRESENT="$(path_status "$ROOT/playbooks/README.md")"
+  export PLAYBOOKS_TIER1_PRESENT="$(path_status "$ROOT/playbooks/tier-1-setup/00-first-weekend.md")"
+  export PLAYBOOKS_SCENARIOS_PRESENT="$(path_status "$ROOT/playbooks/scenarios")"
+  export PLAYBOOKS_FRAMEWORKS_PRESENT="$(path_status "$ROOT/playbooks/frameworks/stay-or-go.md")"
+  export PLAYBOOKS_CARDS_PRESENT="$(path_status "$ROOT/playbooks/cards/first-aid.md")"
+  export HOUSEHOLD_SETUP_PRESENT="$(path_status "$ROOT/tools-scripts/household-setup.sh")"
+  export PRINT_CARDS_PRESENT="$(path_status "$ROOT/tools-scripts/print-cards.sh")"
   export VERIFY_SCRIPT_PRESENT="$(path_status "$ROOT/tools-scripts/verify-all.sh")"
   export GEMMA_AUDIT_PRESENT="$(path_status "$ROOT/tools-scripts/audit-gemma4-artifacts.py")"
   export GEMMA_RUNNER_PRESENT="$(path_status "$ROOT/tools-scripts/run-gemma4-llamacpp.sh")"
@@ -258,11 +285,33 @@ payload = {
     },
     "orientation_path": [
         "./tools-scripts/get-squared-away.sh",
+        "./tools-scripts/household-setup.sh",
+        "./tools-scripts/print-cards.sh",
         "START-HERE.md",
+        "playbooks/README.md",
         "FIELD-INDEX.md",
         "USAGE.md",
         "DOWNLOADS.md",
     ],
+    "playbooks": {
+        "root": "playbooks/",
+        "tier_1_first_weekend": "playbooks/tier-1-setup/00-first-weekend.md",
+        "scenarios_dir": "playbooks/scenarios/",
+        "frameworks_dir": "playbooks/frameworks/",
+        "cards_dir": "playbooks/cards/",
+        "scenarios": [
+            "playbooks/scenarios/01-house-fire.md",
+            "playbooks/scenarios/02-severe-weather.md",
+            "playbooks/scenarios/03-earthquake-cascadia.md",
+            "playbooks/scenarios/04-wildfire-evacuation.md",
+            "playbooks/scenarios/05-grid-down-extended.md",
+            "playbooks/scenarios/06-pandemic.md",
+            "playbooks/scenarios/07-cyber-collapse.md",
+            "playbooks/scenarios/08-nuclear.md",
+            "playbooks/scenarios/09-civil-unrest-bug-in.md",
+            "playbooks/scenarios/10-stranded-or-lost.md",
+        ],
+    },
     "core_emergency_paths": [
         "medical/Where_There_Is_No_Doctor_FULL.pdf",
         "survival-guides/FM4-25.11_First_Aid_Manual.pdf",
@@ -278,9 +327,16 @@ payload = {
             "usage": as_bool("USAGE_PRESENT"),
             "downloads": as_bool("DOWNLOADS_PRESENT"),
             "agents": as_bool("AGENTS_PRESENT"),
+            "playbooks_readme": as_bool("PLAYBOOKS_README_PRESENT"),
+            "playbooks_tier1_first_weekend": as_bool("PLAYBOOKS_TIER1_PRESENT"),
+            "playbooks_scenarios_dir": as_bool("PLAYBOOKS_SCENARIOS_PRESENT"),
+            "playbooks_frameworks_stay_or_go": as_bool("PLAYBOOKS_FRAMEWORKS_PRESENT"),
+            "playbooks_cards_first_aid": as_bool("PLAYBOOKS_CARDS_PRESENT"),
         },
         "bootstrap": {
             "verify_script": as_bool("VERIFY_SCRIPT_PRESENT"),
+            "household_setup": as_bool("HOUSEHOLD_SETUP_PRESENT"),
+            "print_cards": as_bool("PRINT_CARDS_PRESENT"),
             "gemma_audit": as_bool("GEMMA_AUDIT_PRESENT"),
             "gemma_runner": as_bool("GEMMA_RUNNER_PRESENT"),
             "gemma_llama_test": as_bool("GEMMA_TEST_PRESENT"),
@@ -304,6 +360,15 @@ payload = {
         },
     },
     "next_commands": {
+        "first_session_not_emergency": [
+            "./tools-scripts/household-setup.sh",
+            "./tools-scripts/print-cards.sh",
+            "less playbooks/tier-1-setup/00-first-weekend.md",
+        ],
+        "happening_right_now": [
+            "less START-HERE.md",
+            "less playbooks/frameworks/stay-or-go.md",
+        ],
         "emergency_docs": [
             "open medical/Where_There_Is_No_Doctor_FULL.pdf",
             "open survival-guides/Emergency_Water_Purification_Guide.pdf",

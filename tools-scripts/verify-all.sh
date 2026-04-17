@@ -76,6 +76,25 @@ check_file() {
     fi
 }
 
+echo "--- PLAYBOOKS ---"
+check_file "$SHTF_DIR/playbooks/README.md" 500 "Playbooks index"
+check_file "$SHTF_DIR/playbooks/tier-1-setup/00-first-weekend.md" 500 "Tier-1: first weekend"
+check_file "$SHTF_DIR/playbooks/tier-1-setup/02-go-bag.md" 500 "Tier-1: go-bag"
+check_file "$SHTF_DIR/playbooks/tier-1-setup/06-digital-hardening.md" 500 "Tier-1: digital hardening"
+check_file "$SHTF_DIR/playbooks/frameworks/stay-or-go.md" 500 "Framework: stay-or-go"
+check_file "$SHTF_DIR/playbooks/frameworks/triage.md" 500 "Framework: triage"
+check_file "$SHTF_DIR/playbooks/scenarios/01-house-fire.md" 500 "Scenario: house fire"
+check_file "$SHTF_DIR/playbooks/scenarios/03-earthquake-cascadia.md" 500 "Scenario: earthquake"
+check_file "$SHTF_DIR/playbooks/scenarios/06-pandemic.md" 500 "Scenario: pandemic"
+check_file "$SHTF_DIR/playbooks/scenarios/08-nuclear.md" 500 "Scenario: nuclear"
+check_file "$SHTF_DIR/playbooks/cards/first-aid.md" 500 "Card: first aid"
+check_file "$SHTF_DIR/playbooks/cards/stop-the-bleed.md" 500 "Card: stop the bleed"
+check_file "$SHTF_DIR/playbooks/cards/water-purification.md" 500 "Card: water purification"
+check_file "$SHTF_DIR/playbooks/cards/radiation-shelter.md" 500 "Card: radiation shelter"
+check_file "$SHTF_DIR/tools-scripts/household-setup.sh" 500 "Script: household-setup.sh"
+check_file "$SHTF_DIR/tools-scripts/print-cards.sh" 500 "Script: print-cards.sh"
+
+echo ""
 echo "--- WIKIPEDIA & ENCYCLOPEDIAS ---"
 check_file "$SHTF_DIR/wikipedia/wikipedia_en_all_maxi_2025-08.zim" 100000000000 "Full English Wikipedia"
 check_file "$SHTF_DIR/wikipedia/wikipedia_es_all_nopic_2025-10.zim" 8000000000 "Spanish Wikipedia"
@@ -227,6 +246,11 @@ fi
 
 echo ""
 echo "--- CAPABILITY SUMMARY ---"
+if [ -f "$SHTF_DIR/playbooks/README.md" ] && [ -d "$SHTF_DIR/playbooks/scenarios" ] && [ -d "$SHTF_DIR/playbooks/cards" ]; then
+    echo -e "  ${GREEN}READY${NC}: Playbooks (tier-1 + scenarios + cards)"
+else
+    echo -e "  ${RED}NOT READY${NC}: Playbooks"
+fi
 if [ -f "$SHTF_DIR/medical/Where_There_Is_No_Doctor_FULL.pdf" ] && [ -f "$SHTF_DIR/survival-guides/FM4-25.11_First_Aid_Manual.pdf" ]; then
     echo -e "  ${GREEN}READY${NC}: Medical core"
 else

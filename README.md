@@ -1,92 +1,134 @@
-# SHTF: Offline Survival Library
+# SHTF: Offline Survival Kit
 
-If the grid goes down, the internet disappears, and you're on your own -- this is what you want on your hard drive and your Kindle.
+If the grid goes down, the internet disappears, and you're on your own — this is what you want on your hard drive, in your head, and on your Kindle.
 
-This is a curated, organized collection of freely available survival knowledge: military field manuals, medical handbooks, food preservation guides, radio programming references, solar power tutorials, blacksmithing, and more. Everything is sourced from US government publications (public domain), WHO/UN freely distributed guides, Peace Corps manuals, and Project Gutenberg.
+Two halves:
 
-## Start here in 60 seconds
+1. **Playbooks** — what you actually do. One-weekend prep, scenario runbooks, decision frameworks, print-ready emergency cards. Start here.
+2. **Library** — the authoritative references the playbooks point into. Military field manuals, WHO medical handbooks, canning guides, radio references. 144 Kindle-ready books plus source PDFs.
 
-If you are new to the repo, using it under stress, or sending an AI agent into it cold, start with one command:
+Everything is sourced from US government publications (public domain), WHO/UN freely distributed guides, Peace Corps manuals, Project Gutenberg, and FEMA / CDC / NOAA / FCC guidance.
+
+## Start here in one command
 
 ```bash
 ./tools-scripts/get-squared-away.sh
 ```
 
-For an AI agent that wants machine-readable context too:
+Then, in order:
+
+```bash
+# Personal walkthrough → produces a custom checklist for your household
+./tools-scripts/household-setup.sh
+
+# Bundle the emergency reference cards into a single printable PDF
+./tools-scripts/print-cards.sh
+```
+
+For an AI agent entering cold, use `--json`:
 
 ```bash
 ./tools-scripts/get-squared-away.sh --json
 ```
 
-Then use these surfaces:
+## The playbooks (new — read these first)
 
-- Read [START-HERE.md](START-HERE.md)
-- Use the short file-level map in [FIELD-INDEX.md](FIELD-INDEX.md)
-- Use [USAGE.md](USAGE.md) for scenario-based instructions
-- Use [DOWNLOADS.md](DOWNLOADS.md) for large optional downloads
-- Run `./tools-scripts/verify-all.sh --essential` to see what is ready right now
-- Run `python3 tools-scripts/audit-gemma4-artifacts.py` to verify all four Gemma 4 checkpoints plus BF16 GGUF outputs
-- Launch offline reference search with `./tools-scripts/launch-wikipedia.sh`
-- Launch offline maps with `./tools-scripts/launch-maps.sh`
+Live under [`playbooks/`](playbooks/). Four parts:
 
-## What is already in the repo vs optional
+### Tier-1 setup — the one-weekend foundation
 
-Already in the repo:
-- Kindle-ready survival library in `kindle-ready/`
-- Core PDFs across medical, survival, food/water, radio, navigation, sanitation, and power
-- Helper scripts in `tools-scripts/`
-- Gemma 4 source checkpoints in `models/gemma-4/`
-- Documented local AI paths in `docs/local-ai-models.md` and `docs/gemma4-llamacpp.md`
+Build once. Review every 6 months. See [`playbooks/tier-1-setup/00-first-weekend.md`](playbooks/tier-1-setup/00-first-weekend.md).
 
-Optional large downloads:
-- Kiwix ZIM libraries like Wikipedia, Stack Exchange, MDWiki, and DevDocs
-- OpenStreetMap extracts and large topo map sets
-- Additional local AI models and GGUF conversions
-- A lighter local-model ladder: tiny Ollama models, native Gemma 4, Gemma 4 via llama.cpp, and heavyweight Kimi K2.5
+1. [Household roster](playbooks/tier-1-setup/01-household-roster.md)
+2. [Go-bag per person](playbooks/tier-1-setup/02-go-bag.md)
+3. [14-day water + food stockpile](playbooks/tier-1-setup/03-water-food-stockpile.md)
+4. [Cash + documents](playbooks/tier-1-setup/04-cash-and-documents.md)
+5. [Family communications plan](playbooks/tier-1-setup/05-family-comms-plan.md)
+6. [Digital hardening](playbooks/tier-1-setup/06-digital-hardening.md) (password managers, 2FA, backups, SIM-swap protection)
 
-## Kindle-Ready Library
+### Scenario playbooks — what to do when
 
-The `kindle-ready/` folder is the heart of this repo: **144 books** in EPUB and PDF format, flattened into a single folder so you can drag them straight onto a Kindle via USB. Connect your Kindle, open its `documents` folder, and drop them in.
+- [01. House fire](playbooks/scenarios/01-house-fire.md) — the most likely real emergency
+- [02. Severe weather](playbooks/scenarios/02-severe-weather.md) — hurricane, tornado, blizzard, heat dome, flood, ice storm, lightning, dust storm
+- [03. Earthquake (Cascadia focus)](playbooks/scenarios/03-earthquake-cascadia.md)
+- [04. Wildfire evacuation](playbooks/scenarios/04-wildfire-evacuation.md)
+- [05. Extended grid-down](playbooks/scenarios/05-grid-down-extended.md)
+- [06. Pandemic](playbooks/scenarios/06-pandemic.md)
+- [07. Cyber collapse](playbooks/scenarios/07-cyber-collapse.md) (reactive — see digital hardening for preventive)
+- [08. Nuclear](playbooks/scenarios/08-nuclear.md) — distant fallout, near airburst, dirty bomb, reactor accident
+- [09. Civil unrest / bug-in](playbooks/scenarios/09-civil-unrest-bug-in.md)
+- [10. Stranded or lost](playbooks/scenarios/10-stranded-or-lost.md)
 
-Files are prefixed by category so they sort together:
+### Decision frameworks — the judgment calls that matter more than gear
+
+- [Stay or go](playbooks/frameworks/stay-or-go.md) — single most important call
+- [Triage](playbooks/frameworks/triage.md) — medical, resource, psychological
+- [Signalling & rescue](playbooks/frameworks/signalling-and-rescue.md)
+- [Myths that kill](playbooks/frameworks/myths-that-kill.md) — common bad advice to unlearn
+
+### Emergency cards — one page each, print and laminate
+
+[`playbooks/cards/`](playbooks/cards/). Bundle to PDF with `tools-scripts/print-cards.sh`.
+
+- First aid · Stop the bleed · Water purification · Radiation shelter · Radio frequencies · Family comms (fill in)
+
+## The library (what the playbooks point into)
+
+### Kindle-ready (144 books, drag-and-drop)
+
+`kindle-ready/` is flattened so you can drop it straight onto a Kindle via USB. Files are category-prefixed so they sort together.
 
 | # | Category | Count | Highlights |
 |---|----------|-------|------------|
-| 01 | **Medical** | 10 | *Where There Is No Doctor/Dentist*, WHO surgical guide, psychological first aid, crisis counseling, essential medicines |
-| 02 | **Survival** | 42 | US Army field manuals (survival, marksmanship, urban ops, cold weather, mountain), FEMA guides, nuclear survival, knots, trapping, woodcraft, firearms maintenance |
-| 03 | **Food & Water** | 38 | Gardening, seed saving, beekeeping, canning, foraging, fishing, butchering (beef/lamb/pork), sausage making, distillation, brewing, water purification |
-| 04 | **Herbal Medicine** | 5 | Culpeper's Complete Herbal, WHO medicinal plant monographs |
-| 05 | **Radio & Comms** | 11 | Baofeng UV-5R programming, ARRL emergency comms, CHIRP setup |
-| 06 | **Power & Solar** | 4 | Off-grid solar installation, wind power, biogas, solar cookers |
-| 07 | **Sanitation** | 6 | Emergency hygiene, composting toilets, WHO WASH guidelines |
+| 01 | **Medical** | 10 | *Where There Is No Doctor/Dentist*, WHO surgical guide, psychological first aid, essential medicines |
+| 02 | **Survival** | 42 | US Army field manuals (survival, marksmanship, urban ops, cold weather, mountain), FEMA, nuclear survival, knots, trapping |
+| 03 | **Food & Water** | 38 | Gardening, seed saving, beekeeping, canning, foraging, fishing, butchering, sausage, distillation, brewing, water purification |
+| 04 | **Herbal Medicine** | 5 | Culpeper's, WHO medicinal plant monographs |
+| 05 | **Radio & Comms** | 11 | Baofeng UV-5R programming, ARRL emergency comms, CHIRP |
+| 06 | **Power & Solar** | 4 | Off-grid solar, wind, biogas, solar cookers |
+| 07 | **Sanitation** | 6 | Emergency hygiene, composting toilets, WHO WASH |
 | 08 | **Mechanical** | 9 | Engine repair, soap making, weaving, leather tanning, micro hydro |
-| 09 | **Navigation & Weather** | 4 | Celestial navigation, meteorology, reading weather patterns |
-| 10 | **Construction** | 10 | Log cabin building, brickmaking, carpentry, barn construction, FEMA safe rooms |
-| 11 | **Metalworking & Crafts** | 5 | Blacksmithing, forge work, working metals, pottery making |
+| 09 | **Navigation & Weather** | 4 | Celestial navigation, meteorology, weather patterns |
+| 10 | **Construction** | 10 | Log cabin, brickmaking, carpentry, barn construction, FEMA safe rooms |
+| 11 | **Metalworking & Crafts** | 5 | Blacksmithing, forge work, pottery |
 
-To rebuild or update the Kindle library from source URLs, run:
-```bash
-./tools-scripts/download-kindle-content.sh
-```
+Rebuild from source URLs: `./tools-scripts/download-kindle-content.sh`
 
-## Additional Resources
+### Source PDFs, offline wikis, local AI
 
-The repo also includes original source PDFs organized by topic, NOAA weather radio frequencies, topo map URL lists, helper scripts, and a practical local-AI stack. See [USAGE.md](USAGE.md) for scenario-based instructions and [docs/local-ai-models.md](docs/local-ai-models.md) for model selection and Gemma 4 llama.cpp workflows.
+Also in-repo: original source PDFs by topic (`medical/`, `survival-guides/`, `food-water/`, `radio/`, `power-electrical/`, `maps/`), NOAA radio frequency sheets, Gemma 4 source checkpoints (`models/gemma-4/`), plus a practical local-AI stack. See [USAGE.md](USAGE.md) for scenario-based instructions and [docs/local-ai-models.md](docs/local-ai-models.md) for model selection.
 
-## Large Downloads (not in repo)
+### Optional large downloads (not in repo)
 
-Some resources are too large for GitHub. See **[DOWNLOADS.md](DOWNLOADS.md)** for step-by-step instructions:
+Too large for GitHub. See **[DOWNLOADS.md](DOWNLOADS.md)** for step-by-step instructions.
 
 | Resource | Size | What |
 |----------|------|------|
-| Wikipedia | ~136 GB | Full English Wikipedia, Wikibooks, Wiktionary (Kiwix ZIM files) |
+| Wikipedia | ~136 GB | Full English Wikipedia, Wikibooks, Wiktionary (Kiwix ZIM) |
 | Stack Exchange | ~85 GB | Stack Overflow + 14 specialized Q&A sites |
 | Medical wiki | ~10 GB | MDWiki medical encyclopedia |
 | Topo maps | ~66 GB | 1,729 USGS GeoPDF maps for CA/OR/WA |
-| Street maps | ~2 GB | OpenStreetMap data for west coast states |
+| Street maps | ~2 GB | OpenStreetMap for west coast states |
 | Video tutorials | ~1.7 GB | Baofeng radio, solar power, knot tying |
-| AI model | ~263 GB | Kimi K2.5 (or use Ollama for lighter models) |
+| AI model | ~263 GB | Kimi K2.5 (or Ollama for lighter models) |
+
+## Surfaces to know
+
+- [START-HERE.md](START-HERE.md) — fast problem → open-this-file map
+- [FIELD-INDEX.md](FIELD-INDEX.md) — short file-level index
+- [USAGE.md](USAGE.md) — scenario-based usage of the library
+- [DOWNLOADS.md](DOWNLOADS.md) — the optional large downloads
+- [AGENTS.md](AGENTS.md) — contract for AI agents
+
+Helper scripts:
+
+- `tools-scripts/verify-all.sh --essential` — what's ready right now
+- `tools-scripts/launch-wikipedia.sh` — open Kiwix with local ZIM files
+- `tools-scripts/launch-maps.sh` — open maps
+- `tools-scripts/serve-local-network.sh` — share reference to a household LAN
+- `tools-scripts/household-setup.sh` — build your personal checklist
+- `tools-scripts/print-cards.sh` — bundle emergency cards to PDF
 
 ## License
 
-The repository structure, scripts, and documentation are released under [MIT](LICENSE). The books and guides within have their own licenses -- primarily US government works (public domain), WHO/UN freely distributed publications, and Project Gutenberg public domain texts. See individual files for details.
+Repository structure, scripts, docs, and playbooks are released under [MIT](LICENSE). The books and guides within have their own licenses — primarily US government works (public domain), WHO/UN, and Project Gutenberg. See individual files.

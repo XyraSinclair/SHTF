@@ -27,3 +27,11 @@ maps/topo/*.zip
 # Generated bootstrap reports
 .shtf-squared-away-report.txt
 .shtf-squared-away-report.json
+
+# Personal (private) — filled-in copies of templates. Keep out of git.
+shtf-personal-checklist.md
+my-shtf-checklist.md
+household-roster-private.md
+family-comms-private.md
+playbooks/**/*-private.md
+playbooks/cards/.build/
