@@ -23,3 +23,7 @@ maps/topo/*.zip
 
 # macOS junk
 .DS_Store
+
+# Generated bootstrap reports
+.shtf-squared-away-report.txt
+.shtf-squared-away-report.json

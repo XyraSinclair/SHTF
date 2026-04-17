@@ -1,14 +1,32 @@
 #!/bin/bash
-# Verify all SHTF resources are properly downloaded and not corrupted
+# Verify SHTF resources are present and roughly sane.
+# Modes:
+#   --essential  Check the core life-supporting library and skip optional apps/models
+#   --full       Check everything (default)
 
 SHTF_DIR="$(cd "$(dirname "$0")/.." && pwd)"
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 NC='\033[0m'
+MODE="full"
+
+case "${1:-}" in
+    --essential) MODE="essential" ;;
+    --full|"") MODE="full" ;;
+    --help|-h)
+        echo "Usage: $0 [--essential|--full]"
+        exit 0
+        ;;
+    *)
+        echo "Unknown option: $1" >&2
+        echo "Usage: $0 [--essential|--full]" >&2
+        exit 1
+        ;;
+esac
 
 echo "==============================================="
-echo "     SHTF Resource Verification"
+echo "     SHTF Resource Verification ($MODE)"
 echo "==============================================="
 echo ""
 
@@ -157,29 +175,83 @@ echo "--- RADIO ---"
 check_file "$SHTF_DIR/radio/Baofeng_Radio_Bible_10in1.pdf" 1000000 "Baofeng Radio Bible"
 check_file "$SHTF_DIR/radio/ARRL_ARES_Field_Resources_Manual.pdf" 500000 "ARRL ARES Manual"
 
-echo ""
-echo "--- OLLAMA MODELS ---"
-if command -v ollama &>/dev/null; then
-    MODELS=$(ollama list 2>/dev/null | tail -n +2 | wc -l | tr -d ' ')
-    echo -e "  ${GREEN}OK${NC}: Ollama installed ($MODELS models)"
-    ollama list 2>/dev/null | tail -n +2 | while read line; do
-        echo "    $line"
+if [ "$MODE" = "full" ]; then
+    echo ""
+    echo "--- OLLAMA MODELS ---"
+    if command -v ollama &>/dev/null; then
+        MODELS=$(ollama list 2>/dev/null | tail -n +2 | wc -l | tr -d ' ')
+        echo -e "  ${GREEN}OK${NC}: Ollama installed ($MODELS models)"
+        ollama list 2>/dev/null | tail -n +2 | while read line; do
+            echo "    $line"
+        done
+    else
+        echo -e "  ${YELLOW}OPTIONAL${NC}: Ollama not installed"
+        ((warnings++))
+    fi
+
+    echo ""
+    echo "--- GEMMA 4 ---"
+    check_file "$SHTF_DIR/models/gemma-4/gemma-4-E2B-it/model.safetensors" 9000000000 "Gemma 4 E2B source checkpoint"
+    check_file "$SHTF_DIR/models/gemma-4/gemma-4-E4B-it/model.safetensors" 14000000000 "Gemma 4 E4B source checkpoint"
+    check_file "$SHTF_DIR/models/gemma-4/gemma-4-31B-it/model-00001-of-00002.safetensors" 40000000000 "Gemma 4 31B source checkpoint shard 1"
+    check_file "$SHTF_DIR/models/gemma-4/gemma-4-31B-it/model-00002-of-00002.safetensors" 10000000000 "Gemma 4 31B source checkpoint shard 2"
+    check_file "$SHTF_DIR/models/gemma-4/gemma-4-26B-A4B-it/model-00001-of-00002.safetensors" 40000000000 "Gemma 4 26B-A4B source checkpoint shard 1"
+    check_file "$SHTF_DIR/models/gemma-4/gemma-4-26B-A4B-it/model-00002-of-00002.safetensors" 1000000000 "Gemma 4 26B-A4B source checkpoint shard 2"
+    check_file "$SHTF_DIR/models/gemma-4-gguf/gemma-4-E2B-it/gemma-4-E2B-it-bf16.gguf" 8000000000 "Gemma 4 E2B BF16 GGUF"
+    check_file "$SHTF_DIR/models/gemma-4-gguf/gemma-4-E4B-it/gemma-4-E4B-it-bf16.gguf" 13000000000 "Gemma 4 E4B BF16 GGUF"
+    check_file "$SHTF_DIR/models/gemma-4-gguf/gemma-4-31B-it/gemma-4-31B-it-bf16.gguf" 50000000000 "Gemma 4 31B BF16 GGUF"
+    check_file "$SHTF_DIR/models/gemma-4-gguf/gemma-4-26B-A4B-it/gemma-4-26B-A4B-it-bf16.gguf" 40000000000 "Gemma 4 26B-A4B BF16 GGUF"
+    if command -v python3 &>/dev/null; then
+        python3 "$SHTF_DIR/tools-scripts/audit-gemma4-artifacts.py" >/tmp/shtf-gemma4-audit.json 2>/dev/null && \
+            echo -e "  ${GREEN}OK${NC}: Gemma 4 audit script passed" || {
+                echo -e "  ${YELLOW}WARN${NC}: Gemma 4 audit script reported an issue"
+                ((warnings++))
+            }
+    fi
+
+    echo ""
+    echo "--- APPLICATIONS ---"
+    for app in "Kiwix" "QGIS"; do
+        if [ -d "/Applications/${app}.app" ]; then
+            echo -e "  ${GREEN}OK${NC}: $app"
+        else
+            echo -e "  ${YELLOW}OPTIONAL${NC}: $app missing (brew install --cask $(echo $app | tr '[:upper:]' '[:lower:]'))"
+            ((warnings++))
+        fi
     done
 else
-    echo -e "  ${RED}MISSING${NC}: Ollama not installed"
-    ((errors++))
+    echo ""
+    echo "--- OPTIONAL SOFTWARE ---"
+    echo "  Skipped in --essential mode: Ollama, Kiwix app, QGIS app"
 fi
 
 echo ""
-echo "--- APPLICATIONS ---"
-for app in "Kiwix" "QGIS"; do
-    if [ -d "/Applications/${app}.app" ]; then
-        echo -e "  ${GREEN}OK${NC}: $app"
-    else
-        echo -e "  ${RED}MISSING${NC}: $app (brew install --cask $(echo $app | tr '[:upper:]' '[:lower:]'))"
-        ((errors++))
-    fi
-done
+echo "--- CAPABILITY SUMMARY ---"
+if [ -f "$SHTF_DIR/medical/Where_There_Is_No_Doctor_FULL.pdf" ] && [ -f "$SHTF_DIR/survival-guides/FM4-25.11_First_Aid_Manual.pdf" ]; then
+    echo -e "  ${GREEN}READY${NC}: Medical core"
+else
+    echo -e "  ${RED}NOT READY${NC}: Medical core"
+fi
+if [ -f "$SHTF_DIR/survival-guides/Emergency_Water_Purification_Guide.pdf" ] && [ -f "$SHTF_DIR/survival-guides/sanitation/Emergency_Toilet_Guidebook.pdf" ]; then
+    echo -e "  ${GREEN}READY${NC}: Water + sanitation core"
+else
+    echo -e "  ${RED}NOT READY${NC}: Water + sanitation core"
+fi
+if [ -f "$SHTF_DIR/radio/UV-5R_Quick_Reference_Card.pdf" ] && [ -f "$SHTF_DIR/radio/ARRL_ARES_Field_Resources_Manual.pdf" ]; then
+    echo -e "  ${GREEN}READY${NC}: Radio/comms core"
+else
+    echo -e "  ${RED}NOT READY${NC}: Radio/comms core"
+fi
+if [ -f "$SHTF_DIR/survival-guides/FM3-25.26_Map_Reading_Land_Navigation.pdf" ]; then
+    echo -e "  ${GREEN}READY${NC}: Navigation core"
+else
+    echo -e "  ${RED}NOT READY${NC}: Navigation core"
+fi
+if find "$SHTF_DIR" -name "*.zim" -type f 2>/dev/null | head -1 | grep -q .; then
+    echo -e "  ${GREEN}READY${NC}: Offline reference library"
+else
+    echo -e "  ${YELLOW}PARTIAL${NC}: Offline reference library"
+fi
 
 echo ""
 echo "==============================================="

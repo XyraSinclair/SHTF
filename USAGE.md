@@ -2,6 +2,46 @@
 
 How to use each resource in this kit. Everything works offline.
 
+For the fastest path:
+- ./tools-scripts/get-squared-away.sh
+- START-HERE.md
+- FIELD-INDEX.md
+- ./tools-scripts/verify-all.sh --essential
+
+## Use by problem, not by folder
+
+### I need medical help
+- Open `medical/Where_There_Is_No_Doctor_FULL.pdf`
+- Then open `survival-guides/FM4-25.11_First_Aid_Manual.pdf`
+- For dental issues, open `medical/Where_There_Is_No_Dentist_FULL.pdf`
+- For larger offline medical reference, use Kiwix with `medical/mdwiki_en_all_2025-11.zim`
+
+### I need safe water and sanitation
+- Open `survival-guides/Emergency_Water_Purification_Guide.pdf`
+- Open `survival-guides/Water_Purification_Methods.pdf`
+- Open `survival-guides/sanitation/Emergency_Toilet_Guidebook.pdf`
+- Open `survival-guides/FM21-10_Field_Hygiene_Sanitation.pdf`
+
+### I need radio/comms
+- Open `radio/UV-5R_Quick_Reference_Card.pdf`
+- Open `radio/UV-5R_Programming_Cheat_Sheet.pdf`
+- Open `radio/Baofeng_UV-5R_Programming_Guide.pdf`
+- Open `radio/ARRL_ARES_Field_Resources_Manual.pdf`
+
+### I need maps/navigation
+- Open `survival-guides/FM3-25.26_Map_Reading_Land_Navigation.pdf`
+- Run `./tools-scripts/launch-maps.sh`
+- Search topo maps with `./tools-scripts/launch-maps.sh topo <place>`
+
+### I need food preservation or foraging
+- Open `food-water/USDA_Complete_Guide_Home_Canning_2015.pdf`
+- Open `food-water/Washington_State_Foraging_Guide.pdf`
+- Open `food-water/Seed_Saving_Guide.pdf`
+
+### I need broad offline reference search
+- Run `./tools-scripts/launch-wikipedia.sh`
+- If you want LAN access to raw files or Kiwix-served ZIMs, run `./tools-scripts/serve-local-network.sh`
+
 ## Kindle Books
 
 Connect your Kindle via USB. Drag files from `kindle-ready/` into the Kindle's `documents` folder. Done. Files are flat (no subfolders) so they transfer directly.
@@ -26,7 +66,9 @@ python tools-scripts/kindle-prep.py
 
 All ZIM files use Kiwix: Wikipedia, Wikibooks, Stack Exchange sites, DevDocs, and the medical encyclopedia.
 
-## Local AI Assistant (requires download)
+## Local AI Assistant
+
+### Fastest path: small Ollama models
 
 ```bash
 brew install ollama
@@ -34,11 +76,35 @@ ollama pull llama3.2:3b          # 2 GB - general purpose
 ollama run llama3.2:3b           # start chatting
 
 # Other useful models:
-ollama pull phi4-mini             # 2.5 GB - reasoning
+ollama pull phi4-mini            # 2.5 GB - reasoning
 ollama pull qwen2.5-coder:3b     # 2 GB - coding help
 ```
 
-Works completely offline. Ask it medical questions, how-to, calculations, anything.
+Works completely offline. Ask it medical questions, how-to, calculations, or general reference questions.
+
+### Gemma 4 in this repo
+
+The four Gemma 4 source checkpoints live under `models/gemma-4/`.
+
+Native Apple Silicon smoke test:
+
+```bash
+uv run tools-scripts/test-gemma4-models.py
+```
+
+llama.cpp workflow:
+
+```bash
+./tools-scripts/build-llama-cpp-gemma4.sh --update
+./tools-scripts/convert-gemma4-to-gguf.sh E2B
+./tools-scripts/audit-gemma4-artifacts.py
+./tools-scripts/test-gemma4-llamacpp.py E2B
+./tools-scripts/run-gemma4-llamacpp.sh E2B
+```
+
+Use `E2B` as the first model unless you already know you want a bigger checkpoint. BF16 is the canonical default; quantization is optional.
+
+For the full model ladder, practical hardware guidance, and manual/server examples, read `docs/local-ai-models.md` and `docs/gemma4-llamacpp.md`.
 
 ## Maps (requires download)
 

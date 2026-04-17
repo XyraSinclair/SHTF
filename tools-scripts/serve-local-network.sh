@@ -1,18 +1,17 @@
 #!/bin/bash
-# Serve all offline knowledge bases over your local network
-# Any device on your WiFi can access Wikipedia, Stack Overflow, medical refs, etc.
+# Share offline knowledge over your local network.
 # Usage: ./serve-local-network.sh [port]
 #
-# This uses the Kiwix desktop app's built-in library feature.
-# Load all ZIM files into the Kiwix library, then any device can browse via
-# the Mac's screen or you can use screen sharing.
+# If kiwix-serve is installed, this exposes browsable ZIM content over HTTP.
+# Otherwise it falls back to a raw file share so other devices can download the
+# ZIM files and open them locally with Kiwix.
 
 PORT="${1:-8888}"
 SHTF_DIR="$(cd "$(dirname "$0")/.." && pwd)"
 
 LOCAL_IP=$(ipconfig getifaddr en0 2>/dev/null || ipconfig getifaddr en1 2>/dev/null || echo "localhost")
 
-echo "=== SHTF Local Knowledge Server ==="
+echo "=== SHTF Local Knowledge Share ==="
 echo ""
 
 # Find all ZIM files
@@ -42,11 +41,11 @@ if command -v kiwix-serve &>/dev/null; then
     exit 0
 fi
 
-# Method 2: Use Python ZIM server
-echo "kiwix-serve not available. Starting Python-based ZIM file server..."
+# Method 2: raw file share only
+echo "kiwix-serve not available. Starting raw file share over HTTP..."
 echo ""
-echo "This serves the raw ZIM files for download to other devices with Kiwix."
-echo "On other devices: install Kiwix app, then download ZIMs from this server."
+echo "This mode shares the raw ZIM files only; it does not provide browsable Wikipedia pages."
+echo "On other devices: install Kiwix, then download ZIMs from this server and open them locally."
 echo ""
 echo "File server: http://$LOCAL_IP:$PORT"
 echo "Press Ctrl+C to stop."

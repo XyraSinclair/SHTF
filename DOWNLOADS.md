@@ -109,6 +109,78 @@ ollama pull phi4-mini          # 2.5 GB - reasoning
 ollama pull qwen2.5-coder:3b  # 2 GB - coding
 ```
 
+## Gemma 4 Models (~131 GB on disk before GGUF conversion)
+
+To download the four Gemma 4 instruction checkpoints from the Hugging Face launch post into `models/gemma-4/`:
+
+```bash
+uv run tools-scripts/download-gemma4-models.py
+```
+
+This pulls:
+
+- `google/gemma-4-E2B-it`
+- `google/gemma-4-E4B-it`
+- `google/gemma-4-31B-it`
+- `google/gemma-4-26B-A4B-it`
+
+To run a local Apple Silicon smoke test with `mlx-vlm` against the downloaded copies:
+
+```bash
+uv run tools-scripts/test-gemma4-models.py
+```
+
+The smoke test writes a JSON report to `models/gemma-4/smoke-test-results.json` and currently pins `mlx-vlm` to an upstream Git commit that includes Gemma 4 support.
+
+### Gemma 4 with llama.cpp
+
+The repo also includes a llama.cpp path for converting the local checkpoints to GGUF and running them locally.
+
+Recommended first pass: do not convert all four models at once. Start with `E2B`.
+
+Build or refresh llama.cpp first:
+
+```bash
+./tools-scripts/build-llama-cpp-gemma4.sh --update
+```
+
+Convert one model to GGUF first:
+
+```bash
+./tools-scripts/convert-gemma4-to-gguf.sh E2B
+```
+
+Audit the canonical artifacts:
+
+```bash
+./tools-scripts/audit-gemma4-artifacts.py
+```
+
+Smoke-test the llama.cpp path:
+
+```bash
+./tools-scripts/test-gemma4-llamacpp.py E2B
+```
+
+Run it directly:
+
+```bash
+./tools-scripts/run-gemma4-llamacpp.sh E2B
+```
+
+Optional quantization only if you explicitly want a lighter derived copy:
+
+```bash
+./tools-scripts/quantize-gemma4-gguf.sh E2B Q4_K_M
+./tools-scripts/run-gemma4-llamacpp.sh --quant Q4_K_M E2B
+```
+
+Notes:
+- GGUF conversion needs substantial additional free disk space.
+- The supported repo target is text inference on all four models, plus image inference once `mmproj` conversion succeeds.
+- `E2B` is the safest first conversion, then `E4B`, then the larger models.
+- For details, read `docs/local-ai-models.md` and `docs/gemma4-llamacpp.md`.
+
 ## Video Tutorials (~1.7 GB)
 
 These are not redistributable via GitHub. The download script references for each category:

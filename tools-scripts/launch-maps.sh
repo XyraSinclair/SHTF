@@ -13,9 +13,9 @@ case "$1" in
             RESULTS=$(find "$SHTF_DIR/maps/topo/pdfs" -name "*${2}*" -type f 2>/dev/null)
             if [ -z "$RESULTS" ]; then
                 echo "No topo maps found matching '$2'"
-                echo "Available maps:"
-                ls "$SHTF_DIR/maps/topo/pdfs/" | sed 's/.pdf$//' | head -20
-                echo "... ($(ls "$SHTF_DIR/maps/topo/pdfs/" | wc -l | tr -d ' ') total)"
+                echo "Available maps (first 20):"
+                find "$SHTF_DIR/maps/topo/pdfs" -maxdepth 1 -name "*.pdf" -type f -print 2>/dev/null | sort | head -20 | sed 's#.*/##; s#.pdf$##'
+                echo "... ($(find "$SHTF_DIR/maps/topo/pdfs" -maxdepth 1 -name "*.pdf" -type f 2>/dev/null | wc -l | tr -d ' ') total)"
             else
                 echo "$RESULTS"
                 echo ""
@@ -24,7 +24,7 @@ case "$1" in
             fi
         else
             echo "=== USGS Topo Maps ==="
-            echo "$(ls "$SHTF_DIR/maps/topo/pdfs/"*.pdf 2>/dev/null | wc -l | tr -d ' ') topo maps available"
+            echo "$(find "$SHTF_DIR/maps/topo/pdfs" -maxdepth 1 -name "*.pdf" -type f 2>/dev/null | wc -l | tr -d ' ') topo maps available"
             echo ""
             echo "Usage: $0 topo <search_term>"
             echo "Example: $0 topo Seattle"
@@ -43,7 +43,7 @@ case "$1" in
             [ -f "$f" ] && printf "  %-40s %s\n" "$(basename "$f")" "$(du -h "$f" | cut -f1)"
         done
         echo ""
-        echo "USGS Topo Maps: $(ls "$SHTF_DIR/maps/topo/pdfs/"*.pdf 2>/dev/null | wc -l | tr -d ' ') maps"
+        echo "USGS Topo Maps: $(find "$SHTF_DIR/maps/topo/pdfs" -maxdepth 1 -name "*.pdf" -type f 2>/dev/null | wc -l | tr -d ' ') maps"
         echo ""
 
         if [ -d "/Applications/QGIS.app" ]; then
@@ -51,7 +51,7 @@ case "$1" in
             echo ""
             echo "To load a map in QGIS:"
             echo "  1. Layer > Add Layer > Add Vector Layer"
-            echo "  2. Browse to ~/Desktop/shtf/maps/"
+            echo "  2. Browse to $SHTF_DIR/maps/"
             echo "  3. Select any .osm.pbf file"
             echo "  4. Click Add"
             echo ""
@@ -61,7 +61,7 @@ case "$1" in
             echo "QGIS not found. Install with: brew install --cask qgis"
             echo ""
             echo "Alternative: Use Organic Maps on your phone (App Store)"
-            echo "Alternative: Open topo maps with: open ~/Desktop/shtf/maps/topo/pdfs/any_map.pdf"
+            echo "Alternative: Open topo maps with: open $SHTF_DIR/maps/topo/pdfs/any_map.pdf"
         fi
         ;;
 esac

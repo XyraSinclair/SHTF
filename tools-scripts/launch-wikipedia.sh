@@ -19,9 +19,10 @@ echo ""
 
 if [ "$1" = "serve" ]; then
     PORT="${2:-8888}"
-    echo "Starting file server on http://$LOCAL_IP:$PORT"
+    echo "Starting raw-file server on http://$LOCAL_IP:$PORT"
     echo "Other devices on your network can download ZIM files from this URL."
-    echo "They just need the Kiwix app to open them."
+    echo "This mode shares files only; it does not render browsable Wikipedia pages by itself."
+    echo "Devices still need Kiwix to open the downloaded ZIMs."
     echo "Press Ctrl+C to stop."
     echo ""
 
@@ -36,7 +37,7 @@ else
         echo ""
         echo "To load ZIM files:"
         echo "  1. File > Open ZIM File"
-        echo "  2. Navigate to ~/Desktop/shtf/wikipedia/ or reference/"
+        echo "  2. Navigate to $SHTF_DIR/wikipedia/ or $SHTF_DIR/reference/"
         echo "  3. Select any .zim file and click Open"
         echo ""
         echo "TIP: You can open multiple ZIM files. Use the library tab to switch."
