@@ -24,6 +24,7 @@ Fastest file-level index for the highest-value parts of the repo. Intentionally 
 - playbooks/scenarios/08-nuclear.md
 - playbooks/scenarios/09-civil-unrest-bug-in.md
 - playbooks/scenarios/10-stranded-or-lost.md
+- playbooks/scenarios/11-lookup-drill.md
 
 ### Decision frameworks
 - playbooks/frameworks/stay-or-go.md

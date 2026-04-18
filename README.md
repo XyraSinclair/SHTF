@@ -58,6 +58,7 @@ Build once. Review every 6 months. See [`playbooks/tier-1-setup/00-first-weekend
 - [08. Nuclear](playbooks/scenarios/08-nuclear.md) — distant fallout, near airburst, dirty bomb, reactor accident
 - [09. Civil unrest / bug-in](playbooks/scenarios/09-civil-unrest-bug-in.md)
 - [10. Stranded or lost](playbooks/scenarios/10-stranded-or-lost.md)
+- [11. Offline lookup drill](playbooks/scenarios/11-lookup-drill.md) — 30-minute test of whether your offline reference actually works under stress
 
 ### Decision frameworks — the judgment calls that matter more than gear
 

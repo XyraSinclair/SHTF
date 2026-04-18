@@ -91,6 +91,7 @@ check_file "$SHTF_DIR/playbooks/cards/first-aid.md" 500 "Card: first aid"
 check_file "$SHTF_DIR/playbooks/cards/stop-the-bleed.md" 500 "Card: stop the bleed"
 check_file "$SHTF_DIR/playbooks/cards/water-purification.md" 500 "Card: water purification"
 check_file "$SHTF_DIR/playbooks/cards/radiation-shelter.md" 500 "Card: radiation shelter"
+check_file "$SHTF_DIR/playbooks/cards/offline-knowledge-map.md" 500 "Card: offline knowledge map"
 check_file "$SHTF_DIR/tools-scripts/household-setup.sh" 500 "Script: household-setup.sh"
 check_file "$SHTF_DIR/tools-scripts/print-cards.sh" 500 "Script: print-cards.sh"
 
@@ -144,6 +145,55 @@ check_file "$SHTF_DIR/food-water/USDA_Complete_Guide_Home_Canning_2015.pdf" 1000
 check_file "$SHTF_DIR/food-water/Washington_State_Foraging_Guide.pdf" 10000000 "WA Foraging Guide"
 check_file "$SHTF_DIR/food-water/Seed_Saving_Guide.pdf" 3000000 "Seed Saving Guide"
 check_file "$SHTF_DIR/food-water/preservation/Handbook_of_Food_Preservation.pdf" 5000000 "Food Preservation Handbook"
+
+echo ""
+echo "--- ACID V2 PARITY BUNDLE (optional) ---"
+# ZIM filenames drift each month, so glob-check rather than hard-coding dates.
+# See docs/acid-v2-parity.md and tools-scripts/download-acid-parity.sh.
+check_parity_zim() {
+    local glob="$1"
+    local min_size="$2"
+    local desc="$3"
+    local match=""
+    for candidate in $glob; do
+        [ -f "$candidate" ] && { match="$candidate"; break; }
+    done
+    if [ -z "$match" ]; then
+        echo -e "  ${YELLOW}OPTIONAL${NC}: $desc (run tools-scripts/download-acid-parity.sh)"
+        ((warnings++))
+        return
+    fi
+    check_file "$match" "$min_size" "$desc"
+}
+check_parity_zim "$SHTF_DIR/reference/ifixit_en_all_*.zim"            2000000000  "iFixit repair manuals"
+check_parity_zim "$SHTF_DIR/reference/gutenberg_en_all_*.zim"         50000000000 "Project Gutenberg (~60k books)"
+check_parity_zim "$SHTF_DIR/reference/khanacademy_en_all_*.zim"       40000000000 "Khan Academy"
+check_parity_zim "$SHTF_DIR/reference/ted_mul_ted-conference_*.zim"   30000000000 "TED Talks (main conference)"
+check_parity_zim "$SHTF_DIR/reference/wikispecies_en_all_maxi_*.zim"  200000000   "Wikispecies"
+check_parity_zim "$SHTF_DIR/reference/wikivoyage_en_all_maxi_*.zim"   900000000   "Wikivoyage (with images)"
+check_parity_zim "$SHTF_DIR/reference/appropedia_en_all_*.zim"        400000000   "Appropedia sustainable living"
+check_parity_zim "$SHTF_DIR/reference/zimgit-post-disaster_en_*.zim"  500000000   "zimgit post-disaster"
+
+# Ready.gov / FEMA preparedness PDFs — small, durable, always safe to have.
+READY_GOV_COUNT=$(ls "$SHTF_DIR"/ready-gov/*.pdf 2>/dev/null | wc -l | tr -d ' ')
+if [ "$READY_GOV_COUNT" -ge 6 ]; then
+    echo -e "  ${GREEN}OK${NC}: Ready.gov / FEMA PDFs ($READY_GOV_COUNT files)"
+elif [ "$READY_GOV_COUNT" -gt 0 ]; then
+    echo -e "  ${YELLOW}PARTIAL${NC}: Ready.gov / FEMA PDFs ($READY_GOV_COUNT files — expected 8)"
+    ((warnings++))
+else
+    echo -e "  ${YELLOW}OPTIONAL${NC}: Ready.gov / FEMA PDFs (run: tools-scripts/download-acid-parity.sh ready-gov)"
+    ((warnings++))
+fi
+
+# FAA aviation handbooks — landing page README + front matter.
+if [ -f "$SHTF_DIR/aviation/README.md" ]; then
+    FAA_PDFS=$(ls "$SHTF_DIR"/aviation/*.pdf 2>/dev/null | wc -l | tr -d ' ')
+    echo -e "  ${GREEN}OK${NC}: FAA aviation handbooks ($FAA_PDFS PDFs + pointer README)"
+else
+    echo -e "  ${YELLOW}OPTIONAL${NC}: FAA aviation handbooks (run: tools-scripts/download-acid-parity.sh aviation)"
+    ((warnings++))
+fi
 
 echo ""
 echo "--- MAPS ---"

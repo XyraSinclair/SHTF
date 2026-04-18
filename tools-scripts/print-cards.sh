@@ -25,6 +25,7 @@ CARD_ORDER=(
     "water-purification.md"
     "radiation-shelter.md"
     "radio-frequencies.md"
+    "offline-knowledge-map.md"
     "family-comms.md"
 )
 
