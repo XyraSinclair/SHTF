@@ -15,8 +15,9 @@ Then read, in order:
 3. `FIELD-INDEX.md`
 4. `USAGE.md`
 5. `DOWNLOADS.md`
-6. `docs/local-ai-models.md`
-7. `docs/gemma4-llamacpp.md`
+6. `docs/acid-v2-parity.md`
+7. `docs/local-ai-models.md`
+8. `docs/gemma4-llamacpp.md`
 
 ## Core intent
 

@@ -37,6 +37,7 @@ Fastest file-level index for the highest-value parts of the repo. Intentionally 
 - playbooks/cards/water-purification.md
 - playbooks/cards/radiation-shelter.md
 - playbooks/cards/radio-frequencies.md
+- playbooks/cards/offline-knowledge-map.md
 - playbooks/cards/family-comms.md (fill in)
 
 ## Medical
@@ -91,8 +92,20 @@ Fastest file-level index for the highest-value parts of the repo. Intentionally 
 - medical/*.zim
 - reference/*.zim
 - reference/devdocs/*.zim
+- reference/ifixit_en_all_*.zim
+- reference/gutenberg_en_all_*.zim
+- reference/khanacademy_en_all_*.zim
+- reference/ted_mul_*.zim
+- reference/wikispecies_en_all_*.zim
+- reference/wikivoyage_en_all_*.zim
+- reference/appropedia_en_all_*.zim
+- reference/zimgit-post-disaster_en_*.zim
+- ready-gov/*.pdf
+- aviation/README.md (FAA handbook pointers)
+- mechanical/vehicle-repair/README.md
 - ./tools-scripts/launch-wikipedia.sh
 - ./tools-scripts/serve-local-network.sh
+- ./tools-scripts/download-acid-parity.sh
 
 ## Local AI
 - docs/local-ai-models.md

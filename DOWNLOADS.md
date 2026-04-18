@@ -181,6 +181,23 @@ Notes:
 - `E2B` is the safest first conversion, then `E4B`, then the larger models.
 - For details, read `docs/local-ai-models.md` and `docs/gemma4-llamacpp.md`.
 
+## Extra offline reference — ACID V2 content parity
+
+A common commercial offering ("ACID V2" on Etsy and similar) bundles iFixit, TED,
+Khan Academy, Wikispecies, Wikivoyage, Project Gutenberg (~60k books), Appropedia,
+zimgit post-disaster, Ready.gov PDFs, FAA aviation handbooks, and public-domain
+vehicle-repair manuals. One script pulls any subset of that stack:
+
+```bash
+./tools-scripts/download-acid-parity.sh --list            # show all targets
+./tools-scripts/download-acid-parity.sh ifixit ready-gov  # pick what you want
+./tools-scripts/download-acid-parity.sh all               # the full bundle
+```
+
+URLs are resolved from the Kiwix OPDS catalog so the script doesn't rot with
+monthly rebuilds. See `docs/acid-v2-parity.md` for the full parity matrix and
+rough sizes.
+
 ## Video Tutorials (~1.7 GB)
 
 These are not redistributable via GitHub. The download script references for each category:

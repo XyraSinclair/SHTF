@@ -28,6 +28,13 @@ maps/topo/*.zip
 .shtf-squared-away-report.txt
 .shtf-squared-away-report.json
 
+# Resume partials from download-acid-parity.sh
+*.part
+
+# Parity-bundle fetches (source-of-truth lives on ready.gov / fema.gov / faa.gov)
+ready-gov/*.pdf
+aviation/*.pdf
+
 # Personal (private) — filled-in copies of templates. Keep out of git.
 shtf-personal-checklist.md
 my-shtf-checklist.md

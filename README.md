@@ -98,9 +98,16 @@ Rebuild from source URLs: `./tools-scripts/download-kindle-content.sh`
 
 Also in-repo: original source PDFs by topic (`medical/`, `survival-guides/`, `food-water/`, `radio/`, `power-electrical/`, `maps/`), NOAA radio frequency sheets, Gemma 4 source checkpoints (`models/gemma-4/`), plus a practical local-AI stack. See [USAGE.md](USAGE.md) for scenario-based instructions and [docs/local-ai-models.md](docs/local-ai-models.md) for model selection.
 
-### Optional large downloads (not in repo)
+## Optional large downloads (not in repo)
 
-Too large for GitHub. See **[DOWNLOADS.md](DOWNLOADS.md)** for step-by-step instructions.
+Too large for GitHub. See **[DOWNLOADS.md](DOWNLOADS.md)** for step-by-step instructions, or use the one-shot parity bundle:
+
+```bash
+./tools-scripts/download-acid-parity.sh --list
+./tools-scripts/download-acid-parity.sh ifixit ready-gov wikivoyage post-disaster
+```
+
+See [docs/acid-v2-parity.md](docs/acid-v2-parity.md) for the parity matrix against a typical commercial offline-reference device.
 
 | Resource | Size | What |
 |----------|------|------|

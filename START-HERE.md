@@ -102,8 +102,10 @@ Drop the contents of `kindle-ready/` into the Kindle `documents` folder. Medical
 
 - [README.md](README.md)
 - [playbooks/README.md](playbooks/README.md)
+- [playbooks/cards/offline-knowledge-map.md](playbooks/cards/offline-knowledge-map.md)
 - [FIELD-INDEX.md](FIELD-INDEX.md)
 - [USAGE.md](USAGE.md)
 - [DOWNLOADS.md](DOWNLOADS.md)
+- [docs/acid-v2-parity.md](docs/acid-v2-parity.md) — content parity vs a typical commercial offline-reference device
 - [docs/local-ai-models.md](docs/local-ai-models.md)
 - [docs/gemma4-llamacpp.md](docs/gemma4-llamacpp.md)
