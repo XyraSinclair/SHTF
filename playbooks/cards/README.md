@@ -4,12 +4,35 @@ Single-page, print-ready references. Designed to fit on one printed page each. L
 
 ## Cards in this set
 
+**Start here** (the card that finds you):
+- [`summons.md`](summons.md) — 6-line wallet / lock-screen card. Fill via `household-setup.sh`.
+
+**Education — read these before you need them:**
+- [`what-kills.md`](what-kills.md) — what actually kills people in disasters. CO, heat, floodwater driving, smoke, cardiac, falls, and more. The counterintuitive list.
+- [`when-not-to.md`](when-not-to.md) — the negations that save lives. When NOT to drive, NOT to flush, NOT to run a generator, NOT to re-enter, NOT to evacuate.
+
+**Response:**
 - [`first-aid.md`](first-aid.md) — core first-aid response flowchart.
 - [`stop-the-bleed.md`](stop-the-bleed.md) — bleeding control with and without equipment.
 - [`water-purification.md`](water-purification.md) — make water safe to drink.
-- [`radio-frequencies.md`](radio-frequencies.md) — emergency, weather, and ham frequencies for the US West Coast.
+- [`psychological-first-aid.md`](psychological-first-aid.md) — panic, freeze, grief, kids. WHO's Look-Listen-Link.
+
+**Specific populations / scenarios:**
+- [`chronic-conditions.md`](chronic-conditions.md) — insulin, oxygen, dialysis, heart meds, CPAP, pregnancy in a disaster.
+- [`kids-what-to-do.md`](kids-what-to-do.md) — written for kids 8–12. Lost, fire, someone hurt, pocket card.
+- [`kids-parents-guide.md`](kids-parents-guide.md) — parent's guide: involving kids in prep without scaring them.
+- [`kids-talking-about-preparedness.md`](kids-talking-about-preparedness.md) — how to talk to kids about disasters. Teachable moments, age-appropriate framing.
+- [`elderly-alone-prep.md`](elderly-alone-prep.md) — older adults living alone. Network first, medical continuity, I'm-OK sign.
+- [`disability-preparedness.md`](disability-preparedness.md) — mobility, blind/low-vision, deaf/HoH, cognitive, autism/sensory. ADA shelter rights.
+- [`renter-preparedness.md`](renter-preparedness.md) — portable preps, renters insurance, floor captains. For apartment/condo dwellers.
+- [`low-income-no-spend-prep.md`](low-income-no-spend-prep.md) — prep on near-zero budget. Water is free, the library is a prep resource.
 - [`radiation-shelter.md`](radiation-shelter.md) — fallout-shelter fundamentals (from NWSS).
+- [`radio-frequencies.md`](radio-frequencies.md) — emergency, weather, and ham frequencies for the US West Coast.
+
+**Reference / fill-in:**
 - [`family-comms.md`](family-comms.md) — blank template, fill out and carry.
+- [`offline-knowledge-map.md`](offline-knowledge-map.md) — what's where when the internet is gone.
+- [`translations-priority.md`](translations-priority.md) — how to translate cards for non-English speakers. Priorities, sourcing, distribution.
 
 ## How to print
 

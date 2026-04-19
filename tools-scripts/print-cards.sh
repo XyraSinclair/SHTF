@@ -20,13 +20,26 @@ mkdir -p "$OUT_DIR"
 # Build a single bundled markdown file in a deterministic order.
 # Put first-aid first since it is the most-used card.
 CARD_ORDER=(
+    "summons.md"
+    "what-kills.md"
+    "when-not-to.md"
     "first-aid.md"
     "stop-the-bleed.md"
     "water-purification.md"
+    "psychological-first-aid.md"
+    "chronic-conditions.md"
+    "kids-what-to-do.md"
+    "kids-parents-guide.md"
+    "kids-talking-about-preparedness.md"
+    "elderly-alone-prep.md"
+    "disability-preparedness.md"
+    "renter-preparedness.md"
+    "low-income-no-spend-prep.md"
     "radiation-shelter.md"
     "radio-frequencies.md"
     "offline-knowledge-map.md"
     "family-comms.md"
+    "translations-priority.md"
 )
 
 echo "Bundling cards in $CARDS_DIR ..."

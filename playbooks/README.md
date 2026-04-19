@@ -11,7 +11,8 @@ playbooks/
 ├── tier-1-setup/        Do this once, on a calm weekend. Works whether or not SHTF happens.
 ├── scenarios/           "It is happening right now. What do I do?" playbooks.
 ├── frameworks/          Decision tools that apply across many scenarios.
-└── cards/               Print-ready single-page references for a go-bag.
+├── cards/               Print-ready single-page references for a go-bag.
+└── recovery/            Day 3 to Year 1+. Insurance, FEMA, housing, records, money, mental health.
 ```
 
 ## Where to start
@@ -22,6 +23,7 @@ playbooks/
 | Something is actively happening | [`frameworks/stay-or-go.md`](frameworks/stay-or-go.md), then the relevant scenario |
 | An AI agent or orientation script | [`../START-HERE.md`](../START-HERE.md) |
 | About to travel / go off-grid | [`tier-1-setup/02-go-bag.md`](tier-1-setup/02-go-bag.md) and [`cards/`](cards/) |
+| The event has passed; now the aftermath starts | [`recovery/README.md`](recovery/README.md) |
 
 ## Quality principles
 

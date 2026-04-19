@@ -2,38 +2,45 @@
 
 If the grid goes down, the internet disappears, and you're on your own — this is what you want on your hard drive, in your head, and on your Kindle.
 
+## If something is happening right now
+
+Open this first: **[START-HERE.md](START-HERE.md)** — one page, maps the emergency to the right file in under 60 seconds.
+
+The five files that matter more than all the others:
+
+1. **[START-HERE.md](START-HERE.md)** — the dispatcher
+2. **[playbooks/cards/summons.md](playbooks/cards/summons.md)** — the 6-line wallet / lock-screen card
+3. **[playbooks/cards/what-kills.md](playbooks/cards/what-kills.md)** — the real disaster killers (CO, heat, floodwater, hypothermia)
+4. **[playbooks/frameworks/stay-or-go.md](playbooks/frameworks/stay-or-go.md)** — the one decision that prevents the most regret
+5. **[medical/Where_There_Is_No_Doctor_FULL.pdf](medical/Where_There_Is_No_Doctor_FULL.pdf)** — the single most important book in the library
+
+Print the cards, laminate the summons, screenshot it to your phone lock screen.
+
+```bash
+./tools-scripts/print-cards.sh   # bundles every emergency card into a single PDF
+```
+
+## If you are preparing
+
+```bash
+./tools-scripts/get-squared-away.sh    # reports what is set up and what is missing
+./tools-scripts/household-setup.sh     # 20 minutes; produces a personal checklist + summons card for your household
+```
+
+Then read [`playbooks/tier-1-setup/00-first-weekend.md`](playbooks/tier-1-setup/00-first-weekend.md) and block out a weekend.
+
+---
+
+## What's in the repo
+
 Two halves:
 
-1. **Playbooks** — what you actually do. One-weekend prep, scenario runbooks, decision frameworks, print-ready emergency cards. Start here.
-2. **Library** — the authoritative references the playbooks point into. Military field manuals, WHO medical handbooks, canning guides, radio references. 144 Kindle-ready books plus source PDFs.
+1. **[Playbooks](playbooks/)** — what you do. Tier-1 prep, scenario runbooks, decision frameworks, printable cards, post-disaster recovery.
+2. **Library** — the authoritative references the playbooks point into. 144 Kindle-ready books plus source PDFs, offline Wikipedia, topo maps.
 
 Everything is sourced from US government publications (public domain), WHO/UN freely distributed guides, Peace Corps manuals, Project Gutenberg, and FEMA / CDC / NOAA / FCC guidance.
 
-## Start here in one command
-
-```bash
-./tools-scripts/get-squared-away.sh
-```
-
-Then, in order:
-
-```bash
-# Personal walkthrough → produces a custom checklist for your household
-./tools-scripts/household-setup.sh
-
-# Bundle the emergency reference cards into a single printable PDF
-./tools-scripts/print-cards.sh
-```
-
-For an AI agent entering cold, use `--json`:
-
-```bash
-./tools-scripts/get-squared-away.sh --json
-```
-
-## The playbooks (new — read these first)
-
-Live under [`playbooks/`](playbooks/). Four parts:
+## 1. Playbooks — what to DO
 
 ### Tier-1 setup — the one-weekend foundation
 
@@ -44,7 +51,7 @@ Build once. Review every 6 months. See [`playbooks/tier-1-setup/00-first-weekend
 3. [14-day water + food stockpile](playbooks/tier-1-setup/03-water-food-stockpile.md)
 4. [Cash + documents](playbooks/tier-1-setup/04-cash-and-documents.md)
 5. [Family communications plan](playbooks/tier-1-setup/05-family-comms-plan.md)
-6. [Digital hardening](playbooks/tier-1-setup/06-digital-hardening.md) (password managers, 2FA, backups, SIM-swap protection)
+6. [Digital hardening](playbooks/tier-1-setup/06-digital-hardening.md) — password managers, 2FA, backups, SIM-swap protection
 
 ### Scenario playbooks — what to do when
 
@@ -54,30 +61,36 @@ Build once. Review every 6 months. See [`playbooks/tier-1-setup/00-first-weekend
 - [04. Wildfire evacuation](playbooks/scenarios/04-wildfire-evacuation.md)
 - [05. Extended grid-down](playbooks/scenarios/05-grid-down-extended.md)
 - [06. Pandemic](playbooks/scenarios/06-pandemic.md)
-- [07. Cyber collapse](playbooks/scenarios/07-cyber-collapse.md) (reactive — see digital hardening for preventive)
+- [07. Cyber collapse](playbooks/scenarios/07-cyber-collapse.md)
 - [08. Nuclear](playbooks/scenarios/08-nuclear.md) — distant fallout, near airburst, dirty bomb, reactor accident
 - [09. Civil unrest / bug-in](playbooks/scenarios/09-civil-unrest-bug-in.md)
 - [10. Stranded or lost](playbooks/scenarios/10-stranded-or-lost.md)
-- [11. Offline lookup drill](playbooks/scenarios/11-lookup-drill.md) — 30-minute test of whether your offline reference actually works under stress
+- [11. Offline lookup drill](playbooks/scenarios/11-lookup-drill.md)
 
 ### Decision frameworks — the judgment calls that matter more than gear
 
 - [Stay or go](playbooks/frameworks/stay-or-go.md) — single most important call
-- [Triage](playbooks/frameworks/triage.md) — medical, resource, psychological
+- [Triage](playbooks/frameworks/triage.md)
 - [Signalling & rescue](playbooks/frameworks/signalling-and-rescue.md)
-- [Myths that kill](playbooks/frameworks/myths-that-kill.md) — common bad advice to unlearn
+- [Myths that kill](playbooks/frameworks/myths-that-kill.md)
 
-### Emergency cards — one page each, print and laminate
+### Emergency cards — one page each
 
-[`playbooks/cards/`](playbooks/cards/). Bundle to PDF with `tools-scripts/print-cards.sh`.
+[`playbooks/cards/`](playbooks/cards/) — bundle to PDF with `./tools-scripts/print-cards.sh`.
 
-- First aid · Stop the bleed · Water purification · Radiation shelter · Radio frequencies · Family comms (fill in)
+Read these two first: **[what-kills.md](playbooks/cards/what-kills.md)** and **[when-not-to.md](playbooks/cards/when-not-to.md)**. They will change what you buy and what you do.
 
-## The library (what the playbooks point into)
+The rest: summons · first aid · stop the bleed · water purification · psychological first aid · chronic conditions · radiation shelter · radio frequencies · offline knowledge map · family comms (fill in).
+
+### Post-disaster recovery — the second disaster
+
+[`playbooks/recovery/`](playbooks/recovery/) — insurance claims, FEMA IA, documentation salvage, contractor vetting, financial recovery, housing displacement, mental-health timeline, legal-document reconstruction, household recovery. The first 72 hours are about staying alive; the next year is what breaks people.
+
+## 2. Library — what to LOOK UP
 
 ### Kindle-ready (144 books, drag-and-drop)
 
-`kindle-ready/` is flattened so you can drop it straight onto a Kindle via USB. Files are category-prefixed so they sort together.
+`kindle-ready/` is flattened so you can drop it straight onto a Kindle via USB. Files are category-prefixed so they sort together on the device.
 
 | # | Category | Count | Highlights |
 |---|----------|-------|------------|
@@ -95,9 +108,13 @@ Build once. Review every 6 months. See [`playbooks/tier-1-setup/00-first-weekend
 
 Rebuild from source URLs: `./tools-scripts/download-kindle-content.sh`
 
-### Source PDFs, offline wikis, local AI
+### Source PDFs, offline wikis, maps
 
-Also in-repo: original source PDFs by topic (`medical/`, `survival-guides/`, `food-water/`, `radio/`, `power-electrical/`, `maps/`), NOAA radio frequency sheets, Gemma 4 source checkpoints (`models/gemma-4/`), plus a practical local-AI stack. See [USAGE.md](USAGE.md) for scenario-based instructions and [docs/local-ai-models.md](docs/local-ai-models.md) for model selection.
+Original source PDFs by topic (`medical/`, `survival-guides/`, `food-water/`, `radio/`, `power-electrical/`, `maps/`), NOAA radio frequency sheets, offline Wikipedia (Kiwix ZIM), USGS topo maps. See [USAGE.md](USAGE.md) for scenario-based usage of the library.
+
+### Local AI (optional)
+
+A local-model stack (Gemma 4 via llama.cpp, Kimi K2.5, Ollama) is included for answering questions when you have no internet but still have power. See [docs/local-ai-models.md](docs/local-ai-models.md) and [docs/gemma4-llamacpp.md](docs/gemma4-llamacpp.md). This is prep work, not response work — do not set it up during an emergency.
 
 ## Optional large downloads (not in repo)
 
@@ -120,22 +137,26 @@ See [docs/acid-v2-parity.md](docs/acid-v2-parity.md) for the parity matrix again
 | Video tutorials | ~1.7 GB | Baofeng radio, solar power, knot tying |
 | AI model | ~263 GB | Kimi K2.5 (or Ollama for lighter models) |
 
-## Surfaces to know
+## Key surfaces
 
-- [START-HERE.md](START-HERE.md) — fast problem → open-this-file map
-- [FIELD-INDEX.md](FIELD-INDEX.md) — short file-level index
-- [USAGE.md](USAGE.md) — scenario-based usage of the library
-- [DOWNLOADS.md](DOWNLOADS.md) — the optional large downloads
-- [AGENTS.md](AGENTS.md) — contract for AI agents
+| File | Use |
+|------|-----|
+| [START-HERE.md](START-HERE.md) | Emergency dispatcher — open this first in a crisis |
+| [playbooks/cards/summons.md](playbooks/cards/summons.md) | Print, laminate, wallet. Screenshot to lock screen |
+| [FIELD-INDEX.md](FIELD-INDEX.md) | Short file-level index of the whole repo |
+| [USAGE.md](USAGE.md) | Scenario-based library usage |
+| [DOWNLOADS.md](DOWNLOADS.md) | Optional large downloads |
+| [AGENTS.md](AGENTS.md) | Contract for AI agents working in this repo |
 
-Helper scripts:
+Helper scripts (in `tools-scripts/`):
 
-- `tools-scripts/verify-all.sh --essential` — what's ready right now
-- `tools-scripts/launch-wikipedia.sh` — open Kiwix with local ZIM files
-- `tools-scripts/launch-maps.sh` — open maps
-- `tools-scripts/serve-local-network.sh` — share reference to a household LAN
-- `tools-scripts/household-setup.sh` — build your personal checklist
-- `tools-scripts/print-cards.sh` — bundle emergency cards to PDF
+- `print-cards.sh` — bundle every emergency card into one printable PDF
+- `household-setup.sh` — 20-minute household walkthrough; outputs a personal checklist + summons card
+- `get-squared-away.sh` — report what is set up and what is missing
+- `verify-all.sh --essential` — deeper verification
+- `launch-wikipedia.sh` — open Kiwix with local ZIM files
+- `launch-maps.sh` — open maps
+- `serve-local-network.sh` — share this repo to a household LAN
 
 ## License
 

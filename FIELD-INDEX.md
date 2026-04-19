@@ -33,13 +33,38 @@ Fastest file-level index for the highest-value parts of the repo. Intentionally 
 - playbooks/frameworks/myths-that-kill.md
 
 ### Emergency cards (print + laminate)
+- playbooks/cards/summons.md (6-line wallet / lock-screen card — fill via household-setup.sh)
+- playbooks/cards/what-kills.md (what actually kills people in disasters — the counterintuitive killers with prevention)
+- playbooks/cards/when-not-to.md (negations — flood driving, generators, flushing, re-entering, etc.)
 - playbooks/cards/first-aid.md
 - playbooks/cards/stop-the-bleed.md
 - playbooks/cards/water-purification.md
+- playbooks/cards/psychological-first-aid.md (panic, freeze, grief, kids; WHO Look-Listen-Link)
+- playbooks/cards/chronic-conditions.md (insulin, O2, dialysis, heart meds, CPAP, etc.)
+- playbooks/cards/kids-what-to-do.md (written for kids 8–12 — lost, fire, hurt, pocket card)
+- playbooks/cards/kids-parents-guide.md (parent guide: involving kids without scaring them)
+- playbooks/cards/kids-talking-about-preparedness.md (how to talk to kids about disasters)
+- playbooks/cards/elderly-alone-prep.md (older adults living alone — network, meds, I'm-OK sign)
+- playbooks/cards/disability-preparedness.md (mobility, blind/low-vision, deaf/HoH, cognitive, autism)
+- playbooks/cards/renter-preparedness.md (portable preps, lease, floor captains)
+- playbooks/cards/low-income-no-spend-prep.md (near-zero budget prep)
 - playbooks/cards/radiation-shelter.md
 - playbooks/cards/radio-frequencies.md
 - playbooks/cards/offline-knowledge-map.md
 - playbooks/cards/family-comms.md (fill in)
+- playbooks/cards/translations-priority.md (how to translate cards for non-English speakers)
+
+### Recovery (Day 3 to Year 1+)
+- playbooks/recovery/README.md (post-disaster recovery timeline and binder)
+- playbooks/recovery/01-insurance-claims.md (homeowners, renters, flood, earthquake)
+- playbooks/recovery/02-fema-individual-assistance.md (applying, inspection, appeals)
+- playbooks/recovery/03-documentation-salvage.md (wet paper, photos, digital)
+- playbooks/recovery/04-contractor-vetting.md (license, references, payment, AOB)
+- playbooks/recovery/05-mental-health-timeline.md (SAMHSA Heroic → Reconstruction)
+- playbooks/recovery/06-financial-recovery.md (forbearance, DUA, SBA, taxes)
+- playbooks/recovery/07-housing-displacement.md (TSA, ALE, McKinney-Vento)
+- playbooks/recovery/08-legal-documents-reconstruction.md (ID, vital records, SS, passport)
+- playbooks/recovery/09-household-recovery.md (kids, elderly, partner, pets, anniversaries)
 
 ## Medical
 - medical/Where_There_Is_No_Doctor_FULL.pdf

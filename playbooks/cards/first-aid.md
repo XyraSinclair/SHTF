@@ -42,8 +42,8 @@ See [`stop-the-bleed.md`](stop-the-bleed.md). Short version:
 
 Pale, cold clammy skin; rapid weak pulse; rapid shallow breathing; confusion; nausea.
 
-- Lay flat.
-- Legs elevated 6–12 in (unless head/chest injury).
+- Lay flat on back.
+- Do **not** elevate legs — no longer recommended.
 - Warm (blanket).
 - No food/water.
 - Get to medical care.
@@ -61,9 +61,11 @@ Shivering, confusion, slurred speech, poor coordination.
 
 - Move to warmth.
 - Remove wet clothing.
-- Dry layers, insulate.
+- Dry layers, insulate — including against the ground, which pulls heat fast.
 - Warm sugary fluids if conscious.
 - **Never**: alcohol, rapid hot immersion, rubbing extremities.
+- **Paradoxical undressing** (stripping in severe cold) means severe hypothermia. Handle gently — jostling can trigger cardiac arrest.
+- If unresponsive and not breathing normally, **start CPR immediately** and continue while rewarming. Handle gently. The principle: *you're not dead until you're warm and dead.*
 
 ## Heat stroke
 
@@ -91,17 +93,27 @@ Hot skin (dry or wet), confusion, temp >103°F, possibly unconscious.
 
 ## Snakebite
 
-- Keep bitten limb below heart.
+- **Keep the bitten limb still, in a neutral position** (not above or below the heart). Immobilize it.
 - Remove jewelry before swelling.
 - Mark swelling edge with pen and time.
 - Get to care.
-- **Do not**: cut, suck, tourniquet (unless known neurotoxic species, last resort), apply ice.
+- **Do not**: cut, suck, apply a tourniquet, or use ice.
 
 ## Poisoning
 
 Call **Poison Control: 1-800-222-1222**.
 
 Do not induce vomiting unless instructed.
+
+## Carbon monoxide poisoning
+
+Colorless, odorless. Suspect in any closed space with generator, grill, car running in garage, charcoal, or unvented fuel heat. Symptoms: headache, nausea, dizziness, confusion, then unconsciousness.
+
+- **Everyone out, into fresh air, immediately.** Including pets.
+- Call 911. Say "suspected CO poisoning."
+- Do not re-enter until vented and tested by responders.
+- High-flow O2 is the treatment; hospitals may use hyperbaric for severe cases.
+- Install **battery CO alarms** on every level and outside sleeping areas. CO alarms ≠ smoke alarms. Own both.
 
 ## Key numbers
 

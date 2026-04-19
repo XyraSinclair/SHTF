@@ -1,6 +1,6 @@
 # Stop the Bleed
 
-**Uncontrolled arterial bleeding kills in 3–5 minutes. Direct pressure fails in maybe 20% of cases. Know the escalation.**
+**Uncontrolled bleeding kills in minutes. Direct pressure is the first step, but for severe limb bleeding a tourniquet is essential and should not be delayed.**
 
 ## Immediate response
 
@@ -35,7 +35,7 @@ If direct pressure isn't stopping it and you have QuikClot Combat Gauze, Celox, 
 2. Pull strap tight, apply through friction buckle.
 3. Twist windlass until bleeding **stops completely**. It will hurt — the patient will react. Tighten anyway.
 4. Secure windlass.
-5. **Mark time applied on the patient's forehead** (Sharpie works, blood works). Write "T" and the time, 24-hour format. Example: `T 14:37`.
+5. **Mark the time.** Use the tourniquet's time strap if present. Otherwise use a permanent marker on tape on the patient's forehead, or write directly on the forehead. 24-hour format: `T 14:37`.
 6. **Do not remove.** Medical personnel only.
 
 ### Real tourniquets only
@@ -58,6 +58,15 @@ Tourniquet cannot be applied. Options:
 - Hemostatic gauze **packed into the wound**, aggressive pressure above.
 - Specialized junctional tourniquets (rare outside military/EMS).
 - Expect loss; transport immediately.
+
+## Penetrating chest wound (sucking chest wound)
+
+A hole through the chest wall lets air into the pleural space on inhalation — collapses the lung, can progress to tension pneumothorax and death.
+
+1. **Commercial vented chest seal** (Halo, HyFin) directly over the wound. Check the back — exit wound? Seal that too.
+2. **Improvised** if no seal: a piece of non-porous plastic (bag, wrapper, glove) extending at least 2 inches past the wound on every side. Tape down on **three sides only** — leave the side closest to the ground untaped to vent outward. Flutter valve: air escapes, doesn't re-enter.
+3. Sit the patient up if conscious and not in shock. Transport urgently.
+4. Signs of tension pneumothorax (rising distress, one side of chest not moving, trachea shifting, jugular veins bulging) = lift or burp the seal to release pressure.
 
 ## Hard signs of severe hemorrhage
 
@@ -97,7 +106,7 @@ Brief report:
 
 ## A note on nosebleeds
 
-Not Stop-the-Bleed severity. Lean forward, pinch soft part of nose 10 full minutes without checking. Ice on the back of the neck. If persists >30 minutes or you're on blood thinners, seek care.
+Not Stop-the-Bleed severity. Lean forward, pinch soft part of nose 10 full minutes without checking. If persists >30 minutes or you're on blood thinners, seek care.
 
 ---
 
