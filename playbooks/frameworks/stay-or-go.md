@@ -1,20 +1,20 @@
 # Stay or Go
 
-The single most consequential decision in most emergencies. People die from guessing.
+A high-stakes decision in many emergencies. The goal is not to find one universal answer; it is to avoid guessing.
 
 ## If you only read one line
 
-**Default to staying put** unless a specific, identifiable threat requires leaving. Movement in a crisis is expensive, dangerous, and usually unnecessary.
+**Default to staying put** unless a specific, identifiable threat requires leaving. This is a default, not a law. Fire, flood, smoke, heat/cold, violence, medical dependence, disability access, lack of shelter, or an evacuation order can override it.
 
 ## Why "stay" is the default
 
-Your home has water, food, tools, shelter, medication, documents, and people who know you. The road does not. In almost every modern disaster — Katrina, Maria, Sandy, Christchurch, Kobe, Fukushima — the people who stayed and sheltered did measurably better than the people who tried to leave during the event. Traffic jams, fuel shortages, accidents, and exposure kill more people than the disaster does.
+For many households, home has more water, food, tools, shelter, medication, documents, and known people than the road. That is why staying is often the safer starting point. It is not safer when the shelter itself is becoming dangerous or when a person inside has needs the shelter cannot meet.
 
-Shelter-in-place is not passivity. It is the higher-probability survival strategy.
+Shelter-in-place is not passivity. It is an active strategy that has to be checked against your actual conditions.
 
 ## When "go" is actually correct
 
-Leave only if at least one of the following is true:
+Strong reasons to leave include:
 
 1. **Your shelter is structurally compromised.** Fire, flood, post-earthquake collapse risk, roof failure.
 2. **A specific, directional hazard is arriving.** Wildfire bearing down, downstream flood, fallout plume with known direction and time, lahar, tsunami warning.
@@ -22,7 +22,7 @@ Leave only if at least one of the following is true:
 4. **Authorities with specific information have ordered evacuation** — not "recommend" but "order," and from a source you can verify (AM/FM broadcast, NOAA Weather Radio, official emergency broadcast).
 5. **Continued presence exposes you to violence you cannot defend against.** Active combat zone, approaching armed group, not speculative civil unrest.
 
-Notice what is **not** on this list: "things feel bad," "I saw something on social media," "a friend called worried."
+Notice what is **not** enough by itself: "things feel bad," "I saw something on social media," "a friend called worried." Use those as prompts to verify, not as the whole decision.
 
 ## The decision tree
 
@@ -70,7 +70,9 @@ This is the most common fatal decision pattern. Unplanned evacuations fail more 
 
 Prevent this before anything happens: [`../tier-1-setup/05-family-comms-plan.md`](../tier-1-setup/05-family-comms-plan.md) forces you to write down a destination and a trigger now, while you are thinking clearly.
 
-## Scenario defaults
+## Scenario starting defaults
+
+Override these when your shelter, body, medical needs, access needs, local orders, or real-time hazard information says the default is wrong.
 
 | Scenario | Default |
 |---------|---------|

@@ -1,6 +1,6 @@
 # START HERE
 
-One question. Answer honestly.
+Use this page as a simple table of contents.
 
 ## Is something happening right now?
 
@@ -8,12 +8,12 @@ One question. Answer honestly.
 
 ### → YES.
 
-Pick the closest match. Open one page. Do what it says.
+Pick the closest match. Open one page. Start there, then adapt for immediate safety, disability or medical needs, local conditions, and official instructions.
 
 | If… | Open |
 |-----|------|
 | Someone is bleeding hard | [cards/stop-the-bleed.md](playbooks/cards/stop-the-bleed.md) |
-| Someone is hurt or sick and no 911 | [cards/first-aid.md](playbooks/cards/first-aid.md) + `medical/Where_There_Is_No_Doctor_FULL.pdf` |
+| Someone is hurt or sick and you cannot reach emergency services | [cards/first-aid.md](playbooks/cards/first-aid.md) + `medical/Where_There_Is_No_Doctor_FULL.pdf` |
 | No clean water | [cards/water-purification.md](playbooks/cards/water-purification.md) |
 | House is on fire | [scenarios/01-house-fire.md](playbooks/scenarios/01-house-fire.md) |
 | Tornado / hurricane / blizzard warning | [scenarios/02-severe-weather.md](playbooks/scenarios/02-severe-weather.md) |
@@ -34,23 +34,29 @@ Pick the closest match. Open one page. Do what it says.
 | The event has passed; now the insurance/FEMA/bills start | [recovery/README.md](playbooks/recovery/README.md) |
 | Don't know — just scared | [frameworks/stay-or-go.md](playbooks/frameworks/stay-or-go.md) |
 
-**The one decision that prevents the most regret:** [stay-or-go.md](playbooks/frameworks/stay-or-go.md). Default is stay.
+**Main movement/shelter framework:** [stay-or-go.md](playbooks/frameworks/stay-or-go.md). Staying is often the default; specific hazards, evacuation orders, medical needs, heat/cold, smoke, flood, fire, or violence can override it.
 
 ---
 
 ### → NO. I'm preparing.
 
-Run these three, in order, this weekend:
+Start with these:
 
 ```bash
-./tools-scripts/get-squared-away.sh       # what's actually here
-./tools-scripts/household-setup.sh        # your personal checklist + summons card
-./tools-scripts/print-cards.sh            # printable PDF of all cards
+./tools-scripts/get-squared-away.sh       # local orientation + verification report; no network
+./tools-scripts/print-cards.sh            # printable cards bundle; PDF if pandoc is installed
 ```
 
-Then open [`playbooks/tier-1-setup/00-first-weekend.md`](playbooks/tier-1-setup/00-first-weekend.md). Two hours minimum.
+Then open [FIELD-INDEX.md](FIELD-INDEX.md) or [`playbooks/tier-1-setup/00-first-weekend.md`](playbooks/tier-1-setup/00-first-weekend.md).
 
-**Before you buy gear, read these two cards.** They shift more lives than any purchase:
+Optional private worksheet:
+
+```bash
+./tools-scripts/household-setup.sh        # blank templates; no questions
+./tools-scripts/household-setup.sh --quick
+```
+
+**Before you buy gear, read these two cards.** They catch common mistakes that generic gear lists miss:
 
 - [`cards/what-kills.md`](playbooks/cards/what-kills.md) — the real causes of disaster death (CO, heat, floodwater driving, smoke, cardiac, falls). Most are preventable with zero spending.
 - [`cards/when-not-to.md`](playbooks/cards/when-not-to.md) — the don'ts that save lives.
@@ -63,20 +69,11 @@ Then open [`playbooks/tier-1-setup/00-first-weekend.md`](playbooks/tier-1-setup/
 - Renting / apartment or condo → [`cards/renter-preparedness.md`](playbooks/cards/renter-preparedness.md)
 - Tight budget → [`cards/low-income-no-spend-prep.md`](playbooks/cards/low-income-no-spend-prep.md)
 
-**The 30-second confidence test.** After setup, from a cold start:
-- Name two exits from your bedroom. Time: ___
-- Find the [stop-the-bleed card](playbooks/cards/stop-the-bleed.md). Time: ___
-- Point to your water shutoff. Time: ___
-
-Failed any? Fix it now, not later.
-
----
-
 ## The summons card
 
-Before anything else, fill in and print [`cards/summons.md`](playbooks/cards/summons.md). Six lines. One copy in every wallet, one on every phone's lock screen. That card is the repo for 95% of people 95% of the time.
+When things are calm, fill in and print [`cards/summons.md`](playbooks/cards/summons.md). Six lines. Keep copies where they help. Put it on a phone lock screen only if that is safe for privacy and security.
 
-`household-setup.sh` generates a pre-filled version for you.
+`household-setup.sh` writes a blank version by default. Use `./tools-scripts/household-setup.sh --summons` if you want to fill summons fields during the run.
 
 ## 10-minute orientation (for the laptop on the kitchen table)
 
@@ -91,10 +88,10 @@ Before anything else, fill in and print [`cards/summons.md`](playbooks/cards/sum
 
 Health check: `./tools-scripts/verify-all.sh --essential`
 
-## Best paths by device
+## Simple paths by device
 
 ### Kindle only
-Drop `kindle-ready/` into the Kindle `documents` folder. Drop the printed cards PDF too.
+Drop `kindle-ready/` into the Kindle `documents` folder. Drop the printed cards bundle there too.
 
 ### Laptop only
 - `./tools-scripts/launch-wikipedia.sh` — offline Wikipedia
@@ -105,9 +102,9 @@ Drop `kindle-ready/` into the Kindle `documents` folder. Drop the printed cards 
 - Install **Kiwix** → Wikipedia ZIM
 - Install **Organic Maps** → your region
 - Install **Watch Duty** (West Coast wildfire)
-- Save cards PDF + `Where_There_Is_No_Doctor_FULL.pdf` to device
+- Save the cards bundle or individual card files + `Where_There_Is_No_Doctor_FULL.pdf` to device
 - Program NOAA weather radio (162.400–162.550 MHz)
-- **Screenshot the summons card to your lock screen**
+- **Screenshot the summons card to your lock screen only if safe**
 
 ### One laptop serving a household
 - `./tools-scripts/serve-local-network.sh`
@@ -117,8 +114,10 @@ Drop `kindle-ready/` into the Kindle `documents` folder. Drop the printed cards 
 | Command | Purpose |
 |---------|---------|
 | `./tools-scripts/get-squared-away.sh` | Canonical orientation; writes a report |
-| `./tools-scripts/household-setup.sh` | Interactive Tier-1 → personal checklist + summons card |
-| `./tools-scripts/print-cards.sh` | Bundle emergency cards into a printable PDF |
+| `./tools-scripts/household-setup.sh` | Blank private templates; no questions |
+| `./tools-scripts/household-setup.sh --quick` | Short guided checklist |
+| `./tools-scripts/household-setup.sh --full --summons` | Longer guided checklist with summons-card fields |
+| `./tools-scripts/print-cards.sh` | Bundle emergency cards into a printable bundle; PDF when pandoc is installed |
 | `./tools-scripts/verify-all.sh --essential` | Check only the life-support library |
 | `./tools-scripts/verify-all.sh --full` | Check everything including optional |
 | `./tools-scripts/launch-wikipedia.sh` | Open Kiwix (offline reference) |

@@ -5,7 +5,7 @@ Single-page, print-ready references. Designed to fit on one printed page each. L
 ## Cards in this set
 
 **Start here** (the card that finds you):
-- [`summons.md`](summons.md) — 6-line wallet / lock-screen card. Fill via `household-setup.sh`.
+- [`summons.md`](summons.md) — 6-line wallet / lock-screen card. Fill via `household-setup.sh --summons` or by hand.
 
 **Education — read these before you need them:**
 - [`what-kills.md`](what-kills.md) — what actually kills people in disasters. CO, heat, floodwater driving, smoke, cardiac, falls, and more. The counterintuitive list.
@@ -34,7 +34,13 @@ Single-page, print-ready references. Designed to fit on one printed page each. L
 - [`offline-knowledge-map.md`](offline-knowledge-map.md) — what's where when the internet is gone.
 - [`translations-priority.md`](translations-priority.md) — how to translate cards for non-English speakers. Priorities, sourcing, distribution.
 
+**Advanced supplement:**
+- [`high-signal-field-brief.html`](high-signal-field-brief.html) — dense six-panel operations brief for comms, radiation, power, local AI, trade, and sleep. Treat it as an optional supplement, not the first thing to print.
+
 ## How to print
+
+For the standard deck, run `print-cards.sh`.
+For the advanced supplement, open `high-signal-field-brief.html` in a browser and print it separately.
 
 If you have `pandoc` installed:
 
@@ -44,7 +50,7 @@ If you have `pandoc` installed:
 
 This produces a single PDF bundle you can print double-sided.
 
-Without pandoc, open each card in your browser's markdown preview and use Print → Save as PDF.
+Without pandoc, `print-cards.sh` still writes a bundled markdown file under `playbooks/cards/.build/`. Open that bundle or the individual card files in a browser and use Print → Save as PDF.
 
 ## Use them
 

@@ -20,9 +20,10 @@ Usage: ./tools-scripts/get-squared-away.sh [options]
 Purpose:
   Give a fresh downloader or AI agent the fastest honest orientation path for this repo.
   It prints what SHTF is, what is ready now, what is optional, and the exact next commands.
+  By default it writes a local text report in the repo root and does not use the network.
 
 Options:
-  --essential          Run essential verification only (default)
+  --essential          Run essential verification only (default; skips optional local-AI audits)
   --full               Run full verification, including optional large resources/models when present
   --with-llama-smoke   If local Gemma 4 llama.cpp artifacts already exist, run the fast Q4_K_M smoke test too
   --json               Also write a machine-readable JSON summary for agents
@@ -107,26 +108,26 @@ log "Report: $REPORT_PATH"
 if [[ $JSON_MODE -eq 1 ]]; then
   log "JSON: $JSON_PATH"
 fi
+log "This writes local report files only; it does not phone home."
 log ""
 log "What this repo is:"
 log "- an offline survival/reference library"
-log "- a practical local-AI bundle with Gemma 4 and llama.cpp workflows"
-log "- a laptop/Kindle/household preparedness kit, not just a document dump"
+log "- an optional local-AI path with Gemma 4 and llama.cpp workflows"
+log "- a laptop/Kindle/household resource library, not a personalized plan"
 log ""
 log "Canonical orientation path in this repo:"
 log "1. ./tools-scripts/get-squared-away.sh   (this script)"
-log "2. ./tools-scripts/household-setup.sh    (build your personal checklist)"
-log "3. ./tools-scripts/print-cards.sh        (print emergency cards)"
-log "4. START-HERE.md"
-log "5. playbooks/README.md"
-log "6. FIELD-INDEX.md"
-log "7. USAGE.md"
-log "8. DOWNLOADS.md"
+log "2. START-HERE.md"
+log "3. FIELD-INDEX.md"
+log "4. USAGE.md"
+log "5. DOWNLOADS.md"
+log "6. ./tools-scripts/print-cards.sh        (print emergency cards)"
+log "7. ./tools-scripts/household-setup.sh    (optional blank private templates)"
 log ""
 log "Playbooks (what to DO):"
 log "- playbooks/tier-1-setup/00-first-weekend.md   # one-weekend foundation"
-log "- playbooks/scenarios/                         # 10 scenario runbooks"
-log "- playbooks/frameworks/stay-or-go.md           # the single most important call"
+log "- playbooks/scenarios/                         # 11 scenario runbooks"
+log "- playbooks/frameworks/stay-or-go.md           # movement/shelter decision framework"
 log "- playbooks/frameworks/myths-that-kill.md      # bad advice to unlearn"
 log "- playbooks/cards/                             # print-ready single-page refs"
 log ""
@@ -140,37 +141,60 @@ log "- radio/UV-5R_Quick_Reference_Card.pdf"
 log "- power-electrical/NREL_Off_Grid_Solar_Installation_Maintenance.pdf"
 
 if [[ "$VERIFY_MODE" == "full" ]]; then
-  run_logged "Repo verification (full)" "$ROOT/tools-scripts/verify-all.sh" --full
-  VERIFY_RC=$?
+  if run_logged "Repo verification (full)" "$ROOT/tools-scripts/verify-all.sh" --full; then
+    VERIFY_RC=0
+  else
+    VERIFY_RC=$?
+  fi
 else
-  run_logged "Repo verification (essential)" "$ROOT/tools-scripts/verify-all.sh" --essential
-  VERIFY_RC=$?
+  if run_logged "Repo verification (essential)" "$ROOT/tools-scripts/verify-all.sh" --essential; then
+    VERIFY_RC=0
+  else
+    VERIFY_RC=$?
+  fi
 fi
 
-if command -v python3 >/dev/null 2>&1 && [[ -f "$ROOT/tools-scripts/audit-gemma4-artifacts.py" ]]; then
-  run_logged "Gemma 4 artifact audit" python3 "$ROOT/tools-scripts/audit-gemma4-artifacts.py"
-  AUDIT_RC=$?
+if [[ "$VERIFY_MODE" == "full" ]]; then
+  if command -v python3 >/dev/null 2>&1 && [[ -f "$ROOT/tools-scripts/audit-gemma4-artifacts.py" ]]; then
+    if run_logged "Gemma 4 artifact audit" python3 "$ROOT/tools-scripts/audit-gemma4-artifacts.py"; then
+      AUDIT_RC=0
+    else
+      AUDIT_RC=$?
+    fi
+  else
+    log ""
+    log "### Gemma 4 artifact audit"
+    log "Skipped: python3 or tools-scripts/audit-gemma4-artifacts.py missing"
+    AUDIT_RC="skipped"
+  fi
+
+  if [[ -x "$ROOT/tools-scripts/run-gemma4-llamacpp.sh" ]]; then
+    if run_logged "Local Gemma 4 GGUF inventory" "$ROOT/tools-scripts/run-gemma4-llamacpp.sh" --list; then
+      INVENTORY_RC=0
+    else
+      INVENTORY_RC=$?
+    fi
+  else
+    log ""
+    log "### Local Gemma 4 GGUF inventory"
+    log "Skipped: tools-scripts/run-gemma4-llamacpp.sh missing or not executable"
+    INVENTORY_RC="skipped"
+  fi
 else
   log ""
-  log "### Gemma 4 artifact audit"
-  log "Skipped: python3 or tools-scripts/audit-gemma4-artifacts.py missing"
+  log "### Optional local AI checks"
+  log "Skipped in --essential mode: rerun with --full if you want Gemma artifact and GGUF inventory checks"
   AUDIT_RC="skipped"
-fi
-
-if [[ -x "$ROOT/tools-scripts/run-gemma4-llamacpp.sh" ]]; then
-  run_logged "Local Gemma 4 GGUF inventory" "$ROOT/tools-scripts/run-gemma4-llamacpp.sh" --list
-  INVENTORY_RC=$?
-else
-  log ""
-  log "### Local Gemma 4 GGUF inventory"
-  log "Skipped: tools-scripts/run-gemma4-llamacpp.sh missing or not executable"
   INVENTORY_RC="skipped"
 fi
 
 if [[ $RUN_LLAMA_SMOKE -eq 1 ]]; then
   if command -v python3 >/dev/null 2>&1 && [[ -x "$ROOT/tools-scripts/test-gemma4-llamacpp.py" ]]; then
-    run_logged "Fast llama.cpp smoke test" python3 "$ROOT/tools-scripts/test-gemma4-llamacpp.py" --quant Q4_K_M --max-tokens 12 --ctx-size 4096 --flash-attn auto
-    LLAMA_SMOKE_RC=$?
+    if run_logged "Fast llama.cpp smoke test" python3 "$ROOT/tools-scripts/test-gemma4-llamacpp.py" --quant Q4_K_M --max-tokens 12 --ctx-size 4096 --flash-attn auto; then
+      LLAMA_SMOKE_RC=0
+    else
+      LLAMA_SMOKE_RC=$?
+    fi
   else
     log ""
     log "### Fast llama.cpp smoke test"
@@ -183,13 +207,15 @@ log ""
 log "Next commands by goal:"
 log ""
 log "If this is your first session (not an emergency):"
-log "  ./tools-scripts/household-setup.sh       # personal checklist"
+log "  less START-HERE.md                       # read-only dispatcher"
+log "  less FIELD-INDEX.md                      # file-level map"
 log "  ./tools-scripts/print-cards.sh           # printable emergency cards"
-log "  less playbooks/tier-1-setup/00-first-weekend.md"
+log "  less USAGE.md                            # resource use by problem"
+log "  ./tools-scripts/household-setup.sh       # optional blank private templates"
 log ""
 log "If something is happening RIGHT NOW:"
 log "  less START-HERE.md                       # problem → open-this table"
-log "  less playbooks/frameworks/stay-or-go.md  # the single most important call"
+log "  less playbooks/frameworks/stay-or-go.md  # movement/shelter decision framework"
 log ""
 log "If you need emergency docs right now:"
 log "  open medical/Where_There_Is_No_Doctor_FULL.pdf"
@@ -213,8 +239,9 @@ log "  less DOWNLOADS.md"
 log ""
 log "What an AI agent should understand before doing more work here:"
 log "- core life-support docs matter more than ornamental repo cleanup"
+log "- survival defaults must stay easy to adapt for real households"
 log "- verify what is actually present instead of assuming large downloads exist"
-log "- Gemma 4 in llama.cpp is a first-class path here, not a side note"
+log "- Gemma 4 in llama.cpp is available here as an optional local path"
 log "- BF16 is the canonical conversion artifact; Q4_K_M is the fast daily-driver path"
 log "- the fastest honest onboarding command is this script, not random file browsing"
 log ""
@@ -285,13 +312,12 @@ payload = {
     },
     "orientation_path": [
         "./tools-scripts/get-squared-away.sh",
-        "./tools-scripts/household-setup.sh",
-        "./tools-scripts/print-cards.sh",
         "START-HERE.md",
-        "playbooks/README.md",
         "FIELD-INDEX.md",
         "USAGE.md",
         "DOWNLOADS.md",
+        "./tools-scripts/print-cards.sh",
+        "./tools-scripts/household-setup.sh",
     ],
     "playbooks": {
         "root": "playbooks/",
@@ -310,6 +336,7 @@ payload = {
             "playbooks/scenarios/08-nuclear.md",
             "playbooks/scenarios/09-civil-unrest-bug-in.md",
             "playbooks/scenarios/10-stranded-or-lost.md",
+            "playbooks/scenarios/11-lookup-drill.md",
         ],
     },
     "core_emergency_paths": [
@@ -361,9 +388,11 @@ payload = {
     },
     "next_commands": {
         "first_session_not_emergency": [
-            "./tools-scripts/household-setup.sh",
+            "less START-HERE.md",
+            "less FIELD-INDEX.md",
             "./tools-scripts/print-cards.sh",
-            "less playbooks/tier-1-setup/00-first-weekend.md",
+            "less USAGE.md",
+            "./tools-scripts/household-setup.sh",
         ],
         "happening_right_now": [
             "less START-HERE.md",
@@ -392,8 +421,9 @@ payload = {
     },
     "agent_principles": [
         "core life-support docs matter more than ornamental repo cleanup",
+        "survival defaults must stay easy to adapt for real households",
         "verify what is actually present instead of assuming large downloads exist",
-        "Gemma 4 in llama.cpp is a first-class path here, not a side note",
+        "Gemma 4 in llama.cpp is available here as an optional local path",
         "BF16 is the canonical conversion artifact; Q4_K_M is the fast daily-driver path",
         "the fastest honest onboarding command is this script, not random file browsing",
     ],

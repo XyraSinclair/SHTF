@@ -2,6 +2,18 @@
 
 Fastest file-level index for the highest-value parts of the repo. Intentionally short.
 
+## Minimum useful cabinet
+
+If you only need the smallest serious subset, start here:
+- START-HERE.md
+- playbooks/cards/what-kills.md
+- playbooks/frameworks/stay-or-go.md
+- playbooks/cards/first-aid.md
+- medical/Where_There_Is_No_Doctor_FULL.pdf
+- survival-guides/Emergency_Water_Purification_Guide.pdf
+- survival-guides/sanitation/Emergency_Toilet_Guidebook.pdf
+- radio/UV-5R_Quick_Reference_Card.pdf
+
 ## Playbooks — do these, don't just read
 
 - playbooks/README.md
@@ -32,8 +44,8 @@ Fastest file-level index for the highest-value parts of the repo. Intentionally 
 - playbooks/frameworks/signalling-and-rescue.md
 - playbooks/frameworks/myths-that-kill.md
 
-### Emergency cards (print + laminate)
-- playbooks/cards/summons.md (6-line wallet / lock-screen card — fill via household-setup.sh)
+### Emergency cards
+- Print or keep handy: playbooks/cards/summons.md (6-line wallet / lock-screen card — blank by default; fill via household-setup.sh --summons or by hand)
 - playbooks/cards/what-kills.md (what actually kills people in disasters — the counterintuitive killers with prevention)
 - playbooks/cards/when-not-to.md (negations — flood driving, generators, flushing, re-entering, etc.)
 - playbooks/cards/first-aid.md
@@ -148,10 +160,9 @@ Fastest file-level index for the highest-value parts of the repo. Intentionally 
 
 ## Fastest orientation path for a new user
 1. ./tools-scripts/get-squared-away.sh
-2. ./tools-scripts/household-setup.sh          # personal checklist
-3. ./tools-scripts/print-cards.sh              # printable emergency cards
-4. START-HERE.md
-5. playbooks/README.md
-6. FIELD-INDEX.md
-7. USAGE.md
-8. DOWNLOADS.md
+2. START-HERE.md
+3. FIELD-INDEX.md
+4. USAGE.md
+5. DOWNLOADS.md
+6. ./tools-scripts/print-cards.sh              # printable emergency cards
+7. ./tools-scripts/household-setup.sh          # optional blank private templates

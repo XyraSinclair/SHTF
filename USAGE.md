@@ -4,19 +4,22 @@ How to use each resource in this kit. Everything works offline.
 
 For the fastest path:
 - `./tools-scripts/get-squared-away.sh` — canonical bootstrap
-- `./tools-scripts/household-setup.sh` — personal checklist
 - `./tools-scripts/print-cards.sh` — printable emergency cards
 - [START-HERE.md](START-HERE.md) — problem-to-file map
 - [playbooks/README.md](playbooks/README.md) — runbooks and frameworks
 - [FIELD-INDEX.md](FIELD-INDEX.md) — file index
 - `./tools-scripts/verify-all.sh --essential` — what's ready now
 
+Optional worksheet: `./tools-scripts/household-setup.sh` writes blank private templates without asking questions.
+
 ## Layers: playbook, then library
 
-The repo has two layers. The playbook is what you **do**. The library is what you **read when you need a number or detail**.
+The repo has two layers. The playbook is what you **start from**. The library is what you **read when you need a number or detail**.
 
 1. **Playbook first**: open [`playbooks/`](playbooks/). Scenario runbooks, tier-1 prep, decision frameworks, printable cards.
 2. **Library second**: the PDFs, Kindle books, and ZIMs below back the playbook up with specifics.
+
+Treat every checklist as a default to adapt. Your plan changes with disability, medical dependence, pregnancy, kids, elders, pets, language, budget, housing, vehicle access, climate, local law, and official local instructions.
 
 ## Use by problem, not by folder
 
@@ -94,7 +97,7 @@ ollama pull phi4-mini            # 2.5 GB - reasoning
 ollama pull qwen2.5-coder:3b     # 2 GB - coding help
 ```
 
-Works completely offline. Ask it medical questions, how-to, calculations, or general reference questions.
+Works completely offline. Use it for summaries, rough planning estimates, how-to help, and navigation through the local library. Verify arithmetic yourself or with a calculator. Do not treat any local model as a medical authority; use the medical sources and clinicians when available.
 
 ### Gemma 4 in this repo
 
@@ -130,7 +133,7 @@ For the full model ladder, practical hardware guidance, and manual/server exampl
 
 ## Medical Reference
 
-Priority reading: **Where There Is No Doctor** -- the definitive village healthcare handbook. Covers diagnosis, treatment, medications, childbirth, and preventive care when professional medical help isn't available.
+Priority reading: **Where There Is No Doctor** -- a broad primary-care reference for low-resource settings. Use it as a sourcebook when professional medical help is unavailable or delayed.
 
 Also available: dental care guide, women's health guide, WHO surgical manual, and the full MDWiki medical encyclopedia (via Kiwix).
 
@@ -150,7 +153,7 @@ Program your Baofeng UV-5R using the guides in `kindle-ready/` (search for `05-R
 
 ## Food & Water
 
-- **Canning:** USDA Complete Guide to Home Canning is the gold standard
+- **Canning:** USDA Complete Guide to Home Canning is the primary reference
 - **Foraging:** Washington State guide has plant photos for PNW identification
 - **Seeds:** Multiple seed saving guides cover harvest, storage, and replanting
 - **Preservation:** Dehydration, smoking, and raw food preservation methods
@@ -168,5 +171,4 @@ While you still have internet access:
 2. **Kiwix** - download a Wikipedia ZIM for mobile reference
 3. **First Aid** by American Red Cross
 4. **Signal** - encrypted messaging if cell networks are degraded but functional
-5. **Merlin Bird ID** - offline wildlife identification
-6. **PlantNet** - offline plant identification
+5. **A notes or files app with offline copies** of your emergency PDFs, IDs, insurance, and contact card

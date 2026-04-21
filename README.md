@@ -1,33 +1,53 @@
 # SHTF: Offline Survival Kit
 
-If the grid goes down, the internet disappears, and you're on your own — this is what you want on your hard drive, in your head, and on your Kindle.
+If utilities fail, the internet is gone, or you just want a serious offline reference cabinet, this repo gives you PDFs, ZIM files, maps, printable cards, and a few helper scripts.
 
 ## If something is happening right now
 
-Open this first: **[START-HERE.md](START-HERE.md)** — one page, maps the emergency to the right file in under 60 seconds.
+Open this first: **[START-HERE.md](START-HERE.md)** — one page that maps the emergency to a likely file.
 
-The five files that matter more than all the others:
+Useful first stops:
 
 1. **[START-HERE.md](START-HERE.md)** — the dispatcher
 2. **[playbooks/cards/summons.md](playbooks/cards/summons.md)** — the 6-line wallet / lock-screen card
 3. **[playbooks/cards/what-kills.md](playbooks/cards/what-kills.md)** — the real disaster killers (CO, heat, floodwater, hypothermia)
-4. **[playbooks/frameworks/stay-or-go.md](playbooks/frameworks/stay-or-go.md)** — the one decision that prevents the most regret
-5. **[medical/Where_There_Is_No_Doctor_FULL.pdf](medical/Where_There_Is_No_Doctor_FULL.pdf)** — the single most important book in the library
+4. **[playbooks/frameworks/stay-or-go.md](playbooks/frameworks/stay-or-go.md)** — the main movement/shelter decision framework
+5. **[medical/Where_There_Is_No_Doctor_FULL.pdf](medical/Where_There_Is_No_Doctor_FULL.pdf)** — a core medical reference when professional care is unavailable
 
-Print the cards, laminate the summons, screenshot it to your phone lock screen.
+Print the cards. Fill the summons card privately. Screenshot it to your phone lock screen only if that is safe for your situation.
 
 ```bash
-./tools-scripts/print-cards.sh   # bundles every emergency card into a single PDF
+./tools-scripts/print-cards.sh   # bundles every emergency card into one printable bundle; PDF if pandoc is installed
 ```
 
 ## If you are preparing
 
 ```bash
-./tools-scripts/get-squared-away.sh    # reports what is set up and what is missing
-./tools-scripts/household-setup.sh     # 20 minutes; produces a personal checklist + summons card for your household
+./tools-scripts/get-squared-away.sh    # local orientation + verification report; no network
+./tools-scripts/print-cards.sh         # printable cards bundle; PDF if pandoc is installed
 ```
 
-Then read [`playbooks/tier-1-setup/00-first-weekend.md`](playbooks/tier-1-setup/00-first-weekend.md) and block out a weekend.
+Then use the indexes:
+
+- [FIELD-INDEX.md](FIELD-INDEX.md) — short file-level map
+- [USAGE.md](USAGE.md) — resource use by problem
+- [DOWNLOADS.md](DOWNLOADS.md) — optional large downloads
+
+If you want a read-only first look before running anything, open [START-HERE.md](START-HERE.md) and [FIELD-INDEX.md](FIELD-INDEX.md).
+
+Optional worksheet:
+
+```bash
+./tools-scripts/household-setup.sh              # blank private templates; no questions
+./tools-scripts/household-setup.sh --quick      # optional questionnaire
+./tools-scripts/household-setup.sh --full --summons
+```
+
+## Read this as defaults, not doctrine
+
+Survival is personal. A good resource for a healthy adult in a detached house can be wrong for an apartment renter, a wheelchair user, a dialysis patient, a parent with infants, an elder living alone, a person without a car, or someone with local legal or cultural constraints.
+
+The playbooks give conservative defaults and point to sources. Change them for your body, household, climate, terrain, budget, medical needs, disability access, pets, local law, and trusted local emergency instructions.
 
 ---
 
@@ -35,16 +55,16 @@ Then read [`playbooks/tier-1-setup/00-first-weekend.md`](playbooks/tier-1-setup/
 
 Two halves:
 
-1. **[Playbooks](playbooks/)** — what you do. Tier-1 prep, scenario runbooks, decision frameworks, printable cards, post-disaster recovery.
+1. **[Playbooks](playbooks/)** — short checklists and cards for when a full manual is too much.
 2. **Library** — the authoritative references the playbooks point into. 144 Kindle-ready books plus source PDFs, offline Wikipedia, topo maps.
 
 Everything is sourced from US government publications (public domain), WHO/UN freely distributed guides, Peace Corps manuals, Project Gutenberg, and FEMA / CDC / NOAA / FCC guidance.
 
 ## 1. Playbooks — what to DO
 
-### Tier-1 setup — the one-weekend foundation
+### Tier-1 setup — a starting foundation
 
-Build once. Review every 6 months. See [`playbooks/tier-1-setup/00-first-weekend.md`](playbooks/tier-1-setup/00-first-weekend.md).
+Build a first version. Review when your life changes. See [`playbooks/tier-1-setup/00-first-weekend.md`](playbooks/tier-1-setup/00-first-weekend.md).
 
 1. [Household roster](playbooks/tier-1-setup/01-household-roster.md)
 2. [Go-bag per person](playbooks/tier-1-setup/02-go-bag.md)
@@ -67,24 +87,24 @@ Build once. Review every 6 months. See [`playbooks/tier-1-setup/00-first-weekend
 - [10. Stranded or lost](playbooks/scenarios/10-stranded-or-lost.md)
 - [11. Offline lookup drill](playbooks/scenarios/11-lookup-drill.md)
 
-### Decision frameworks — the judgment calls that matter more than gear
+### Decision frameworks — judgment calls before gear
 
-- [Stay or go](playbooks/frameworks/stay-or-go.md) — single most important call
+- [Stay or go](playbooks/frameworks/stay-or-go.md) — movement versus shelter framework
 - [Triage](playbooks/frameworks/triage.md)
 - [Signalling & rescue](playbooks/frameworks/signalling-and-rescue.md)
 - [Myths that kill](playbooks/frameworks/myths-that-kill.md)
 
 ### Emergency cards — one page each
 
-[`playbooks/cards/`](playbooks/cards/) — bundle to PDF with `./tools-scripts/print-cards.sh`.
+[`playbooks/cards/`](playbooks/cards/) — make a printable bundle with `./tools-scripts/print-cards.sh`.
 
-Read these two first: **[what-kills.md](playbooks/cards/what-kills.md)** and **[when-not-to.md](playbooks/cards/when-not-to.md)**. They will change what you buy and what you do.
+Read these two early: **[what-kills.md](playbooks/cards/what-kills.md)** and **[when-not-to.md](playbooks/cards/when-not-to.md)**. They may change what you buy and what you do.
 
 The rest: summons · first aid · stop the bleed · water purification · psychological first aid · chronic conditions · radiation shelter · radio frequencies · offline knowledge map · family comms (fill in).
 
 ### Post-disaster recovery — the second disaster
 
-[`playbooks/recovery/`](playbooks/recovery/) — insurance claims, FEMA IA, documentation salvage, contractor vetting, financial recovery, housing displacement, mental-health timeline, legal-document reconstruction, household recovery. The first 72 hours are about staying alive; the next year is what breaks people.
+[`playbooks/recovery/`](playbooks/recovery/) — insurance claims, FEMA IA, documentation salvage, contractor vetting, financial recovery, housing displacement, mental-health timeline, legal-document reconstruction, household recovery. The first 72 hours are about staying alive; the next year is often the second hard problem.
 
 ## 2. Library — what to LOOK UP
 
@@ -142,7 +162,7 @@ See [docs/acid-v2-parity.md](docs/acid-v2-parity.md) for the parity matrix again
 | File | Use |
 |------|-----|
 | [START-HERE.md](START-HERE.md) | Emergency dispatcher — open this first in a crisis |
-| [playbooks/cards/summons.md](playbooks/cards/summons.md) | Print, laminate, wallet. Screenshot to lock screen |
+| [playbooks/cards/summons.md](playbooks/cards/summons.md) | Fill privately, print, wallet. Screenshot only if safe |
 | [FIELD-INDEX.md](FIELD-INDEX.md) | Short file-level index of the whole repo |
 | [USAGE.md](USAGE.md) | Scenario-based library usage |
 | [DOWNLOADS.md](DOWNLOADS.md) | Optional large downloads |
@@ -150,8 +170,8 @@ See [docs/acid-v2-parity.md](docs/acid-v2-parity.md) for the parity matrix again
 
 Helper scripts (in `tools-scripts/`):
 
-- `print-cards.sh` — bundle every emergency card into one printable PDF
-- `household-setup.sh` — 20-minute household walkthrough; outputs a personal checklist + summons card
+- `print-cards.sh` — bundle every emergency card into a printable bundle; PDF when pandoc is installed
+- `household-setup.sh` — blank private templates; `--quick` / `--full --summons` ask more
 - `get-squared-away.sh` — report what is set up and what is missing
 - `verify-all.sh --essential` — deeper verification
 - `launch-wikipedia.sh` — open Kiwix with local ZIM files

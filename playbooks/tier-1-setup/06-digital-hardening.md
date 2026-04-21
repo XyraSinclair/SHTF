@@ -6,7 +6,7 @@ For the reactive playbook (what to do *during* a cyber crisis, grid-partial/inte
 
 ## If you only read one line
 
-**A password manager + hardware 2FA keys + offline backups of critical data will prevent or blunt 95% of personal cyber impact from any real-world incident.** Do those three things, and you are ahead of most targets.
+**A password manager + strong 2FA + offline backups of critical data blunt a large share of ordinary personal cyber risk.** Do those three things first, then adapt for your actual threat model.
 
 ## The threat models
 
@@ -22,7 +22,7 @@ Items 1–3 are what most of this doc addresses.
 
 ## The essentials (do all of these)
 
-### 1. Password manager — the single highest-ROI item
+### 1. Password manager — high-ROI for most people
 
 - Install one: **1Password** (paid, polished), **Bitwarden** (free, open-source, solid), **KeePass / KeePassXC** (fully offline, requires slightly more effort).
 - Use a **long, memorable passphrase** as your master password — at least 4 random words (XKCD-style). Do not reuse this anywhere.
@@ -43,14 +43,14 @@ Items 1–3 are what most of this doc addresses.
 5. Cloud storage
 6. Social accounts (especially if used for login elsewhere)
 
-**Forms of 2FA, best to worst:**
+**Forms of 2FA, strongest to weakest in most personal-account situations:**
 
-- **Hardware security key** (YubiKey, Google Titan): phishing-resistant. Buy two. Register both on every account. Keep one on you, one backed up at home or in a safe-deposit box. Gold standard. ~$25–55 each.
+- **Hardware security key** (YubiKey, Google Titan): phishing-resistant. Buy two if your budget allows. Register both on important accounts. Keep one on you, one backed up at home or in a safe-deposit box. Strongest practical option. ~$25–55 each.
 - **Authenticator app** (Authy, 1Password built-in, Google Authenticator, Aegis on Android): TOTP codes. Good.
 - **Push notifications** (bank apps, Microsoft Authenticator): acceptable.
 - **SMS 2FA**: better than nothing, but vulnerable to SIM swap. Use only where nothing else is offered.
 
-**Never** use SMS 2FA for your primary email, financial accounts, or phone carrier account. SIM-swap attacks specifically target these.
+Avoid SMS 2FA for your primary email, financial accounts, or phone carrier account when a stronger option is available. SIM-swap attacks specifically target these.
 
 ### 3. Protect your phone number
 
@@ -91,7 +91,7 @@ Items 1–3 are what most of this doc addresses.
 ### 7. Browser and DNS
 
 - Use a mainstream browser with good defaults: Firefox, Safari, Brave, Chrome with strict settings.
-- **uBlock Origin** — the single best browser extension for both security and sanity.
+- **uBlock Origin** — a strong browser extension for both security and sanity.
 - Consider **NextDNS** or **Pi-hole** for DNS-level ad and tracker blocking.
 - Private browsing is for privacy from others on your device, not from the network.
 
@@ -160,7 +160,7 @@ If you have one hour right now:
 5. Freeze your credit at all three bureaus. (15 min)
 6. Enable full-disk encryption on your laptop if not already on. (10 min, + background time)
 
-You are now materially harder to compromise than most people. Do the rest over the next month.
+You are now materially harder to compromise against common attacks. Do the rest over the next month.
 
 ## Before it happens, do this once
 

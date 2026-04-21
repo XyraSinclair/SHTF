@@ -28,17 +28,20 @@ Preserve and improve SHTF as something a real person can use under stress:
 
 The playbooks are the front door. The library is the authoritative backing. Do not collapse the two.
 
+Treat survival advice as personalized by default. A clear checklist is useful, but it can be wrong for a different body, disability, medical dependency, household, budget, housing type, vehicle access, climate, terrain, local law, or trusted local emergency instruction.
+
 ## Priority order
 
 1. Keep playbook and core emergency-doc access clear and fast
 2. Keep verification honest about what is actually present
-3. Keep the local-AI path practical, especially Gemma 4 via llama.cpp
-4. Only then do cosmetic cleanup
+3. Keep defaults humble and easy to adapt
+4. Keep the local-AI path practical, especially Gemma 4 via llama.cpp
+5. Only then do cosmetic cleanup
 
 ## Playbook conventions (do not drift)
 
 - Every playbook opens with "If you only read one line" and closes with "Before it happens, do this once."
-- Directive voice. Terse sentences. No hedging.
+- Directive about immediate hazards. Humble about fit. Give a default and say what can override it.
 - Cite authoritative sources (FEMA, CDC, WHO, NWSS, FM manuals, FCC) for any number.
 - Never invent medical / radiological protocols. If you do not know it, point into the library PDF.
 - Do not commit filled-in personal data (roster, comms card, checklist). `.gitignore` already patterns the common filenames.
@@ -60,7 +63,7 @@ The playbooks are the front door. The library is the authoritative backing. Do n
 - Prefer one canonical command over scattered doc scavenger hunts.
 - Do not assume optional large downloads exist; verify them.
 - Do not turn the repo into a vague chat wrapper.
-- Keep docs concrete, operational, and stress-friendly.
+- Keep docs concrete, operational, stress-friendly, and explicit that defaults must be adapted.
 - If changing workflows, update the canonical onboarding surfaces too.
 
 ## Canonical bootstrap command

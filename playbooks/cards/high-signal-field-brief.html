@@ -1,0 +1,527 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>High-Signal SHTF Field Brief</title>
+  <style>
+    @page {
+      size: letter landscape;
+      margin: 0.22in;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      color: #101010;
+      background: #fff;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      font-size: 7.65pt;
+      line-height: 1.12;
+    }
+
+    .sheet {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.16in;
+      min-height: calc(8.5in - 0.44in);
+      page-break-after: always;
+    }
+
+    .sheet:last-child {
+      page-break-after: auto;
+    }
+
+    .panel {
+      border: 1.5px solid #111;
+      padding: 0.12in 0.13in 0.11in;
+      position: relative;
+      overflow: hidden;
+    }
+
+    h1, h2, h3, p {
+      margin: 0;
+    }
+
+    h1 {
+      font-size: 13.5pt;
+      line-height: 1;
+      letter-spacing: 0;
+      margin-bottom: 0.03in;
+    }
+
+    h2 {
+      font-size: 10pt;
+      line-height: 1.04;
+      margin: 0.032in 0 0.026in;
+      border-bottom: 1px solid #222;
+      padding-bottom: 0.014in;
+    }
+
+    h3 {
+      font-size: 7.9pt;
+      margin: 0.035in 0 0.014in;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+
+    p {
+      margin-bottom: 0.026in;
+    }
+
+    ul, ol {
+      margin: 0.016in 0 0.036in 0.14in;
+      padding: 0;
+    }
+
+    li {
+      margin: 0.008in 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 0.025in 0 0.045in;
+      table-layout: fixed;
+    }
+
+    th, td {
+      border: 1px solid #555;
+      padding: 0.019in 0.027in;
+      vertical-align: top;
+    }
+
+    th {
+      background: #ececec;
+      font-weight: 700;
+    }
+
+    .tight td, .tight th {
+      padding: 0.014in 0.021in;
+    }
+
+    .cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.065in;
+    }
+
+    .cols-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 0.05in;
+    }
+
+    .box {
+      border: 1px solid #333;
+      background: #f6f6f6;
+      padding: 0.035in 0.045in;
+      margin: 0.027in 0;
+    }
+
+    .callout {
+      border: 1.4px solid #111;
+      background: #f1f1f1;
+      padding: 0.04in 0.05in;
+      font-weight: 700;
+      margin: 0.027in 0 0.036in;
+    }
+
+    .tiny {
+      font-size: 6.75pt;
+      line-height: 1.08;
+    }
+
+    .micro {
+      font-size: 6.1pt;
+      line-height: 1.04;
+    }
+
+    .mono {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.94em;
+    }
+
+    .label {
+      font-weight: 800;
+    }
+
+    .footer {
+      position: absolute;
+      left: 0.13in;
+      right: 0.13in;
+      bottom: 0.05in;
+      border-top: 1px solid #999;
+      padding-top: 0.018in;
+      font-size: 5.9pt;
+      color: #333;
+    }
+
+    .bottom-pad {
+      padding-bottom: 0.17in;
+    }
+
+    .blank {
+      display: inline-block;
+      min-width: 1.25in;
+      border-bottom: 1px solid #222;
+      height: 0.12in;
+    }
+
+    .quote {
+      font-size: 9.2pt;
+      font-weight: 800;
+      border-left: 4px solid #111;
+      padding-left: 0.06in;
+      margin: 0.045in 0;
+    }
+
+    @media screen {
+      body {
+        background: #ddd;
+        padding: 0.25in;
+      }
+
+      .sheet {
+        background: #fff;
+        width: 11in;
+        min-height: 8.5in;
+        margin: 0 auto 0.25in;
+        padding: 0.22in;
+        box-shadow: 0 3px 18px rgba(0, 0, 0, 0.18);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="sheet">
+    <section class="panel bottom-pad">
+      <h1>High-Signal SHTF Field Brief</h1>
+      <p><strong>Print landscape, cut in half, laminate if useful. This is an optional dense supplement, not the basic first-aid deck.</strong> Use it when the situation is messy, technical, or coordination-heavy.</p>
+      <div class="callout">If you only read one line: reduce variance. Water, information, sleep, neighbors, calories, and distance from chaos beat improvised theatrics.</div>
+
+      <h2>0. Operating Doctrine</h2>
+      <div class="cols">
+        <div>
+          <h3>First 10 minutes</h3>
+          <ol>
+            <li>Stop immediate hazards: fire, bleeding, CO, floodwater, violence, exposed wire.</li>
+            <li>Account for people. Text status to out-of-area contact.</li>
+            <li>Turn on AM/FM/NOAA. Start written log: time, source, fact, action.</li>
+            <li>Charge phone, radio, battery banks. Fill water if utilities may fail.</li>
+            <li>Pick default: stay unless a specific hazard makes staying worse.</li>
+          </ol>
+        </div>
+        <div>
+          <h3>Decision filters</h3>
+          <ul>
+            <li><span class="label">Leave:</span> fire, flood, structural collapse, official evacuation, heat/cold you cannot survive, targeted threat.</li>
+            <li><span class="label">Stay:</span> roads uncertain, violence elsewhere, supplies on hand, vulnerable people hard to move.</li>
+            <li><span class="label">Delay:</span> you are tired, angry, hungry, or information is single-source.</li>
+            <li><span class="label">Write:</span> the next decision, the reason, the next check time.</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>PACE everything</h3>
+      <table class="tight">
+        <tr><th>Need</th><th>Primary</th><th>Alt</th><th>Contingency</th><th>Emergency</th></tr>
+        <tr><td>Info</td><td>NOAA/AM</td><td>local FM</td><td>ham/GMRS</td><td>walk to post</td></tr>
+        <tr><td>Comms</td><td>SMS</td><td>Signal</td><td>radio</td><td>runner/note</td></tr>
+        <tr><td>Water</td><td>stored</td><td>heater</td><td>rain/creek</td><td>move</td></tr>
+        <tr><td>Power</td><td>battery</td><td>solar</td><td>car</td><td>generator</td></tr>
+      </table>
+
+      <h3>Daily rhythm</h3>
+      <p>Morning: radio, weather, water, sanitation, check neighbors. Midday: heavy work, charging, repair, trade. Dusk: cook, lockup, CO/fire check, comms window, sleep plan. Night: no major decisions unless the hazard is physical and present.</p>
+
+      <h3>Social default</h3>
+      <p>Most people cooperate in disasters. Build that reality. Also assume hunger, withdrawal, fear, and opportunism can appear fast. Be generous in small units, private about reserves, and boringly clear about boundaries.</p>
+      <div class="footer">Sources: repo playbooks: stay-or-go, grid-down, what-kills, psychological-first-aid. General defaults; adapt for body, household, law, climate, and official instructions.</div>
+    </section>
+
+    <section class="panel bottom-pad">
+      <h1>Comms: Radio + Messages</h1>
+      <p><strong>Goal:</strong> receive official info, coordinate locally, and send short clear traffic. Listening is 90% of radio value.</p>
+
+      <h2>1. Frequencies To Have Written Down</h2>
+      <table class="tight">
+        <tr><th>Use</th><th>Frequency</th><th>Notes</th></tr>
+        <tr><td>NOAA WX</td><td>162.400 / .425 / .450 / .475 / .500 / .525 / .550</td><td>try all seven</td></tr>
+        <tr><td>2m ham call</td><td>146.520</td><td>FM simplex</td></tr>
+        <tr><td>70cm ham call</td><td>446.000</td><td>FM simplex</td></tr>
+        <tr><td>Marine distress</td><td>156.800</td><td>Ch 16, listen near water</td></tr>
+        <tr><td>FRS/GMRS 1</td><td>462.5625</td><td>common family radios</td></tr>
+        <tr><td>GMRS 20</td><td>462.6750</td><td>travel/emergency habit</td></tr>
+        <tr><td>MURS</td><td>151.820 / .880 / .940 / 154.570 / .600</td><td>license-free VHF</td></tr>
+        <tr><td>CB 9 / 19</td><td>27.065 / 27.185</td><td>emergency / road</td></tr>
+      </table>
+
+      <h2>2. Baofeng UV-5R Minimums</h2>
+      <div class="cols">
+        <div>
+          <h3>Fast receive</h3>
+          <ul>
+            <li><span class="mono">VFO/MR</span>: frequency mode vs memory mode.</li>
+            <li><span class="mono">A/B</span>: select top line before entering freq.</li>
+            <li>Enter <span class="mono">162550</span> for NOAA WX7, or any freq without decimal.</li>
+            <li>Hold <span class="mono">*SCAN</span> to scan. <span class="mono">#</span> toggles key lock.</li>
+            <li>Use low power for local; high only when needed. Short transmissions.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Manual store</h3>
+          <ul>
+            <li>Delete channel: <span class="mono">MENU 28 MENU ch MENU EXIT</span>.</li>
+            <li>Simplex: set freq, <span class="mono">MENU 25 OFF</span>, then <span class="mono">MENU 27 MENU ch MENU</span>.</li>
+            <li>Repeater: set RX freq; <span class="mono">MENU 13</span> tone; <span class="mono">MENU 25</span> +/-; <span class="mono">MENU 26</span> offset; store RX and TX with <span class="mono">MENU 27</span>.</li>
+            <li>Best: program with CHIRP before trouble.</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2>3. Message Format</h2>
+      <div class="box">
+        <p><span class="mono">THIS IS [call/name]. PRIORITY [emergency/urgent/routine]. LOCATION [plain language + grid if known]. SITUATION [one sentence]. NEED [specific]. PEOPLE [number/status]. INTENT [stay/leave/route]. NEXT CONTACT [time/channel]. OVER.</span></p>
+      </div>
+      <p>Ham: identify with callsign every 10 min and at end. GMRS normally needs a license; a GMRS licensee may allow anyone to use that station for an emergency message. For amateur stations, FCC rules allow any available means for immediate safety-of-life/property protection when normal comms are unavailable.</p>
+
+      <h3>Comms windows</h3>
+      <p>Agree now: monitor at top of each hour for 5 minutes; use SMS first, then radio. Do not keep radios transmitting casually; batteries and attention are scarce.</p>
+      <div class="footer">Sources: radio/UV-5R_Quick_Reference_Card.pdf; UV-5R_Programming_Cheat_Sheet.pdf; 47 CFR 95.563, 95.1705, 95.1763, 95.2763, 97.119, 97.403; NOAA NWR.</div>
+    </section>
+  </div>
+
+  <div class="sheet">
+    <section class="panel bottom-pad">
+      <h1>Radiation, Dust, Food, Farming</h1>
+      <p><strong>Default:</strong> get inside, stay inside, stay tuned. Fallout is a dust problem plus a time problem. Do not improvise medical protocols.</p>
+
+      <h2>1. Numbers Worth Memorizing</h2>
+      <table class="tight">
+        <tr><th>Thing</th><th>Number</th><th>Meaning</th></tr>
+        <tr><td>7/10 rule</td><td>7h = 10%; 49h = 1%; 14d = 0.1%</td><td>fallout dose rate drops fast</td></tr>
+        <tr><td>Earth overhead</td><td>2 ft packed earth ~= 99% gamma reduction</td><td>mass beats mythology</td></tr>
+        <tr><td>I-131</td><td>8.06 d half-life</td><td>thyroid; milk/greens concern; ~56 d to &lt;1%</td></tr>
+        <tr><td>Co-60</td><td>5.27 y half-life</td><td>gamma source; industrial/reactor concern</td></tr>
+        <tr><td>Sr-90</td><td>29 y half-life</td><td>acts like calcium; bone/milk concern</td></tr>
+        <tr><td>Cs-137</td><td>30.17 y half-life</td><td>salt-like; soil/soft tissue concern</td></tr>
+        <tr><td>Pu-239</td><td>24,110 y half-life</td><td>alpha; inhalation is the nightmare route</td></tr>
+      </table>
+
+      <h2>2. Food And Garden Rules After Fallout</h2>
+      <div class="cols">
+        <div>
+          <h3>Safer first</h3>
+          <ul>
+            <li>Sealed pantry food, indoor water, covered tanks, deep wells if intact.</li>
+            <li>Food inside refrigerators/freezers if power and seals held.</li>
+            <li>Root crops only after guidance/testing; scrub/peel; discard wash water away from living area.</li>
+            <li>Greenhouses/high tunnels help only if closed before deposition.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Avoid until cleared</h3>
+          <ul>
+            <li>Fresh milk from grazing animals; I-131 and Sr-90 concentrate concern.</li>
+            <li>Leafy greens, herbs, berries, exposed mushrooms: high surface area.</li>
+            <li>Rain barrels, roof runoff, ponds, uncovered feed, open grain bins.</li>
+            <li>Ash or dust on fields: do not till it in as "fertilizer."</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>Decon logic</h3>
+      <p>Outside dust comes off mechanically. Remove outer layer, bag it, wash exposed skin/hair with soap and cool water. Do not use conditioner. Keep contaminated shoes and tools out of sleeping/cooking space.</p>
+
+      <h2>3. Farming Reality Check</h2>
+      <table class="tight">
+        <tr><th>Conversion</th><th>Use</th></tr>
+        <tr><td>1 acre = 43,560 sq ft</td><td>land math</td></tr>
+        <tr><td>1 inch rain on 1,000 sq ft ~= 623 gal</td><td>rain catchment, before contamination</td></tr>
+        <tr><td>US industrial yields: corn ~180+ bu/ac; wheat ~50+ bu/ac; potatoes ~400+ cwt/ac</td><td>do not expect these by hand</td></tr>
+      </table>
+      <p><strong>Gardening is resilience, not instant calories.</strong> Existing pantry beats a fantasy crop. For calories: potatoes, winter squash, dry beans, corn, grains, oil crops. For vitamins/morale: greens and herbs. For survival: water, soil fertility, storage, pest control, seed saving, and labor scheduling matter more than seed packets.</p>
+
+      <h3>KI</h3>
+      <p>Potassium iodide protects the thyroid against radioactive iodine only. It does not stop gamma, fallout dust, blast, Cs-137, Sr-90, or Pu. CDC says use KI only when instructed by officials or a clinician; FDA dosing is source-specific.</p>
+      <div class="footer">Sources: Nuclear War Survival Skills; CDC radiation emergencies; FDA KI FAQ; EPA radionuclide basics; USGS rainfall calculator; USDA/NASS crop reports.</div>
+    </section>
+
+    <section class="panel bottom-pad">
+      <h1>Power, Fuel, Local AI, Offline Library</h1>
+      <p><strong>Power is decision bandwidth.</strong> Spend watts on light, comms, reference, medical, and cold-chain before comfort.</p>
+
+      <h2>1. Energy Math</h2>
+      <table class="tight">
+        <tr><th>Item</th><th>Rule</th><th>Field use</th></tr>
+        <tr><td>Electricity</td><td>1 kWh = 1,000 Wh = 3,412 Btu</td><td>base unit</td></tr>
+        <tr><td>Gasoline</td><td>1 gal ~= 120,214 Btu ~= 35.2 kWh thermal</td><td>generator fuel, not all becomes AC</td></tr>
+        <tr><td>Propane</td><td>1 gal ~= 91,452 Btu ~= 26.8 kWh thermal</td><td>20 lb cylinder ~= 4.6 gal</td></tr>
+        <tr><td>Generator</td><td>budget harshly: 2 kW load for 1 h = 2 kWh</td><td>use model manual; CO rules dominate</td></tr>
+        <tr><td>Solar</td><td>panel W x sun h x 0.5-0.75 = Wh/day</td><td>100W x 4h x .65 ~= 260 Wh/day</td></tr>
+      </table>
+
+      <h3>Loads to prioritize</h3>
+      <p>Medical devices -> phone/radio -> lights -> battery banks -> laptop/local reference -> refrigeration only while food is worth saving -> comfort. A phone charge is small; a freezer and heater are not.</p>
+
+      <h3>Generator discipline</h3>
+      <p>Never indoors, garage, balcony, shed, or near open windows. CPSC says outside only, at least 20 ft from the house, exhaust away. Run in blocks: cool freezer, charge batteries, shut down. Log fuel in gallons, hours, and load.</p>
+
+      <h2>2. Local AI As A Tool</h2>
+      <div class="cols">
+        <div>
+          <h3>What to ask</h3>
+          <ul>
+            <li>"Given this inventory, make a 7-day meal plan."</li>
+            <li>"Summarize this PDF section into a checklist."</li>
+            <li>"Calculate water/fuel needed for 4 people, 10 days."</li>
+            <li>"Draft a radio message under 25 words."</li>
+            <li>"Find contradictions between these two plans."</li>
+          </ul>
+        </div>
+        <div>
+          <h3>What not to trust</h3>
+          <ul>
+            <li>Diagnosis, medication dosing, radiation treatment, law, self-defense thresholds.</li>
+            <li>Anything not checked against local PDFs or official broadcasts.</li>
+            <li>Confident answers from vague prompts. Ask for assumptions and source path.</li>
+          </ul>
+        </div>
+      </div>
+      <table class="tight tiny">
+        <tr><th>Local smoke test on this checkout</th><th>Prompt tok/s</th><th>Gen tok/s</th><th>Use</th></tr>
+        <tr><td>Gemma 4 E2B Q4_K_M</td><td>1150</td><td>168</td><td>fast ideation</td></tr>
+        <tr><td>Gemma 4 E4B Q4_K_M</td><td>785</td><td>117</td><td>better small model</td></tr>
+        <tr><td>Gemma 4 31B Q4_K_M</td><td>200</td><td>28</td><td>harder reasoning</td></tr>
+        <tr><td>Gemma 4 26B-A4B Q4_K_M</td><td>459</td><td>122</td><td>large fast MoE path</td></tr>
+      </table>
+      <p class="tiny">These numbers are from this repo's Apple M5 Max smoke test. A simpler Mac or phone may be much slower; even 5-20 tok/s can still be useful offline.</p>
+
+      <h2>3. Offline Library Index</h2>
+      <p class="tiny"><span class="label">Medical:</span> Where_There_Is_No_Doctor, MDWiki. <span class="label">Water/san:</span> Emergency_Water_Purification, Emergency_Toilet_Guidebook. <span class="label">Nuclear:</span> NWSS + radiation card. <span class="label">Food:</span> USDA canning, seed saving, preservation. <span class="label">Comms:</span> UV-5R, ARRL. <span class="label">Repair:</span> iFixit/DIY/Mechanics/Electronics ZIMs. <span class="label">Maps:</span> Organic Maps/QGIS/topo PDFs. <span class="label">Morale:</span> Gutenberg, Wikibooks.</p>
+      <div class="footer">Sources: EIA energy conversions; CPSC generator safety; NREL off-grid solar guide; docs/gemma4-llamacpp.md; models/gemma-4-gguf/llamacpp-smoke-test-results.json; FIELD-INDEX.md.</div>
+    </section>
+  </div>
+
+  <div class="sheet">
+    <section class="panel bottom-pad">
+      <h1>People, Trade, Security</h1>
+      <p><strong>Default:</strong> build cooperation early, avoid reputation damage, and keep enough boundary to survive people who do not reciprocate.</p>
+
+      <h2>1. Social Reality</h2>
+      <div class="cols">
+        <div>
+          <h3>Good signs</h3>
+          <ul>
+            <li>People bring names, addresses, families, skills, and specific needs.</li>
+            <li>They accept small transactions and future check-in times.</li>
+            <li>They ask before entering, touching gear, or photographing.</li>
+            <li>They can hear "no" without escalation.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Bad signs</h3>
+          <ul>
+            <li>Urgency theater: "right now or else."</li>
+            <li>Intoxication, weapons handling, probing stash questions.</li>
+            <li>Large group sends one talker while others drift or flank.</li>
+            <li>They want credit, entry, secrecy, or your exact reserves.</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2>2. Trade SOP</h2>
+      <ol>
+        <li>Trade from a small pre-separated pouch, never from main storage.</li>
+        <li>Use neutral visible ground. Avoid your doorway, vehicle trunk, or sleeping area.</li>
+        <li>Small lots first. No debt unless you already trusted them before the event.</li>
+        <li>State units aloud: "two liters treated water for four AA cells."</li>
+        <li>Use reputation: names, house, who vouched, what happened. Write it down.</li>
+        <li>End cleanly: "That is all I can spare today. Check again tomorrow at 1600."</li>
+      </ol>
+
+      <h3>High-value trade that does not expose your pantry</h3>
+      <p>Charging phones, radio relay, tool repair, water treatment, printed maps, bicycle repair, can-opening, coffee/tea by the cup, hot water, information, labor, childcare, clean containers, batteries, tape, rope, salt, sugar, lighters. Do not trade prescription meds, ammunition, or anything that creates legal or retaliation risk.</p>
+
+      <h2>3. Security Without Theater</h2>
+      <ul>
+        <li>Avoidance is the best self-defense. Distance beats dominance displays.</li>
+        <li>If moving/trading, one person moves; one trusted person knows route, ETA, radio channel, and what to do if overdue.</li>
+        <li>A legally carried defensive tool is private until needed. Brandishing, warning shots, and online tough talk create danger and legal exposure.</li>
+        <li>Doors stay locked. Conversations happen through a barrier or outside at distance.</li>
+        <li>Do not advertise generator, fuel, food, guns, cash, or that you are alone.</li>
+        <li>If you have an armed backup, the job is observation, comms, and extraction, not escalation.</li>
+      </ul>
+
+      <h3>Scripts</h3>
+      <table class="tight">
+        <tr><th>Need</th><th>Words</th></tr>
+        <tr><td>Set boundary</td><td>"I cannot do that. I can spare this much today."</td></tr>
+        <tr><td>De-escalate</td><td>"I hear you. I am not arguing. Step back and we can solve the next piece."</td></tr>
+        <tr><td>Exit</td><td>"I need to check on family. We are done for now. Next check is 1600."</td></tr>
+      </table>
+
+      <div class="quote">Do Not Fear. Do the next correct thing.</div>
+      <div class="footer">Sources: playbooks/civil-unrest, grid-down, psychological-first-aid, myths-that-kill. Legal/self-defense law varies sharply by jurisdiction.</div>
+    </section>
+
+    <section class="panel bottom-pad">
+      <h1>Sleep, Work, Fill-In</h1>
+      <p><strong>Sleep is not softness.</strong> It is command capacity. After one bad night, decisions degrade; after several, people hallucinate patterns and start fights with reality.</p>
+
+      <h2>1. Sleep Under Uncertainty</h2>
+      <div class="cols">
+        <div>
+          <h3>Set the site</h3>
+          <ul>
+            <li>Sleep away from windows and street-facing walls.</li>
+            <li>Shoes, headlamp, glasses, keys, radio, water within one arm.</li>
+            <li>Earplugs + eye cover if safe; one ear open if alone.</li>
+            <li>Insulate from ground. Cold floor steals sleep.</li>
+            <li>CO alarm active if any combustion or generator exists nearby.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Protect cognition</h3>
+          <ul>
+            <li>Two 4-hour blocks beat heroic all-nighters.</li>
+            <li>Buddy watches: 2-3 hours per shift; write handoff notes.</li>
+            <li>Caffeine early, not as a substitute for sleep.</li>
+            <li>No big arguments after dark. Park decisions until morning unless danger is immediate.</li>
+            <li>Kids and elders mirror adult calm. Routines are medicine.</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2>2. Local Fill-In</h2>
+      <table class="tight">
+        <tr><td>Out-of-area contact</td><td><span class="blank"></span></td><td>Phone</td><td><span class="blank"></span></td></tr>
+        <tr><td>Meet point 1</td><td><span class="blank"></span></td><td>Meet point 2</td><td><span class="blank"></span></td></tr>
+        <tr><td>GMRS/FRS channel</td><td><span class="blank"></span></td><td>Ham repeater</td><td><span class="blank"></span></td></tr>
+        <tr><td>Water source A/B</td><td><span class="blank"></span></td><td>Generator/solar owner</td><td><span class="blank"></span></td></tr>
+        <tr><td>Trusted neighbor 1</td><td><span class="blank"></span></td><td>Trusted neighbor 2</td><td><span class="blank"></span></td></tr>
+        <tr><td>Medical dependency</td><td><span class="blank"></span></td><td>Pharmacy/clinic</td><td><span class="blank"></span></td></tr>
+      </table>
+
+      <h2>3. Before It Happens, Do This Once</h2>
+      <ol>
+        <li>Print this brief and the standard cards. Laminate. Put one in car, go-bag, kitchen.</li>
+        <li>Program radio memories: NOAA, 146.520, 446.000, FRS/GMRS 1/20, MURS 1, two local repeaters.</li>
+        <li>Run <span class="mono">./tools-scripts/get-squared-away.sh --full</span>. Verify what is actually present.</li>
+        <li>Open the local AI runner once: <span class="mono">./tools-scripts/run-gemma4-llamacpp.sh --quant Q4_K_M E2B</span>.</li>
+        <li>Measure your power: phone charge Wh, laptop Wh, battery bank Wh, generator fuel per hour, solar Wh/day.</li>
+        <li>Mark Kindle/offline favorites: medical, water, sanitation, radio, maps, NWSS, canning, seed saving.</li>
+        <li>Meet three neighbors before you need them. Know who has kids, elders, medical devices, tools, radios.</li>
+      </ol>
+
+      <h2>Source Key</h2>
+      <p class="micro">Local: START-HERE.md; FIELD-INDEX.md; playbooks/cards/*; playbooks/scenarios/05-grid-down-extended.md; playbooks/scenarios/09-civil-unrest-bug-in.md; docs/local-ai-models.md; docs/gemma4-llamacpp.md; radio/UV-5R_Quick_Reference_Card.pdf; radio/UV-5R_Programming_Cheat_Sheet.pdf; survival-guides/Nuclear_War_Survival_Skills.pdf; power-electrical/NREL_Off_Grid_Solar_Installation_Maintenance.pdf; food-water/USDA_Complete_Guide_Home_Canning_2015.pdf.</p>
+      <p class="micro">External official sources checked 2026-04-20: eCFR 47 CFR 95/97 radio rules; NOAA Weather Radio; CDC Radiation Emergencies; FDA potassium iodide FAQ; EPA radionuclide basics; EIA energy conversions; CPSC generator CO guidance; USGS rainfall calculator; USDA/NASS crop reports.</p>
+      <div class="footer">This brief is a compact index and operating aid. Defaults are not doctrine. Local official instructions and real household constraints override it.</div>
+    </section>
+  </div>
+</body>
+</html>

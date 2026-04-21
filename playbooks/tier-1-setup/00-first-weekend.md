@@ -1,21 +1,23 @@
 # The First Weekend
 
-One weekend. Two to four hours of actual work. After this, you are more prepared than 95% of households.
+One weekend. Two to four hours of actual work. After this, you have a usable first version of a household plan.
 
 ## If you only read one line
 
-**Do not buy gear first.** Do the cheap and free items on this list before ordering anything. Most of the value is in paperwork, decisions, and conversations — not equipment.
+**Do not buy gear first.** Do the cheap and free items on this list before ordering anything. Most households get more value from paperwork, decisions, and conversations than from equipment.
+
+This checklist is a starting point. Change it for disability, medical needs, pregnancy, infants, elders, pets, budget, housing, vehicle access, climate, local law, and the hazards you actually face.
 
 ## The 2-hour version (if that's all you have)
 
-1. Fill the bathtub or every clean container you have the next time a bad forecast hits. You just bought 40+ gallons of water for free.
-2. Stock 14 days of calories per person from your normal grocery run — rice, beans, oats, peanut butter, canned fish, cooking oil, salt. $40–80/person. See [`03-water-food-stockpile.md`](03-water-food-stockpile.md).
+1. Fill the bathtub or clean containers you have the next time a bad forecast hits. That can add a large free water buffer.
+2. Build toward 14 days of food from your normal grocery run: rice, beans, oats, peanut butter, canned fish, cooking oil, salt. Adjust for diet, allergies, medical needs, storage space, and budget. See [`03-water-food-stockpile.md`](03-water-food-stockpile.md).
 3. Pick a designated shelter-in-place room in your home (interior, few windows, near plumbing).
 4. Write your [`05-family-comms-plan.md`](05-family-comms-plan.md). One page. Takes 20 minutes.
 5. Put $200 in cash somewhere in your home. Small bills.
 6. Print [`../cards/`](../cards/) on your home printer. Put them in a labeled envelope.
 
-That's it. You're done. Move on with your weekend.
+That is enough for a first pass. Move on with your weekend.
 
 ## The full checklist
 
@@ -31,7 +33,7 @@ That's it. You're done. Move on with your weekend.
 
 ### Saturday afternoon: food and water (cheap)
 
-**Water.** Buy or save enough to store 14 gallons per person (one gallon per person per day, 14 days). This is cheap and non-perishable.
+**Water.** Build toward 14 gallons per person (one gallon per person per day, 14 days). This is a baseline. Heat, illness, pregnancy, nursing, exertion, disability, and pets can raise it.
 
 Options:
 - Case of 1-gallon jugs from the grocery store: ~$10 per person-week.
@@ -42,7 +44,7 @@ Store out of direct sunlight. Rotation: label dates, use oldest first.
 
 **Food.** See [`03-water-food-stockpile.md`](03-water-food-stockpile.md). Key point: store what you actually eat. Rotate through it.
 
-Minimum: 14 days of 2,000+ kcal/person/day. Built from:
+Planning baseline: 14 days of roughly 2,000 kcal/person/day. Real needs vary. Build from food your household actually eats:
 - Rice (5 lb/person)
 - Beans / lentils (3 lb)
 - Oats (2 lb)
@@ -96,7 +98,7 @@ Better option: a Baofeng UV-5R (~$25). Program it with local repeaters, NOAA wea
 
 **Walk the plan.** Out loud, with everyone in the household. "If the power goes out tonight, what do we do?" "If we have to leave in 20 minutes, what are we taking?" "If phones don't work, how do we meet?"
 
-Find the holes now, not later.
+Find the holes while things are calm.
 
 **Tell one person outside the household.** Your out-of-area contact from the comms plan. They need to know they're on it.
 
@@ -138,8 +140,8 @@ You are allowed to breathe. Over the next few weeks, at your pace:
 | Password manager subscription | $0–60/yr |
 | **Total out-of-pocket** | **~$560–1,340** |
 
-Everything else on this list is free. The paperwork and conversations matter more than the gear.
+Everything else on this list is free. For many households, the paperwork and conversations matter more than the gear.
 
 ## Before anything happens, do this once
 
-That's this whole document. Start. The prep you do now is the only prep you'll ever actually have when you need it.
+That's this whole document. Start small, then edit the plan until it fits your actual life.

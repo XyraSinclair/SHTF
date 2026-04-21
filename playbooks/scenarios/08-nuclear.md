@@ -2,7 +2,7 @@
 
 Four distinct sub-scenarios with different protocols. People consistently conflate them and act wrongly.
 
-This is a digest of `survival-guides/Nuclear_War_Survival_Skills.pdf` (NWSS, Cresson Kearny, Oak Ridge National Laboratory — the authoritative civilian source). Read the chapters cited below when you have time before something happens.
+This is a digest of `survival-guides/Nuclear_War_Survival_Skills.pdf` (NWSS, Cresson Kearny, Oak Ridge National Laboratory — a widely cited civilian source). Read the chapters cited below when you have time before something happens.
 
 ## If you only read one line
 

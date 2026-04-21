@@ -1,5 +1,5 @@
 #!/bin/bash
-# Bundle playbooks/cards/ into a single printable PDF.
+# Bundle playbooks/cards/ into a printable bundle.
 # Uses pandoc if available; otherwise emits a bundled markdown and prints instructions.
 
 set -euo pipefail
@@ -63,6 +63,11 @@ echo "Bundling cards in $CARDS_DIR ..."
 
 echo "Wrote bundled markdown: $MD_OUT"
 
+if [ -f "$CARDS_DIR/high-signal-field-brief.html" ]; then
+    echo "Advanced supplement available: $CARDS_DIR/high-signal-field-brief.html"
+    echo "  Print it separately from your browser if you want the dense ops brief."
+fi
+
 if command -v pandoc >/dev/null 2>&1; then
     echo "Generating PDF via pandoc ..."
     if pandoc "$MD_OUT" \
@@ -88,7 +93,8 @@ if command -v pandoc >/dev/null 2>&1; then
     fi
 else
     echo ""
-    echo "pandoc not installed. Options:"
+    echo "pandoc not installed. That is fine; you still have a printable bundle."
+    echo "Options:"
     echo ""
     echo "1. Install pandoc and re-run:"
     echo "     brew install pandoc basictex    # macOS"
