@@ -116,13 +116,13 @@ log "- an optional local-AI path with Gemma 4 and llama.cpp workflows"
 log "- a laptop/Kindle/household resource library, not a personalized plan"
 log ""
 log "Canonical orientation path in this repo:"
-log "1. ./tools-scripts/get-squared-away.sh   (this script)"
-log "2. START-HERE.md"
-log "3. FIELD-INDEX.md"
-log "4. USAGE.md"
-log "5. DOWNLOADS.md"
-log "6. ./tools-scripts/print-cards.sh        (print emergency cards)"
-log "7. ./tools-scripts/household-setup.sh    (optional blank private templates)"
+log "1. ./tools-scripts/build-envelope.sh     (the manila envelope — the one thing)"
+log "2. START-HERE.md                         (three doors: emergency / tonight / full kit)"
+log "3. ./tools-scripts/get-squared-away.sh   (this script)"
+log "4. playbooks/README.md                   (playbook index)"
+log "5. FIELD-INDEX.md                        (file-level map)"
+log "6. USAGE.md                              (resource use by problem)"
+log "7. DOWNLOADS.md                          (optional large downloads)"
 log ""
 log "Playbooks (what to DO):"
 log "- playbooks/tier-1-setup/00-first-weekend.md   # one-weekend foundation"
@@ -207,11 +207,14 @@ log ""
 log "Next commands by goal:"
 log ""
 log "If this is your first session (not an emergency):"
-log "  less START-HERE.md                       # read-only dispatcher"
+log "  ./tools-scripts/build-envelope.sh        # generate the print-once manila envelope"
+log "  less START-HERE.md                       # three doors: emergency / tonight / full kit"
+log "  less playbooks/README.md                 # playbook index"
 log "  less FIELD-INDEX.md                      # file-level map"
-log "  ./tools-scripts/print-cards.sh           # printable emergency cards"
 log "  less USAGE.md                            # resource use by problem"
+log "  less DOWNLOADS.md                        # optional large downloads"
 log "  ./tools-scripts/household-setup.sh       # optional blank private templates"
+log "  ./tools-scripts/print-cards.sh           # full-deck printable (not just envelope)"
 log ""
 log "If something is happening RIGHT NOW:"
 log "  less START-HERE.md                       # problem → open-this table"
@@ -223,16 +226,11 @@ log "  open survival-guides/Emergency_Water_Purification_Guide.pdf"
 log "  ./tools-scripts/launch-wikipedia.sh"
 log "  ./tools-scripts/launch-maps.sh"
 log ""
-log "If you want the fastest local AI path:"
-log "  less docs/local-ai-models.md"
+log "If you want local AI (Gemma 4):"
+log "  ./tools-scripts/setup-gemma4.sh         # download + build + convert + test, E2B"
+log "  ./tools-scripts/setup-gemma4.sh --all   # all four models"
 log "  ./tools-scripts/run-gemma4-llamacpp.sh --list"
-log "  ./tools-scripts/run-gemma4-llamacpp.sh --quant Q4_K_M E2B"
-log ""
-log "If you want to rebuild/verify the Gemma 4 llama.cpp stack:"
-log "  ./tools-scripts/build-llama-cpp-gemma4.sh --update"
-log "  ./tools-scripts/convert-gemma4-to-gguf.sh"
-log "  ./tools-scripts/quantize-gemma4-gguf.sh ALL Q4_K_M"
-log "  python3 tools-scripts/test-gemma4-llamacpp.py --quant Q4_K_M"
+log "  ./tools-scripts/run-gemma4-llamacpp.sh E2B"
 log ""
 log "If you are missing large optional datasets:"
 log "  less DOWNLOADS.md"
@@ -388,11 +386,14 @@ payload = {
     },
     "next_commands": {
         "first_session_not_emergency": [
+            "./tools-scripts/build-envelope.sh",
             "less START-HERE.md",
+            "less playbooks/README.md",
             "less FIELD-INDEX.md",
-            "./tools-scripts/print-cards.sh",
             "less USAGE.md",
+            "less DOWNLOADS.md",
             "./tools-scripts/household-setup.sh",
+            "./tools-scripts/print-cards.sh",
         ],
         "happening_right_now": [
             "less START-HERE.md",
@@ -405,15 +406,10 @@ payload = {
             "./tools-scripts/launch-maps.sh",
         ],
         "fast_local_ai": [
-            "less docs/local-ai-models.md",
+            "./tools-scripts/setup-gemma4.sh",
+            "./tools-scripts/setup-gemma4.sh --all",
             "./tools-scripts/run-gemma4-llamacpp.sh --list",
-            "./tools-scripts/run-gemma4-llamacpp.sh --quant Q4_K_M E2B",
-        ],
-        "rebuild_gemma4_llamacpp": [
-            "./tools-scripts/build-llama-cpp-gemma4.sh --update",
-            "./tools-scripts/convert-gemma4-to-gguf.sh",
-            "./tools-scripts/quantize-gemma4-gguf.sh ALL Q4_K_M",
-            "python3 tools-scripts/test-gemma4-llamacpp.py --quant Q4_K_M",
+            "./tools-scripts/run-gemma4-llamacpp.sh E2B",
         ],
         "missing_large_downloads": [
             "less DOWNLOADS.md",

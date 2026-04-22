@@ -3,12 +3,14 @@
 How to use each resource in this kit. Everything works offline.
 
 For the fastest path:
-- `./tools-scripts/get-squared-away.sh` — canonical bootstrap
-- `./tools-scripts/print-cards.sh` — printable emergency cards
-- [START-HERE.md](START-HERE.md) — problem-to-file map
+- `./tools-scripts/build-envelope.sh` — **the one thing**: generate the print-once manila envelope
+- [playbooks/cards/tonight.md](playbooks/cards/tonight.md) — eight things to do before bed (no printer needed)
+- `./tools-scripts/get-squared-away.sh` — canonical bootstrap report
+- [START-HERE.md](START-HERE.md) — three doors: emergency / tonight / full kit
 - [playbooks/README.md](playbooks/README.md) — runbooks and frameworks
 - [FIELD-INDEX.md](FIELD-INDEX.md) — file index
 - `./tools-scripts/verify-all.sh --essential` — what's ready now
+- `./tools-scripts/print-cards.sh` — full deck of printable emergency cards (not just the envelope)
 
 Optional worksheet: `./tools-scripts/household-setup.sh` writes blank private templates without asking questions.
 
@@ -85,43 +87,31 @@ All ZIM files use Kiwix: Wikipedia, Wikibooks, Stack Exchange sites, DevDocs, an
 
 ## Local AI Assistant
 
-### Fastest path: small Ollama models
+### Recommended path: Gemma 4 with one command
 
 ```bash
-brew install ollama
-ollama pull llama3.2:3b          # 2 GB - general purpose
-ollama run llama3.2:3b           # start chatting
-
-# Other useful models:
-ollama pull phi4-mini            # 2.5 GB - reasoning
-ollama pull qwen2.5-coder:3b     # 2 GB - coding help
-```
-
-Works completely offline. Use it for summaries, rough planning estimates, how-to help, and navigation through the local library. Verify arithmetic yourself or with a calculator. Do not treat any local model as a medical authority; use the medical sources and clinicians when available.
-
-### Gemma 4 in this repo
-
-The four Gemma 4 source checkpoints live under `models/gemma-4/`.
-
-Native Apple Silicon smoke test:
-
-```bash
-uv run tools-scripts/test-gemma4-models.py
-```
-
-llama.cpp workflow:
-
-```bash
-./tools-scripts/build-llama-cpp-gemma4.sh --update
-./tools-scripts/convert-gemma4-to-gguf.sh E2B
-./tools-scripts/audit-gemma4-artifacts.py
-./tools-scripts/test-gemma4-llamacpp.py E2B
+./tools-scripts/setup-gemma4.sh            # E2B only — the safe starter (~9 GB)
+./tools-scripts/setup-gemma4.sh --all      # all four Gemma 4 models
 ./tools-scripts/run-gemma4-llamacpp.sh E2B
 ```
 
-Use `E2B` as the first model unless you already know you want a bigger checkpoint. BF16 is the canonical default; quantization is optional.
+`setup-gemma4.sh` downloads from Hugging Face, builds llama.cpp, converts to GGUF, and runs a smoke test. Re-runnable; completed steps are skipped. Works completely offline after setup.
 
-For the full model ladder, practical hardware guidance, and manual/server examples, read `docs/local-ai-models.md` and `docs/gemma4-llamacpp.md`.
+Use it for summaries, rough planning estimates, how-to help, and navigation through the local library. Verify arithmetic yourself or with a calculator. Do not treat any local model as a medical authority; use the medical sources and clinicians when available.
+
+For the four-model ladder (E2B → E4B → 31B → 26B-A4B), hardware guidance, multimodal image mode, and manual/server examples, read `docs/local-ai-models.md` and `docs/gemma4-llamacpp.md`.
+
+### Smaller fallback: Ollama
+
+If you don't need the full Gemma 4 ladder:
+
+```bash
+brew install ollama
+ollama pull llama3.2:3b          # ~2 GB - general purpose
+ollama pull phi4-mini            # ~2.5 GB - reasoning
+ollama pull qwen2.5-coder:3b     # ~2 GB - code help
+ollama run llama3.2:3b
+```
 
 ## Maps (requires download)
 

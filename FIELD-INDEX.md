@@ -5,7 +5,9 @@ Fastest file-level index for the highest-value parts of the repo. Intentionally 
 ## Minimum useful cabinet
 
 If you only need the smallest serious subset, start here:
-- START-HERE.md
+- **./tools-scripts/build-envelope.sh** — generates the print-once manila envelope (the one thing)
+- **playbooks/cards/tonight.md** — eight things to do before bed (twenty minutes, zero dollars)
+- START-HERE.md — three doors: emergency / tonight / full kit
 - playbooks/cards/what-kills.md
 - playbooks/frameworks/stay-or-go.md
 - playbooks/cards/first-aid.md
@@ -45,6 +47,7 @@ If you only need the smallest serious subset, start here:
 - playbooks/frameworks/myths-that-kill.md
 
 ### Emergency cards
+- **playbooks/cards/tonight.md** (the eight things to do before bed — the one page)
 - Print or keep handy: playbooks/cards/summons.md (6-line wallet / lock-screen card — blank by default; fill via household-setup.sh --summons or by hand)
 - playbooks/cards/what-kills.md (what actually kills people in disasters — the counterintuitive killers with prevention)
 - playbooks/cards/when-not-to.md (negations — flood driving, generators, flushing, re-entering, etc.)
@@ -159,10 +162,12 @@ If you only need the smallest serious subset, start here:
 - tools-scripts/run-gemma4-llamacpp.sh
 
 ## Fastest orientation path for a new user
-1. ./tools-scripts/get-squared-away.sh
-2. START-HERE.md
-3. FIELD-INDEX.md
-4. USAGE.md
-5. DOWNLOADS.md
-6. ./tools-scripts/print-cards.sh              # printable emergency cards
-7. ./tools-scripts/household-setup.sh          # optional blank private templates
+1. ./tools-scripts/build-envelope.sh           # the one thing: generate the manila envelope
+2. START-HERE.md                               # three doors: emergency / tonight / full kit
+3. ./tools-scripts/get-squared-away.sh         # report what is set up and what is missing
+4. playbooks/README.md                         # playbook index
+5. FIELD-INDEX.md                              # this file
+6. USAGE.md                                    # resource use by problem
+7. DOWNLOADS.md                                # optional large downloads
+8. ./tools-scripts/household-setup.sh          # optional blank private templates
+9. ./tools-scripts/print-cards.sh              # full-deck printable (not just envelope)

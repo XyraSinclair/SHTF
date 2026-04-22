@@ -92,6 +92,14 @@ check_file "$SHTF_DIR/playbooks/cards/stop-the-bleed.md" 500 "Card: stop the ble
 check_file "$SHTF_DIR/playbooks/cards/water-purification.md" 500 "Card: water purification"
 check_file "$SHTF_DIR/playbooks/cards/radiation-shelter.md" 500 "Card: radiation shelter"
 check_file "$SHTF_DIR/playbooks/cards/offline-knowledge-map.md" 500 "Card: offline knowledge map"
+check_file "$SHTF_DIR/playbooks/cards/tonight.md" 500 "Card: tonight (the one-page sheet)"
+check_file "$SHTF_DIR/tools-scripts/build-envelope.sh" 500 "Script: build-envelope.sh (the manila envelope)"
+if [ -x "$SHTF_DIR/tools-scripts/build-envelope.sh" ]; then
+    echo -e "  ${GREEN}OK${NC}: build-envelope.sh is executable"
+else
+    echo -e "  ${YELLOW}WARN${NC}: build-envelope.sh is not executable (run: chmod +x tools-scripts/build-envelope.sh)"
+    ((warnings++))
+fi
 check_file "$SHTF_DIR/tools-scripts/household-setup.sh" 500 "Script: household-setup.sh"
 check_file "$SHTF_DIR/tools-scripts/print-cards.sh" 500 "Script: print-cards.sh"
 
@@ -300,6 +308,11 @@ if [ -f "$SHTF_DIR/playbooks/README.md" ] && [ -d "$SHTF_DIR/playbooks/scenarios
     echo -e "  ${GREEN}READY${NC}: Playbooks (tier-1 + scenarios + cards)"
 else
     echo -e "  ${RED}NOT READY${NC}: Playbooks"
+fi
+if [ -x "$SHTF_DIR/tools-scripts/build-envelope.sh" ] && [ -f "$SHTF_DIR/playbooks/cards/tonight.md" ]; then
+    echo -e "  ${GREEN}READY${NC}: Envelope (run ./tools-scripts/build-envelope.sh to produce it)"
+else
+    echo -e "  ${RED}NOT READY${NC}: Envelope — the canonical print-and-forget artifact"
 fi
 if [ -f "$SHTF_DIR/medical/Where_There_Is_No_Doctor_FULL.pdf" ] && [ -f "$SHTF_DIR/survival-guides/FM4-25.11_First_Aid_Manual.pdf" ]; then
     echo -e "  ${GREEN}READY${NC}: Medical core"

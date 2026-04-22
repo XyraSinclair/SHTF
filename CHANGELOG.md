@@ -7,6 +7,21 @@ Evidence sources:
 - commit messages and touched-file scopes
 - current top-level docs (`README.md`, `START-HERE.md`, `FIELD-INDEX.md`, `USAGE.md`)
 
+## 2026-04-21 — The envelope, and Gemma 4 as the default local AI
+
+What changed
+- **New: `tools-scripts/build-envelope.sh`** — the canonical output of the repo. Generates `playbooks/envelope/` with eleven print-and-staple sections (tonight sheet, summons 6-up, blank roster, blank comms, first-weekend checklist, what-kills, when-not-to, water, bleed, first-aid, plus a cover letter). Builds a single PDF when pandoc is installed. Safe to re-run; fails hard if any source is missing.
+- **New: `playbooks/cards/tonight.md`** — single-page sheet of eight things to do before bed. Twenty minutes, zero dollars, no printer required.
+- **Rewrote `START-HERE.md` as three doors**: *Emergency now* / *I have tonight* / *Building the full kit*. Demoted Gemma, downloads, and the library index below the fold.
+- **Rewrote `README.md` intro** to lead with the envelope ("the one thing") instead of listing repo contents.
+- **New: `tools-scripts/setup-gemma4.sh`** — one command to download Gemma 4 checkpoints, build llama.cpp, convert to GGUF, and smoke-test. Default is `E2B` (~9 GB); `--all` covers all four models. Safe to re-run.
+- **Demoted Kimi K2.5** across README, DOWNLOADS, `docs/local-ai-models.md`, `docs/gemma4-llamacpp.md`. Gemma 4 is now the documented primary local-AI path. Kimi remains available as an optional heavyweight footnote.
+- **Refreshed first-run framing** in `get-squared-away.sh`, `verify-all.sh`, `FIELD-INDEX.md`, `USAGE.md`, `playbooks/README.md` so the envelope and the tonight sheet are the first things a new reader sees.
+
+Why it matters
+- The repo's center of gravity shifts from "library you navigate" to "manila envelope the repo hands you." That's closer to how someone unprepared actually needs to receive help.
+- Local AI is now a one-command path instead of an eight-step tour of separate scripts.
+
 ## 2026-04-21 — First-run trust polish
 
 Commit: `e46e255` `polish first-run trust surfaces for shipping`

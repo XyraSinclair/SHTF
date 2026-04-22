@@ -2,44 +2,44 @@
 
 SHTF is now in a shape I would be comfortable sharing with a serious external audience.
 
-This release is mostly about trust and friction.
+The center of gravity has shifted. Instead of "library you navigate," the repo is now "manila envelope it hands you." One command produces a complete print-once packet. Local AI is now a one-command path built around Gemma 4.
 
-What is materially better
-- One-command orientation is cleaner.
-- The repo is more explicit about what is optional.
-- Household personalization is clearly secondary and private.
-- Printed-card flow is more honest about the `pandoc` / no-`pandoc` split.
-- The public docs read less like steering and more like a practical offline tool cabinet.
+## Headline changes
 
-Most important surfaces
+- **`build-envelope.sh`** generates `playbooks/envelope/` — eleven print-and-staple sections covering tonight, the first weekend, summons cards, blanks for household roster and comms, the killer cards, and water / bleed / first aid. Cover letter reads "Do these first. Ignore the rest until tomorrow." Builds a single PDF when pandoc is installed.
+- **`playbooks/cards/tonight.md`** — eight things to do before bed. Twenty minutes. No money. No printer required.
+- **`START-HERE.md`** is three doors: *Emergency now* / *I have tonight* / *Building the full kit*. Everything else moves below.
+- **`setup-gemma4.sh`** — one command for download + build + GGUF convert + smoke test. Default E2B (~9 GB); `--all` for all four Gemma 4 models. Kimi K2.5 is demoted to a heavyweight footnote.
+
+## Most important surfaces
+
+- `./tools-scripts/build-envelope.sh` — the one thing
+- `playbooks/cards/tonight.md`
+- `START-HERE.md` — three doors
 - `./tools-scripts/get-squared-away.sh`
-- `START-HERE.md`
-- `FIELD-INDEX.md`
-- `USAGE.md`
+- `./tools-scripts/setup-gemma4.sh` — optional local AI
 - `playbooks/cards/what-kills.md`
 - `playbooks/frameworks/stay-or-go.md`
 
-Notable additions in the current repo generation
-- recovery playbooks
-- population-specific cards
-- summons card
-- offline knowledge map
-- lookup drill
-- optional high-signal field brief
+## Framing
 
-Important framing
 - This repo is not a personalized plan.
-- The playbooks give defaults, not doctrine.
-- The library is the authority layer.
+- The playbooks are defaults, not doctrine.
+- The library behind the envelope is the authority layer.
 - Local AI is optional and should not be treated as a medical or legal authority.
 
-Suggested first-run path for a new downloader
-1. `./tools-scripts/get-squared-away.sh`
-2. `START-HERE.md`
-3. `FIELD-INDEX.md`
-4. `./tools-scripts/print-cards.sh`
-5. `USAGE.md`
+## Suggested first-run path
 
-Suggested caution when sharing
+1. `./tools-scripts/build-envelope.sh` — the manila envelope
+2. `START-HERE.md` — three doors
+3. `./tools-scripts/get-squared-away.sh` — canonical bootstrap
+4. `playbooks/README.md`
+5. `FIELD-INDEX.md`
+6. `USAGE.md`
+7. `DOWNLOADS.md` — optional large downloads
+
+## Caution when sharing
+
 - Avoid presenting it as comprehensive life advice.
-- Present it as an offline emergency reference cabinet with practical defaults and explicit limits.
+- Present it as an offline household continuity kit with practical defaults and explicit limits.
+- The envelope is designed to be printed and walked away from. The rest of the repo is a library to return to when a specific question comes up.

@@ -21,7 +21,9 @@ playbooks/
 
 | You are... | Start with |
 |-----------|------------|
-| New, nothing has happened | [`tier-1-setup/00-first-weekend.md`](tier-1-setup/00-first-weekend.md) |
+| New, want one command | `./tools-scripts/build-envelope.sh` — generates the print-once manila envelope |
+| Twenty minutes tonight, no printer | [`cards/tonight.md`](cards/tonight.md) — eight small things, zero dollars |
+| New, have a calm weekend | [`tier-1-setup/00-first-weekend.md`](tier-1-setup/00-first-weekend.md) |
 | Something is actively happening | [`frameworks/stay-or-go.md`](frameworks/stay-or-go.md), then the relevant scenario |
 | An AI agent or orientation script | [`../START-HERE.md`](../START-HERE.md) |
 | About to travel / go off-grid | [`tier-1-setup/02-go-bag.md`](tier-1-setup/02-go-bag.md) and [`cards/`](cards/) |

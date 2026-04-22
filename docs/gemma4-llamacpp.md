@@ -1,77 +1,51 @@
 # Gemma 4 with llama.cpp
 
-This repo now has two Gemma 4 paths:
+This is the manual walkthrough. Most people should skip this and run:
 
-1. Native Hugging Face checkpoints under `models/gemma-4/`
-2. A llama.cpp workflow for converting them to GGUF and running them locally
+```bash
+./tools-scripts/setup-gemma4.sh
+```
 
-## What is in scope
+That does download + build + convert + smoke-test in one go. Read on only if something broke, or you want to understand what's happening, or you need a step the one-shot script doesn't cover.
 
-Supported target in this repo:
-- Text inference on all four Gemma 4 instruction models
-- Multimodal image inference once `--mmproj` conversion succeeds
+## What's supported
 
-Current validated state in this checkout:
-- All four models pass llama.cpp text smoke tests in BF16
-- All four models pass llama.cpp text smoke tests in `Q4_K_M`
-- All four models pass multimodal image smoke tests in `Q4_K_M`
-- `E2B` and `E4B` also pass experimental audio-input smoke tests in `Q4_K_M`
+- Text inference on all four Gemma 4 instruction models (validated in BF16 and `Q4_K_M`)
+- Multimodal image inference in `Q4_K_M` (once `mmproj` conversion succeeds)
+- Experimental audio-input smoke tests pass for `E2B` and `E4B` in `Q4_K_M`
 
-Not promised yet:
-- Audio or video inference
-- Tiny-footprint runtime on weak hardware
+Not promised: audio or video inference as supported features; tiny-footprint runtime on weak hardware.
 
-## The four local models
+## The four models
 
 - `gemma-4-E2B-it`
 - `gemma-4-E4B-it`
 - `gemma-4-31B-it`
 - `gemma-4-26B-A4B-it`
 
-Source checkpoints live in `models/gemma-4/`.
-GGUF output will be written to `models/gemma-4-gguf/`.
+Source checkpoints live in `models/gemma-4/`. GGUF output goes to `models/gemma-4-gguf/`.
 
-## Why this doc exists
+## Manual workflow (what setup-gemma4.sh wraps)
 
-The older vendored `kimi-k2.5/llama.cpp` tree can be too stale for Gemma 4.
-Use the build script below with `--update` so the vendored tree is refreshed to a modern upstream revision before conversion.
-
-## 1. Build llama.cpp with Gemma 4 support
+### 1. Build llama.cpp
 
 ```bash
 ./tools-scripts/build-llama-cpp-gemma4.sh --update
 ```
 
-What it does:
-- optionally fast-forwards `kimi-k2.5/llama.cpp`
-- creates `.venv-llamacpp/`
-- installs conversion dependencies
-- builds `llama-cli`, `llama-server`, `llama-quantize`, and `llama-mtmd-cli` when available
-
-Useful variants:
+Variants:
 
 ```bash
-./tools-scripts/build-llama-cpp-gemma4.sh --no-update
-./tools-scripts/build-llama-cpp-gemma4.sh --cuda
-./tools-scripts/build-llama-cpp-gemma4.sh --rebuild
+./tools-scripts/build-llama-cpp-gemma4.sh --no-update   # use the vendored tree as-is
+./tools-scripts/build-llama-cpp-gemma4.sh --cuda        # CUDA instead of Metal
+./tools-scripts/build-llama-cpp-gemma4.sh --rebuild     # wipe build/ and rebuild
 ```
 
-## 2. Convert the four HF checkpoints to GGUF
+### 2. Convert HF checkpoints to GGUF
 
 ```bash
-./tools-scripts/convert-gemma4-to-gguf.sh
-```
-
-Defaults:
-- converts all four models
-- writes canonical BF16 GGUF files first
-- also writes multimodal projector GGUF files with `--mmproj`
-- does not quantize unless you explicitly ask for it later
-
-Examples:
-
-```bash
-./tools-scripts/convert-gemma4-to-gguf.sh E2B E4B
+./tools-scripts/convert-gemma4-to-gguf.sh                 # all four, BF16 + mmproj
+./tools-scripts/convert-gemma4-to-gguf.sh E2B E4B         # subset
 ./tools-scripts/convert-gemma4-to-gguf.sh --outtype f16 E2B
 ```
 
@@ -85,57 +59,40 @@ models/gemma-4-gguf/
   ...
 ```
 
-## 3. Optional quantization
+### 3. Optional quantization
 
-Start with BF16 conversion first. Then quantize the text model only:
+Canonical artifacts stay BF16. Quantization is a separate, opt-in derived copy.
 
 ```bash
 ./tools-scripts/quantize-gemma4-gguf.sh E2B Q4_K_M
 ./tools-scripts/quantize-gemma4-gguf.sh ALL Q4_K_M
 ```
 
-Recommended starting point:
-- `E2B`, `E4B`: `Q4_K_M`
-- `31B`, `26B-A4B`: `Q4_K_M` first, then raise if hardware allows
+Starting point: `Q4_K_M` for everything; raise only if your hardware handles it.
 
-## 4. Smoke-test the llama.cpp path
-
-Text-only on all converted models, using BF16 by default:
+### 4. Smoke test
 
 ```bash
-./tools-scripts/test-gemma4-llamacpp.py
+./tools-scripts/test-gemma4-llamacpp.py              # text-only, all converted models, BF16
+./tools-scripts/test-gemma4-llamacpp.py E2B          # one model
+./tools-scripts/test-gemma4-llamacpp.py --image /path/to/test.jpg
 ```
 
-With image validation too:
+Writes a JSON report to `models/gemma-4-gguf/llamacpp-smoke-test-results.json`.
 
-```bash
-./tools-scripts/test-gemma4-llamacpp.py --image /path/to/test-image.jpg
-```
-
-This writes a JSON report to:
-
-```text
-models/gemma-4-gguf/llamacpp-smoke-test-results.json
-```
-
-## 5. Fast runner for repeated use
-
-If you do not want to remember the full llama.cpp command lines, use the convenience wrapper:
+### 5. Run it
 
 ```bash
 ./tools-scripts/run-gemma4-llamacpp.sh --list
 ./tools-scripts/run-gemma4-llamacpp.sh E2B
 ./tools-scripts/run-gemma4-llamacpp.sh --server E2B
-./tools-scripts/run-gemma4-llamacpp.sh --image /path/to/test-image.jpg E2B "Describe the main subject and end with OK."
+./tools-scripts/run-gemma4-llamacpp.sh --image /path/to/test.jpg E2B "Describe and end with OK."
+./tools-scripts/run-gemma4-llamacpp.sh --quant Q4_K_M 31B
 ```
 
-The wrapper:
-- picks the matching chat template
-- prefers canonical BF16/F16 GGUFs by default
-- only uses quantized GGUFs when you explicitly pass `--quant`
-- switches to `llama-mtmd-cli` automatically for image mode
+Defaults: picks the matching chat template, prefers canonical BF16/F16, switches to `llama-mtmd-cli` when `--image` is set.
 
-## 6. Manual run examples
+## Raw llama.cpp commands (for reference)
 
 ### Text chat
 
@@ -147,7 +104,7 @@ kimi-k2.5/llama.cpp/build/bin/llama-cli \
   -p "In one short sentence, identify yourself as a Gemma 4 model and end with OK."
 ```
 
-### Multimodal image run
+### Multimodal image
 
 ```bash
 kimi-k2.5/llama.cpp/build/bin/llama-mtmd-cli \
@@ -156,15 +113,12 @@ kimi-k2.5/llama.cpp/build/bin/llama-mtmd-cli \
   --image /path/to/test-image.jpg \
   --jinja \
   -ngl 999 -c 8192 -n 96 --temp 0 --flash-attn auto --perf \
-  -p "Describe the main subject in the image and end with OK."
+  -p "Describe the main subject and end with OK."
 ```
 
-Notes for current upstream `llama-mtmd-cli`:
-- do not pass `--chat-template-file` here
-- do not pass `-st` here
-- use `--jinja` so the Gemma 4 template embedded in GGUF metadata is applied
+For `llama-mtmd-cli`: do not pass `--chat-template-file` or `-st`; use `--jinja` so the Gemma 4 template embedded in the GGUF metadata is applied.
 
-### Server mode
+### Server
 
 ```bash
 kimi-k2.5/llama.cpp/build/bin/llama-server \
@@ -174,40 +128,25 @@ kimi-k2.5/llama.cpp/build/bin/llama-server \
   -c 8192 -ngl 999
 ```
 
-## Disk and hardware reality
+## Disk reality
 
-Converting all four models is heavy.
-Plan for:
-- the original HF checkpoints in `models/gemma-4/`
-- full-size GGUF outputs in `models/gemma-4-gguf/`
-- extra space for quantized copies
+Plan for three copies:
+- HF checkpoints in `models/gemma-4/`
+- BF16 GGUFs in `models/gemma-4-gguf/`
+- Any quantized copies you produce
 
-Do the workflow in stages if you are tight on disk:
-1. `E2B`
-2. `E4B`
-3. `31B`
-4. `26B-A4B`
+Convert in stages if you're tight on disk: `E2B` → `E4B` → `31B` → `26B-A4B`.
 
-## Quick troubleshooting
+## Note on the vendored path
 
-### Converter fails with missing Python modules
-Run:
+llama.cpp lives at `kimi-k2.5/llama.cpp/` for historical reasons — that directory name is cosmetic, the Gemma 4 tooling uses it regardless of whether you have Kimi K2.5 itself.
 
-```bash
-./tools-scripts/build-llama-cpp-gemma4.sh --no-update
-```
+## Troubleshooting
 
-### No Gemma 4 support in llama.cpp
-Run:
+**Converter fails with missing Python modules** — `./tools-scripts/build-llama-cpp-gemma4.sh --no-update`
 
-```bash
-./tools-scripts/build-llama-cpp-gemma4.sh --update
-```
+**No Gemma 4 support in llama.cpp** — `./tools-scripts/build-llama-cpp-gemma4.sh --update`
 
-### `llama-mtmd-cli` missing
-Your checked-out llama.cpp revision is too old or your build is incomplete.
-Re-run the build with `--update --rebuild`.
+**`llama-mtmd-cli` missing** — vendored tree too old or build incomplete: `./tools-scripts/build-llama-cpp-gemma4.sh --update --rebuild`
 
-### Text works but image mode fails
-Keep the text model and mmproj in sync for the same model and conversion run.
-Use the matching `chat_template.jinja` from the corresponding HF model directory.
+**Text works but image mode fails** — keep the text model and mmproj from the same conversion run; use the matching `chat_template.jinja` from the corresponding HF model directory

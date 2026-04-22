@@ -86,100 +86,59 @@ wget -P pdfs/ -i ../west_coast_topos_priority.txt
 
 These are GeoPDF files showing elevation contours, trails, water features, and terrain. Open with any PDF viewer.
 
-## Kimi K2.5 AI Model (~263 GB)
+## Local AI: Gemma 4 (recommended)
 
-For a local AI assistant, clone the model from HuggingFace:
+Gemma 4 is the primary offline-AI path in this repo. Four instruction-tuned models, from a laptop-friendly 2B up through 31B, all runnable locally via llama.cpp.
 
-```bash
-# Install git-lfs first
-brew install git-lfs
-git lfs install
-
-# Clone the model
-git clone https://huggingface.co/moonshotai/Kimi-K2.5
-mv Kimi-K2.5 kimi-k2.5
-```
-
-For a lighter option, use Ollama instead:
+One command to go from nothing to a working model:
 
 ```bash
-brew install ollama
-ollama pull llama3.2:3b       # 2 GB - general purpose
-ollama pull phi4-mini          # 2.5 GB - reasoning
-ollama pull qwen2.5-coder:3b  # 2 GB - coding
+./tools-scripts/setup-gemma4.sh          # E2B only — the safe starter (~9 GB)
+./tools-scripts/setup-gemma4.sh --all    # all four models (~131 GB of checkpoints)
+./tools-scripts/setup-gemma4.sh E4B      # pick specific models
 ```
 
-## Gemma 4 Models (~131 GB on disk before GGUF conversion)
+That script runs, in order: download from Hugging Face → build llama.cpp → convert to GGUF → smoke-test. It prints pass/fail per step and is safe to re-run; completed steps are skipped.
 
-To download the four Gemma 4 instruction checkpoints from the Hugging Face launch post into `models/gemma-4/`:
+The four models:
 
-```bash
-uv run tools-scripts/download-gemma4-models.py
-```
+| Model | HF repo | Source size | When to pick it |
+|-------|---------|-------------|-----------------|
+| `E2B` | `google/gemma-4-E2B-it` | ~9 GB | Starter. Works on most laptops. |
+| `E4B` | `google/gemma-4-E4B-it` | ~14 GB | Better answers, still modest. |
+| `31B` | `google/gemma-4-31B-it` | ~55 GB | Strongest single-model path. Needs headroom. |
+| `26B-A4B` | `google/gemma-4-26B-A4B-it` | ~55 GB | MoE variant; ~4B active params per token. |
 
-This pulls:
-
-- `google/gemma-4-E2B-it`
-- `google/gemma-4-E4B-it`
-- `google/gemma-4-31B-it`
-- `google/gemma-4-26B-A4B-it`
-
-To run a local Apple Silicon smoke test with `mlx-vlm` against the downloaded copies:
-
-```bash
-uv run tools-scripts/test-gemma4-models.py
-```
-
-The smoke test writes a JSON report to `models/gemma-4/smoke-test-results.json` and currently pins `mlx-vlm` to an upstream Git commit that includes Gemma 4 support.
-
-### Gemma 4 with llama.cpp
-
-The repo also includes a llama.cpp path for converting the local checkpoints to GGUF and running them locally.
-
-Recommended first pass: do not convert all four models at once. Start with `E2B`.
-
-Build or refresh llama.cpp first:
-
-```bash
-./tools-scripts/build-llama-cpp-gemma4.sh --update
-```
-
-Convert one model to GGUF first:
-
-```bash
-./tools-scripts/convert-gemma4-to-gguf.sh E2B
-```
-
-Audit the canonical artifacts:
-
-```bash
-./tools-scripts/audit-gemma4-artifacts.py
-```
-
-Smoke-test the llama.cpp path:
-
-```bash
-./tools-scripts/test-gemma4-llamacpp.py E2B
-```
-
-Run it directly:
+After setup, use any model:
 
 ```bash
 ./tools-scripts/run-gemma4-llamacpp.sh E2B
+./tools-scripts/run-gemma4-llamacpp.sh --list
+./tools-scripts/run-gemma4-llamacpp.sh 31B "Give me 10 shelf-stable protein sources."
 ```
 
-Optional quantization only if you explicitly want a lighter derived copy:
+Details and manual workflow: [`docs/local-ai-models.md`](docs/local-ai-models.md) and [`docs/gemma4-llamacpp.md`](docs/gemma4-llamacpp.md).
+
+### Smaller, simpler: Ollama
+
+If you don't need the full Gemma 4 ladder, Ollama is a two-minute setup:
 
 ```bash
-./tools-scripts/quantize-gemma4-gguf.sh E2B Q4_K_M
-./tools-scripts/run-gemma4-llamacpp.sh --quant Q4_K_M E2B
+brew install ollama
+ollama pull llama3.2:3b       # ~2 GB - general purpose
+ollama pull phi4-mini         # ~2.5 GB - reasoning
+ollama pull qwen2.5-coder:3b  # ~2 GB - code help
 ```
 
-Notes:
-- GGUF conversion needs substantial additional free disk space.
-- The supported repo target is text inference on all four models, plus image inference once `mmproj` conversion succeeds.
-- `E2B` is the safest first conversion, then `E4B`, then the larger models.
-- For details, read `docs/local-ai-models.md` and `docs/gemma4-llamacpp.md`.
+### Heavyweight optional: Kimi K2.5 (~263 GB)
+
+Only if you have the disk, RAM, and a specific reason. Most people should stop at Gemma 4 31B.
+
+```bash
+brew install git-lfs && git lfs install
+git clone https://huggingface.co/moonshotai/Kimi-K2.5
+mv Kimi-K2.5 kimi-k2.5
+```
 
 ## Extra offline reference — ACID V2 content parity
 

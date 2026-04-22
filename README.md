@@ -1,47 +1,18 @@
 # SHTF: Offline Survival Kit
 
-If utilities fail, the internet is gone, or you just want a serious offline reference cabinet, this repo gives you PDFs, ZIM files, maps, printable cards, and a few helper scripts.
+An offline household continuity kit. Run one command, get a manila envelope you can print and put in a drawer. Behind it, a library of playbooks, PDFs, offline Wikipedia, maps, and optional local AI — for when the internet is gone or you just want a serious reference cabinet.
 
-## If something is happening right now
-
-Open this first: **[START-HERE.md](START-HERE.md)** — one page that maps the emergency to a likely file.
-
-Useful first stops:
-
-1. **[START-HERE.md](START-HERE.md)** — the dispatcher
-2. **[playbooks/cards/summons.md](playbooks/cards/summons.md)** — the 6-line wallet / lock-screen card
-3. **[playbooks/cards/what-kills.md](playbooks/cards/what-kills.md)** — the real disaster killers (CO, heat, floodwater, hypothermia)
-4. **[playbooks/frameworks/stay-or-go.md](playbooks/frameworks/stay-or-go.md)** — the main movement/shelter decision framework
-5. **[medical/Where_There_Is_No_Doctor_FULL.pdf](medical/Where_There_Is_No_Doctor_FULL.pdf)** — a core medical reference when professional care is unavailable
-
-Print the cards. Fill the summons card privately. Screenshot it to your phone lock screen only if that is safe for your situation.
+## The one thing
 
 ```bash
-./tools-scripts/print-cards.sh   # bundles every emergency card into one printable bundle; PDF if pandoc is installed
+./tools-scripts/build-envelope.sh
 ```
 
-## If you are preparing
+That creates a folder of 11 files you print once and put in a manila envelope labeled "Just in case." Tonight sheet, summons cards, blank roster, first-weekend checklist, killer cards, water/bleeding/first aid. Leave it on the counter. That is the whole point of this repo for most households.
 
-```bash
-./tools-scripts/get-squared-away.sh    # local orientation + verification report; no network
-./tools-scripts/print-cards.sh         # printable cards bundle; PDF if pandoc is installed
-```
+If something is happening right now, open **[START-HERE.md](START-HERE.md)** — three doors: *Emergency now*, *I have tonight*, *Building the full kit*.
 
-Then use the indexes:
-
-- [FIELD-INDEX.md](FIELD-INDEX.md) — short file-level map
-- [USAGE.md](USAGE.md) — resource use by problem
-- [DOWNLOADS.md](DOWNLOADS.md) — optional large downloads
-
-If you want a read-only first look before running anything, open [START-HERE.md](START-HERE.md) and [FIELD-INDEX.md](FIELD-INDEX.md).
-
-Optional worksheet:
-
-```bash
-./tools-scripts/household-setup.sh              # blank private templates; no questions
-./tools-scripts/household-setup.sh --quick      # optional questionnaire
-./tools-scripts/household-setup.sh --full --summons
-```
+If you only have twenty minutes tonight and no printer, open [`playbooks/cards/tonight.md`](playbooks/cards/tonight.md) and do the eight things before bed.
 
 ## Read this as defaults, not doctrine
 
@@ -134,7 +105,14 @@ Original source PDFs by topic (`medical/`, `survival-guides/`, `food-water/`, `r
 
 ### Local AI (optional)
 
-A local-model stack (Gemma 4 via llama.cpp, Kimi K2.5, Ollama) is included for answering questions when you have no internet but still have power. See [docs/local-ai-models.md](docs/local-ai-models.md) and [docs/gemma4-llamacpp.md](docs/gemma4-llamacpp.md). This is prep work, not response work — do not set it up during an emergency.
+When you have power but no internet, a local language model can still answer questions. One command sets it up:
+
+```bash
+./tools-scripts/setup-gemma4.sh          # Gemma 4 E2B — ~9 GB, the safe starter
+./tools-scripts/setup-gemma4.sh --all    # all four Gemma 4 models (~131 GB)
+```
+
+This downloads, builds, converts, and smoke-tests. Re-runnable; completed steps are skipped. See [docs/local-ai-models.md](docs/local-ai-models.md) for alternatives (Ollama for tiny, Kimi K2.5 for heavyweight). This is prep work, not response work — do not set it up during an emergency.
 
 ## Optional large downloads (not in repo)
 
@@ -155,7 +133,7 @@ See [docs/acid-v2-parity.md](docs/acid-v2-parity.md) for the parity matrix again
 | Topo maps | ~66 GB | 1,729 USGS GeoPDF maps for CA/OR/WA |
 | Street maps | ~2 GB | OpenStreetMap for west coast states |
 | Video tutorials | ~1.7 GB | Baofeng radio, solar power, knot tying |
-| AI model | ~263 GB | Kimi K2.5 (or Ollama for lighter models) |
+| AI models | 9 GB – 131 GB | Gemma 4 (all four), or Ollama for tiny models |
 
 ## Key surfaces
 
@@ -170,6 +148,7 @@ See [docs/acid-v2-parity.md](docs/acid-v2-parity.md) for the parity matrix again
 
 Helper scripts (in `tools-scripts/`):
 
+- `build-envelope.sh` — **the one thing**: generates the print-once manila envelope (11 files, one PDF if pandoc is installed)
 - `print-cards.sh` — bundle every emergency card into a printable bundle; PDF when pandoc is installed
 - `household-setup.sh` — blank private templates; `--quick` / `--full --summons` ask more
 - `get-squared-away.sh` — report what is set up and what is missing
@@ -177,6 +156,7 @@ Helper scripts (in `tools-scripts/`):
 - `launch-wikipedia.sh` — open Kiwix with local ZIM files
 - `launch-maps.sh` — open maps
 - `serve-local-network.sh` — share this repo to a household LAN
+- `setup-gemma4.sh` — optional local AI: download + build + test Gemma 4 (E2B default; `--all` for all four)
 
 ## License
 
