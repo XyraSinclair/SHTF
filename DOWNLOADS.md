@@ -2,6 +2,31 @@
 
 These files are too large for GitHub but are freely available. You'll need **Kiwix** to view ZIM files (download from [kiwix.org](https://kiwix.org)).
 
+## Budget First
+
+Before downloading anything in this file, understand the difference between the base repo and the optional giant extras.
+
+As of **April 23, 2026**:
+
+- base tracked checkout from GitHub: about **1.1 GB**
+- typical local `git clone` + checkout: about **1.8-2.0 GB**
+- current fully loaded maintainer tree with optional downloads and models: about **974 GB**
+
+Fast budgeting:
+
+| What you add | Rough extra disk |
+|---|---:|
+| Wikipedia / Kiwix bundle | ~136 GB |
+| Stack Exchange / reference bundle | ~85 GB |
+| Current local map payload | ~69 GB |
+| Raw HF `Qwen3.6-27B` | ~52-56 GB |
+| Current Ollama `qwen3.6` path | ~17-31 GB |
+| Gemma 4 `E2B` retained locally | ~23 GB |
+| All four Gemma 4 retained locally | ~303 GB |
+| `kimi-k2.5/` local checkout | ~263 GB |
+
+Full breakdown: [`docs/storage-footprint.md`](docs/storage-footprint.md)
+
 ## Wikipedia & Encyclopedias (~136 GB)
 
 Download ZIM files from [library.kiwix.org](https://library.kiwix.org/) and place them in `wikipedia/`:
@@ -110,7 +135,7 @@ ollama ps
 
 ## Local AI: Qwen3.6-27B priority raw cache
 
-Qwen3.6-27B is the first high-capability model to cache for SHTF use while the internet is available. It is a public Apache-2.0 Hugging Face checkpoint, about 56 GB in HF format.
+Qwen3.6-27B is the first high-capability model to cache for SHTF use while the internet is available. It is a public Apache-2.0 Hugging Face checkpoint, roughly 52-56 GB on disk.
 
 ```bash
 ./tools-scripts/download-qwen36-27b.py
@@ -145,6 +170,8 @@ Replace the model id with the Apple Silicon tag the chooser recommended if neede
 
 Gemma 4 is the validated repo-local runtime path in this repo. Four instruction-tuned models, from a laptop-friendly 2B up through 31B, all runnable locally via llama.cpp.
 
+Important: the real disk budget is not just the checkpoint download. The current workflow keeps both the source checkpoint and the converted GGUF output.
+
 One command to go from nothing to a working model:
 
 ```bash
@@ -157,12 +184,14 @@ That script runs, in order: download from Hugging Face → build llama.cpp → c
 
 The four models:
 
-| Model | HF repo | Source size | When to pick it |
-|-------|---------|-------------|-----------------|
-| `E2B` | `google/gemma-4-E2B-it` | ~9 GB | Starter. Works on most laptops. |
-| `E4B` | `google/gemma-4-E4B-it` | ~14 GB | Better answers, still modest. |
-| `31B` | `google/gemma-4-31B-it` | ~55 GB | Strongest single-model path. Needs headroom. |
-| `26B-A4B` | `google/gemma-4-26B-A4B-it` | ~55 GB | MoE variant; ~4B active params per token. |
+| Model | HF repo | Source | BF16 GGUF retained | Rough retained total |
+|-------|---------|-------:|-------------------:|---------------------:|
+| `E2B` | `google/gemma-4-E2B-it` | ~9.6 GB | ~13 GB | ~23 GB |
+| `E4B` | `google/gemma-4-E4B-it` | ~15 GB | ~20 GB | ~35 GB |
+| `31B` | `google/gemma-4-31B-it` | ~58 GB | ~76 GB | ~134 GB |
+| `26B-A4B` | `google/gemma-4-26B-A4B-it` | ~48 GB | ~64 GB | ~112 GB |
+
+If you retain all four current source checkpoints and BF16 GGUF outputs, budget about **303 GB** total before extra quantizations.
 
 After setup, use any model:
 

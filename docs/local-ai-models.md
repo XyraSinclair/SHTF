@@ -2,6 +2,8 @@
 
 Start with the chooser, not with blind downloading.
 
+Before you start, read the repo-wide storage reality here: [storage-footprint.md](storage-footprint.md)
+
 ## TL;DR
 
 ```bash
@@ -130,6 +132,8 @@ This is the "cache it while online" path, not the lowest-friction day-to-day run
 
 Gemma 4 stays in the repo because it is the self-contained local runtime lane here. This is the right answer when you want less provider drift or the chooser decides a 27B Qwen lane is too optimistic for the machine.
 
+Be careful with the disk math: the retained footprint is much larger than the raw checkpoint download because the workflow keeps both source checkpoints and converted GGUF output.
+
 ```bash
 ./tools-scripts/setup-gemma4.sh         # E2B starter
 ./tools-scripts/setup-gemma4.sh --all   # all four models
@@ -144,10 +148,14 @@ Then run one:
 
 The four models:
 
-- `gemma-4-E2B-it` — ~9 GB source. Starter.
-- `gemma-4-E4B-it` — ~14 GB source. Better answers.
-- `gemma-4-31B-it` — ~55 GB source. Strongest single model.
-- `gemma-4-26B-A4B-it` — ~55 GB source. MoE variant.
+| Model | Source | BF16 GGUF retained | Rough retained total |
+|---|---:|---:|---:|
+| `gemma-4-E2B-it` | ~9.6 GB | ~13 GB | ~23 GB |
+| `gemma-4-E4B-it` | ~15 GB | ~20 GB | ~35 GB |
+| `gemma-4-31B-it` | ~58 GB | ~76 GB | ~134 GB |
+| `gemma-4-26B-A4B-it` | ~48 GB | ~64 GB | ~112 GB |
+
+If you keep all four current source checkpoints and BF16 GGUF outputs, budget about **303 GB** retained before extra quantizations.
 
 All four pass llama.cpp text smoke tests in BF16 and `Q4_K_M`, and pass multimodal image smoke tests in `Q4_K_M`. See [`gemma4-llamacpp.md`](gemma4-llamacpp.md) for the validated state and manual workflow.
 
@@ -163,6 +171,12 @@ ollama run qwen2.5-coder:3b
 ```
 
 Useful for short shell/code help. Do not confuse this with a strong agentic coding setup.
+
+## Qwen storage reality
+
+- Ollama `qwen3.6` path: roughly **17-31 GB** depending on the chosen tag
+- Raw HF `Qwen3.6-27B` cache: roughly **52-56 GB**
+- `Q4_K_M` Gemma quants are extra copies, not replacements, unless you delete the BF16 outputs yourself
 
 ## Running a Gemma 4 model after setup
 

@@ -117,6 +117,12 @@ log "- an offline survival/reference library"
 log "- optional local-AI lanes: Ollama + current Qwen, or validated Gemma 4 + llama.cpp"
 log "- a laptop/Kindle/household resource library, not a personalized plan"
 log ""
+log "Storage reality for a downloader:"
+log "- base tracked checkout from GitHub is about 1.1 GB at this revision"
+log "- a local git clone usually lands around 1.8-2.0 GB on disk"
+log "- the fully loaded maintainer tree can exceed 900 GB once optional refs and models are present"
+log "- read docs/storage-footprint.md before pulling giant extras"
+log ""
 log "Canonical orientation path in this repo:"
 log "1. ./tools-scripts/build-envelope.sh     (the manila envelope — the one thing)"
 log "2. START-HERE.md                         (three doors: emergency / tonight / full kit)"
@@ -125,6 +131,7 @@ log "4. playbooks/README.md                   (playbook index)"
 log "5. FIELD-INDEX.md                        (file-level map)"
 log "6. USAGE.md                              (resource use by problem)"
 log "7. DOWNLOADS.md                          (optional large downloads)"
+log "8. docs/storage-footprint.md             (what the repo itself costs versus giant extras)"
 log ""
 log "Playbooks (what to DO):"
 log "- playbooks/tier-1-setup/00-first-weekend.md   # one-weekend foundation"
@@ -278,6 +285,7 @@ if [[ $JSON_MODE -eq 1 ]]; then
   export FIELD_INDEX_PRESENT="$(path_status "$ROOT/FIELD-INDEX.md")"
   export USAGE_PRESENT="$(path_status "$ROOT/USAGE.md")"
   export DOWNLOADS_PRESENT="$(path_status "$ROOT/DOWNLOADS.md")"
+  export STORAGE_FOOTPRINT_PRESENT="$(path_status "$ROOT/docs/storage-footprint.md")"
   export AGENTS_PRESENT="$(path_status "$ROOT/AGENTS.md")"
   export PLAYBOOKS_README_PRESENT="$(path_status "$ROOT/playbooks/README.md")"
   export PLAYBOOKS_TIER1_PRESENT="$(path_status "$ROOT/playbooks/tier-1-setup/00-first-weekend.md")"
@@ -351,6 +359,7 @@ payload = {
         "FIELD-INDEX.md",
         "USAGE.md",
         "DOWNLOADS.md",
+        "docs/storage-footprint.md",
         "./tools-scripts/print-cards.sh",
         "./tools-scripts/household-setup.sh",
     ],
@@ -388,6 +397,7 @@ payload = {
             "field_index": as_bool("FIELD_INDEX_PRESENT"),
             "usage": as_bool("USAGE_PRESENT"),
             "downloads": as_bool("DOWNLOADS_PRESENT"),
+            "storage_footprint": as_bool("STORAGE_FOOTPRINT_PRESENT"),
             "agents": as_bool("AGENTS_PRESENT"),
             "playbooks_readme": as_bool("PLAYBOOKS_README_PRESENT"),
             "playbooks_tier1_first_weekend": as_bool("PLAYBOOKS_TIER1_PRESENT"),
@@ -432,6 +442,7 @@ payload = {
             "less FIELD-INDEX.md",
             "less USAGE.md",
             "less DOWNLOADS.md",
+            "less docs/storage-footprint.md",
             "./tools-scripts/household-setup.sh",
             "./tools-scripts/print-cards.sh",
         ],

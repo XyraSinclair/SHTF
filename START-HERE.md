@@ -51,6 +51,8 @@ If you cannot run a shell script, just open [`playbooks/cards/tonight.md`](playb
 
 One weekend of real work, then ongoing.
 
+Storage reality before you start downloading extras: the base repo is about **1.1 GB** of tracked files, but a fully loaded machine with optional maps, Wikipedia, reference bundles, and local models can exceed **900 GB**. Read [docs/storage-footprint.md](docs/storage-footprint.md) before pulling giant add-ons.
+
 1. Read [`playbooks/tier-1-setup/00-first-weekend.md`](playbooks/tier-1-setup/00-first-weekend.md) — the canonical first weekend.
 2. Before buying gear, read [`cards/what-kills.md`](playbooks/cards/what-kills.md) and [`cards/when-not-to.md`](playbooks/cards/when-not-to.md). They change what you buy.
 3. If any of these describe your household, read the matching card first:
@@ -85,6 +87,7 @@ Once the envelope is printed and the weekend is done, the rest of the repo is a 
 - [FIELD-INDEX.md](FIELD-INDEX.md) — file-level index
 - [USAGE.md](USAGE.md) — scenario-based library usage
 - [DOWNLOADS.md](DOWNLOADS.md) — optional large downloads (Wikipedia, maps, AI models)
+- [docs/storage-footprint.md](docs/storage-footprint.md) — what the repo itself costs versus the giant optional extras
 - [docs/local-ai-models.md](docs/local-ai-models.md) — local AI chooser, current Qwen/Ollama path, Gemma 4 fallback, raw Qwen cache
 
 ### Scripts

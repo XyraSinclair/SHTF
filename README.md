@@ -22,6 +22,32 @@ The playbooks give conservative defaults and point to sources. Change them for y
 
 ---
 
+## Storage Reality
+
+This repo can mean very different things on disk depending on how far you go.
+
+As of **April 23, 2026**:
+
+- fresh tracked checkout from GitHub: about **1.1 GB**
+- typical local `git clone` + checkout: about **1.8-2.0 GB** on disk
+- current fully loaded maintainer tree with optional downloads and local models already present: about **974 GB**
+
+You do **not** need 974 GB to use SHTF. That number is a fully loaded machine with optional Wikipedia, reference bundles, maps, and multiple model stacks already cached.
+
+Short version:
+
+| If you want... | Budget for... |
+|---|---:|
+| Base repo only | ~1.1 GB ZIP / ~1.8-2.0 GB Git clone |
+| Base repo + one current Ollama Qwen path | ~20-33 GB total |
+| Base repo + raw HF Qwen cache | ~54-58 GB total |
+| Base repo + Gemma 4 E2B retained locally | ~25 GB total |
+| Base repo + giant offline refs + models | hundreds of GB |
+
+Detailed breakdown: [docs/storage-footprint.md](docs/storage-footprint.md)
+
+---
+
 ## What's in the repo
 
 Two halves:
@@ -134,7 +160,7 @@ See [docs/acid-v2-parity.md](docs/acid-v2-parity.md) for the parity matrix again
 | Topo maps | ~66 GB | 1,729 USGS GeoPDF maps for CA/OR/WA |
 | Street maps | ~2 GB | OpenStreetMap for west coast states |
 | Video tutorials | ~1.7 GB | Baofeng radio, solar power, knot tying |
-| AI models | 17 GB – 31 GB current Ollama Qwen; 56 GB raw cache; 9 GB – 131 GB Gemma path | Run the chooser first, then use current Qwen in Ollama or Gemma 4 in llama.cpp |
+| AI models | 17 GB – 31 GB current Ollama Qwen; 52 GB – 56 GB raw cache; ~23 GB – 303 GB retained Gemma path | Run the chooser first, then use current Qwen in Ollama or Gemma 4 in llama.cpp |
 
 ## Key surfaces
 
