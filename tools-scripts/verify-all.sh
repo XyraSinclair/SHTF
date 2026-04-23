@@ -267,6 +267,20 @@ if [ "$MODE" = "full" ]; then
     fi
 
     echo ""
+    echo "--- QWEN3.6-27B ---"
+    QWEN_DIR="$SHTF_DIR/models/Qwen3.6-27B"
+    check_file "$QWEN_DIR/config.json" 4000 "Qwen3.6-27B config"
+    check_file "$QWEN_DIR/chat_template.jinja" 7000 "Qwen3.6-27B chat template"
+    check_file "$QWEN_DIR/model.safetensors.index.json" 100000 "Qwen3.6-27B safetensors index"
+    QWEN_SHARDS=$(ls "$QWEN_DIR"/model-*.safetensors 2>/dev/null | wc -l | tr -d ' ')
+    if [ "$QWEN_SHARDS" -eq 15 ]; then
+        echo -e "  ${GREEN}OK${NC}: Qwen3.6-27B safetensor shards (15/15)"
+    else
+        echo -e "  ${YELLOW}PARTIAL${NC}: Qwen3.6-27B safetensor shards ($QWEN_SHARDS/15)"
+        ((warnings++))
+    fi
+
+    echo ""
     echo "--- GEMMA 4 ---"
     check_file "$SHTF_DIR/models/gemma-4/gemma-4-E2B-it/model.safetensors" 9000000000 "Gemma 4 E2B source checkpoint"
     check_file "$SHTF_DIR/models/gemma-4/gemma-4-E4B-it/model.safetensors" 14000000000 "Gemma 4 E4B source checkpoint"

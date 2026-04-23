@@ -86,9 +86,64 @@ wget -P pdfs/ -i ../west_coast_topos_priority.txt
 
 These are GeoPDF files showing elevation contours, trails, water features, and terrain. Open with any PDF viewer.
 
-## Local AI: Gemma 4 (recommended)
+## Local AI: choose first, then pull
 
-Gemma 4 is the primary offline-AI path in this repo. Four instruction-tuned models, from a laptop-friendly 2B up through 31B, all runnable locally via llama.cpp.
+Before downloading a model, run:
+
+```bash
+./tools-scripts/choose-local-model.sh
+```
+
+That gives a recommendation from this machine's platform, RAM, and free disk. The default day-to-day path is now:
+
+- Apple Silicon with headroom: Ollama + `Qwen3.6` coding variant
+- Non-Mac / Intel Mac with headroom: Ollama + `qwen3.6:27b`
+- Smaller or more conservative hardware: self-contained `Gemma 4` through the repo scripts
+
+OpenCode and Hermes both work better when Ollama gets a real context window. See `docs/local-ai-models.md` for the platform-specific one-time setup. After that, verify it with:
+
+```bash
+ollama ps
+```
+
+`ollama ps` lets you verify the loaded split and context length.
+
+## Local AI: Qwen3.6-27B priority raw cache
+
+Qwen3.6-27B is the first high-capability model to cache for SHTF use while the internet is available. It is a public Apache-2.0 Hugging Face checkpoint, about 56 GB in HF format.
+
+```bash
+./tools-scripts/download-qwen36-27b.py
+```
+
+The script downloads to `models/Qwen3.6-27B/`, verifies the expected core files and 15 safetensor shards, and is safe to interrupt and rerun. Serving is hardware-dependent; see [`docs/qwen36-27b.md`](docs/qwen36-27b.md).
+
+## Local AI: current Ollama path
+
+If you want the least-friction current local model path, use Ollama:
+
+```bash
+# Apple Silicon defaults
+ollama pull qwen3.6:27b-coding-nvfp4
+# or, bigger/fancier Apple Silicon option
+ollama pull qwen3.6:27b-coding-mxfp8
+
+# Cross-platform default
+ollama pull qwen3.6:27b
+```
+
+Use the chooser to decide which one is sane for the machine in front of you.
+If you also want OpenCode in this repo to default to the same pulled model, run:
+
+```bash
+python3 ./tools-scripts/set-opencode-model.py shtf-ollama/qwen3.6-27b
+```
+
+Replace the model id with the Apple Silicon tag the chooser recommended if needed.
+
+## Local AI: Gemma 4 validated fallback
+
+Gemma 4 is the validated repo-local runtime path in this repo. Four instruction-tuned models, from a laptop-friendly 2B up through 31B, all runnable locally via llama.cpp.
 
 One command to go from nothing to a working model:
 
@@ -119,20 +174,17 @@ After setup, use any model:
 
 Details and manual workflow: [`docs/local-ai-models.md`](docs/local-ai-models.md) and [`docs/gemma4-llamacpp.md`](docs/gemma4-llamacpp.md).
 
-### Smaller, simpler: Ollama
+### Smaller, simpler: tiny Ollama fallback
 
-If you don't need the full Gemma 4 ladder, Ollama is a two-minute setup:
+If the machine is too small for the main Qwen or Gemma paths:
 
 ```bash
-brew install ollama
-ollama pull llama3.2:3b       # ~2 GB - general purpose
-ollama pull phi4-mini         # ~2.5 GB - reasoning
 ollama pull qwen2.5-coder:3b  # ~2 GB - code help
 ```
 
 ### Heavyweight optional: Kimi K2.5 (~263 GB)
 
-Only if you have the disk, RAM, and a specific reason. Most people should stop at Gemma 4 31B.
+Only if you have the disk, RAM, and a specific reason. Most people should cache Qwen3.6-27B, then use Gemma 4 for the validated llama.cpp path.
 
 ```bash
 brew install git-lfs && git lfs install

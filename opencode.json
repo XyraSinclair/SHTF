@@ -1,0 +1,63 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "provider": {
+    "shtf-ollama": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "SHTF Ollama",
+      "options": {
+        "baseURL": "http://127.0.0.1:11434/v1",
+        "apiKey": "ollama",
+        "timeout": 900000,
+        "chunkTimeout": 180000
+      },
+      "models": {
+        "qwen3.6-27b": {
+          "name": "qwen3.6:27b",
+          "limit": {
+            "context": 65536,
+            "output": 2048
+          }
+        },
+        "qwen3.6-27b-coding-nvfp4": {
+          "name": "qwen3.6:27b-coding-nvfp4",
+          "limit": {
+            "context": 65536,
+            "output": 2048
+          }
+        },
+        "qwen3.6-27b-coding-mxfp8": {
+          "name": "qwen3.6:27b-coding-mxfp8",
+          "limit": {
+            "context": 65536,
+            "output": 2048
+          }
+        }
+      }
+    },
+    "shtf-vllm": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "SHTF Local vLLM",
+      "options": {
+        "baseURL": "http://127.0.0.1:8000/v1",
+        "apiKey": "local-not-used",
+        "timeout": 900000,
+        "chunkTimeout": 180000
+      },
+      "models": {
+        "qwen3.6-27b-shtf": {
+          "name": "Qwen3.6-27B (local vLLM)",
+          "limit": {
+            "context": 32768,
+            "output": 1024
+          }
+        }
+      }
+    }
+  },
+  "enabled_providers": [
+    "shtf-ollama",
+    "shtf-vllm"
+  ],
+  "model": "shtf-ollama/qwen3.6-27b",
+  "small_model": "shtf-ollama/qwen3.6-27b"
+}

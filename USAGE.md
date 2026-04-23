@@ -87,31 +87,19 @@ All ZIM files use Kiwix: Wikipedia, Wikibooks, Stack Exchange sites, DevDocs, an
 
 ## Local AI Assistant
 
-### Recommended path: Gemma 4 with one command
+Start here:
 
 ```bash
-./tools-scripts/setup-gemma4.sh            # E2B only — the safe starter (~9 GB)
-./tools-scripts/setup-gemma4.sh --all      # all four Gemma 4 models
-./tools-scripts/run-gemma4-llamacpp.sh E2B
+./tools-scripts/choose-local-model.sh
 ```
 
-`setup-gemma4.sh` downloads from Hugging Face, builds llama.cpp, converts to GGUF, and runs a smoke test. Re-runnable; completed steps are skipped. Works completely offline after setup.
+That script looks at platform, RAM, and free disk, then gives the least-bad local-model answer for the machine in front of you. On capable Apple Silicon Macs it steers toward current `Qwen3.6` models in Ollama. On smaller or more conservative setups it steers toward the validated `Gemma 4` repo-local path.
+
+Treat the chooser as the real entry point. It decides whether this machine should use the current Ollama + `Qwen3.6` lane, the self-contained `Gemma 4` repo-local path, or only a small emergency fallback.
 
 Use it for summaries, rough planning estimates, how-to help, and navigation through the local library. Verify arithmetic yourself or with a calculator. Do not treat any local model as a medical authority; use the medical sources and clinicians when available.
 
-For the four-model ladder (E2B → E4B → 31B → 26B-A4B), hardware guidance, multimodal image mode, and manual/server examples, read `docs/local-ai-models.md` and `docs/gemma4-llamacpp.md`.
-
-### Smaller fallback: Ollama
-
-If you don't need the full Gemma 4 ladder:
-
-```bash
-brew install ollama
-ollama pull llama3.2:3b          # ~2 GB - general purpose
-ollama pull phi4-mini            # ~2.5 GB - reasoning
-ollama pull qwen2.5-coder:3b     # ~2 GB - code help
-ollama run llama3.2:3b
-```
+For detailed manual paths, Qwen serving notes, the Gemma four-model ladder (E2B -> E4B -> 31B -> 26B-A4B), and platform-specific Ollama context setup, read `docs/local-ai-models.md`, `docs/qwen36-27b.md`, and `docs/gemma4-llamacpp.md`.
 
 ## Maps (requires download)
 

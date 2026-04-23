@@ -12,6 +12,8 @@ VERIFY_RC=""
 AUDIT_RC=""
 INVENTORY_RC=""
 LLAMA_SMOKE_RC="skipped"
+MODEL_CHOOSER_RC="skipped"
+MODEL_CHOOSER_JSON_PATH=""
 
 usage() {
   cat <<'EOF'
@@ -112,7 +114,7 @@ log "This writes local report files only; it does not phone home."
 log ""
 log "What this repo is:"
 log "- an offline survival/reference library"
-log "- an optional local-AI path with Gemma 4 and llama.cpp workflows"
+log "- optional local-AI lanes: Ollama + current Qwen, or validated Gemma 4 + llama.cpp"
 log "- a laptop/Kindle/household resource library, not a personalized plan"
 log ""
 log "Canonical orientation path in this repo:"
@@ -203,6 +205,19 @@ if [[ $RUN_LLAMA_SMOKE -eq 1 ]]; then
   fi
 fi
 
+if [[ -x "$ROOT/tools-scripts/choose-local-model.sh" ]]; then
+  if run_logged "Local AI model chooser" "$ROOT/tools-scripts/choose-local-model.sh"; then
+    MODEL_CHOOSER_RC=0
+  else
+    MODEL_CHOOSER_RC=$?
+  fi
+else
+  log ""
+  log "### Local AI model chooser"
+  log "Skipped: tools-scripts/choose-local-model.sh missing or not executable"
+  MODEL_CHOOSER_RC="skipped"
+fi
+
 log ""
 log "Next commands by goal:"
 log ""
@@ -226,9 +241,13 @@ log "  open survival-guides/Emergency_Water_Purification_Guide.pdf"
 log "  ./tools-scripts/launch-wikipedia.sh"
 log "  ./tools-scripts/launch-maps.sh"
 log ""
-log "If you want local AI (Gemma 4):"
-log "  ./tools-scripts/setup-gemma4.sh         # download + build + convert + test, E2B"
-log "  ./tools-scripts/setup-gemma4.sh --all   # all four models"
+log "If you want local AI:"
+log "  ./tools-scripts/choose-local-model.sh # pick a sane local model from this machine"
+log "  less docs/local-ai-models.md            # one-time Ollama context setup and manual paths"
+log "  python3 ./tools-scripts/set-opencode-model.py shtf-ollama/qwen3.6-27b"
+log "  ./tools-scripts/download-qwen36-27b.py  # advanced: raw high-capability cache"
+log "  ./tools-scripts/setup-gemma4.sh         # advanced: self-contained repo-local fallback"
+log "  ./tools-scripts/setup-gemma4.sh --all   # advanced: all four Gemma 4 models"
 log "  ./tools-scripts/run-gemma4-llamacpp.sh --list"
 log "  ./tools-scripts/run-gemma4-llamacpp.sh E2B"
 log ""
@@ -239,7 +258,9 @@ log "What an AI agent should understand before doing more work here:"
 log "- core life-support docs matter more than ornamental repo cleanup"
 log "- survival defaults must stay easy to adapt for real households"
 log "- verify what is actually present instead of assuming large downloads exist"
-log "- Gemma 4 in llama.cpp is available here as an optional local path"
+log "- for local AI, choose the model before downloading it"
+log "- Qwen3.6-27B is the priority capable checkpoint to cache while online"
+log "- Ollama + current Qwen is the easiest current path; Gemma 4 is the validated repo-local path"
 log "- BF16 is the canonical conversion artifact; Q4_K_M is the fast daily-driver path"
 log "- the fastest honest onboarding command is this script, not random file browsing"
 log ""
@@ -252,7 +273,7 @@ if [[ $JSON_MODE -eq 1 ]]; then
     exit 1
   fi
 
-  export ROOT VERIFY_MODE REPORT_PATH JSON_PATH RUN_LLAMA_SMOKE VERIFY_RC AUDIT_RC INVENTORY_RC LLAMA_SMOKE_RC
+  export ROOT VERIFY_MODE REPORT_PATH JSON_PATH RUN_LLAMA_SMOKE VERIFY_RC AUDIT_RC INVENTORY_RC LLAMA_SMOKE_RC MODEL_CHOOSER_RC MODEL_CHOOSER_JSON_PATH
   export START_HERE_PRESENT="$(path_status "$ROOT/START-HERE.md")"
   export FIELD_INDEX_PRESENT="$(path_status "$ROOT/FIELD-INDEX.md")"
   export USAGE_PRESENT="$(path_status "$ROOT/USAGE.md")"
@@ -266,6 +287,9 @@ if [[ $JSON_MODE -eq 1 ]]; then
   export HOUSEHOLD_SETUP_PRESENT="$(path_status "$ROOT/tools-scripts/household-setup.sh")"
   export PRINT_CARDS_PRESENT="$(path_status "$ROOT/tools-scripts/print-cards.sh")"
   export VERIFY_SCRIPT_PRESENT="$(path_status "$ROOT/tools-scripts/verify-all.sh")"
+  export MODEL_CHOOSER_PRESENT="$(path_status "$ROOT/tools-scripts/choose-local-model.sh")"
+  export QWEN_DOWNLOAD_PRESENT="$(path_status "$ROOT/tools-scripts/download-qwen36-27b.py")"
+  export QWEN_MODEL_PRESENT="$(path_status "$ROOT/models/Qwen3.6-27B/model.safetensors.index.json")"
   export GEMMA_AUDIT_PRESENT="$(path_status "$ROOT/tools-scripts/audit-gemma4-artifacts.py")"
   export GEMMA_RUNNER_PRESENT="$(path_status "$ROOT/tools-scripts/run-gemma4-llamacpp.sh")"
   export GEMMA_TEST_PRESENT="$(path_status "$ROOT/tools-scripts/test-gemma4-llamacpp.py")"
@@ -282,6 +306,18 @@ if [[ $JSON_MODE -eq 1 ]]; then
   export GEMMA_E4B_Q4_PRESENT="$(path_status "$ROOT/models/gemma-4-gguf/gemma-4-E4B-it/gemma-4-E4B-it-Q4_K_M.gguf")"
   export GEMMA_31B_Q4_PRESENT="$(path_status "$ROOT/models/gemma-4-gguf/gemma-4-31B-it/gemma-4-31B-it-Q4_K_M.gguf")"
   export GEMMA_26B_Q4_PRESENT="$(path_status "$ROOT/models/gemma-4-gguf/gemma-4-26B-A4B-it/gemma-4-26B-A4B-it-Q4_K_M.gguf")"
+
+  MODEL_CHOOSER_JSON_PATH="$(mktemp "${TMPDIR:-/tmp}/shtf-local-model-choice.XXXXXX.json")"
+  if [[ -x "$ROOT/tools-scripts/choose-local-model.sh" ]]; then
+    if "$ROOT/tools-scripts/choose-local-model.sh" --json >"$MODEL_CHOOSER_JSON_PATH"; then
+      export MODEL_CHOOSER_JSON_PRESENT=true
+    else
+      rm -f "$MODEL_CHOOSER_JSON_PATH"
+      export MODEL_CHOOSER_JSON_PRESENT=false
+    fi
+  else
+    export MODEL_CHOOSER_JSON_PRESENT=false
+  fi
 
   python3 - <<'PY'
 import json
@@ -307,6 +343,7 @@ payload = {
         "gemma_audit_exit_code": os.environ["AUDIT_RC"],
         "gguf_inventory_exit_code": os.environ["INVENTORY_RC"],
         "llama_smoke_exit_code": os.environ["LLAMA_SMOKE_RC"],
+        "local_model_chooser_exit_code": os.environ["MODEL_CHOOSER_RC"],
     },
     "orientation_path": [
         "./tools-scripts/get-squared-away.sh",
@@ -362,6 +399,8 @@ payload = {
             "verify_script": as_bool("VERIFY_SCRIPT_PRESENT"),
             "household_setup": as_bool("HOUSEHOLD_SETUP_PRESENT"),
             "print_cards": as_bool("PRINT_CARDS_PRESENT"),
+            "local_model_chooser": as_bool("MODEL_CHOOSER_PRESENT"),
+            "qwen36_downloader": as_bool("QWEN_DOWNLOAD_PRESENT"),
             "gemma_audit": as_bool("GEMMA_AUDIT_PRESENT"),
             "gemma_runner": as_bool("GEMMA_RUNNER_PRESENT"),
             "gemma_llama_test": as_bool("GEMMA_TEST_PRESENT"),
@@ -374,6 +413,7 @@ payload = {
             "power_core": as_bool("POWER_CORE_PRESENT"),
         },
         "gemma4_models": {
+            "qwen36_27b_checkpoint": as_bool("QWEN_MODEL_PRESENT"),
             "E2B_source": as_bool("GEMMA_E2B_PRESENT"),
             "E4B_source": as_bool("GEMMA_E4B_PRESENT"),
             "31B_source": as_bool("GEMMA_31B_PRESENT"),
@@ -406,6 +446,10 @@ payload = {
             "./tools-scripts/launch-maps.sh",
         ],
         "fast_local_ai": [
+            "./tools-scripts/choose-local-model.sh",
+            "less docs/local-ai-models.md",
+            "python3 ./tools-scripts/set-opencode-model.py shtf-ollama/qwen3.6-27b",
+            "./tools-scripts/download-qwen36-27b.py",
             "./tools-scripts/setup-gemma4.sh",
             "./tools-scripts/setup-gemma4.sh --all",
             "./tools-scripts/run-gemma4-llamacpp.sh --list",
@@ -419,14 +463,23 @@ payload = {
         "core life-support docs matter more than ornamental repo cleanup",
         "survival defaults must stay easy to adapt for real households",
         "verify what is actually present instead of assuming large downloads exist",
-        "Gemma 4 in llama.cpp is available here as an optional local path",
+        "for local AI, choose the model before downloading it",
+        "Qwen3.6-27B is the priority capable checkpoint to cache while online",
+        "Ollama + current Qwen is the easiest current path; Gemma 4 is the validated repo-local path",
         "BF16 is the canonical conversion artifact; Q4_K_M is the fast daily-driver path",
         "the fastest honest onboarding command is this script, not random file browsing",
     ],
 }
 
+if os.environ.get("MODEL_CHOOSER_JSON_PRESENT", "").lower() == "true":
+    chooser_path = Path(os.environ["MODEL_CHOOSER_JSON_PATH"])
+    if chooser_path.exists():
+        payload["local_model_guidance"] = json.loads(chooser_path.read_text(encoding="utf-8"))
+
 Path(os.environ["JSON_PATH"]).write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
 PY
+
+  rm -f "$MODEL_CHOOSER_JSON_PATH"
 
   log ""
   log "Machine-readable JSON summary written to:"

@@ -105,14 +105,15 @@ Original source PDFs by topic (`medical/`, `survival-guides/`, `food-water/`, `r
 
 ### Local AI (optional)
 
-When you have power but no internet, a local language model can still answer questions. One command sets it up:
+When you have power but no internet, a local language model can still answer questions. Start by asking the repo which lane fits this machine:
 
 ```bash
-./tools-scripts/setup-gemma4.sh          # Gemma 4 E2B — ~9 GB, the safe starter
-./tools-scripts/setup-gemma4.sh --all    # all four Gemma 4 models (~131 GB)
+./tools-scripts/choose-local-model.sh
 ```
 
-This downloads, builds, converts, and smoke-tests. Re-runnable; completed steps are skipped. See [docs/local-ai-models.md](docs/local-ai-models.md) for alternatives (Ollama for tiny, Kimi K2.5 for heavyweight). This is prep work, not response work — do not set it up during an emergency.
+That chooser handles the hard part: platform, RAM, free disk, Ollama storage, and the least-bad next step for this machine. On capable Apple Silicon Macs it will steer toward current `Qwen3.6` Ollama builds. On smaller or more conservative setups it will steer toward the self-contained `Gemma 4` repo-local path.
+
+Keep the manual commands as advanced options. The normal path is: run the chooser, follow its steps, then use OpenCode or Hermes from the local endpoint it sets up. Details and manual setup notes live in [docs/local-ai-models.md](docs/local-ai-models.md) and [docs/qwen36-27b.md](docs/qwen36-27b.md).
 
 ## Optional large downloads (not in repo)
 
@@ -133,7 +134,7 @@ See [docs/acid-v2-parity.md](docs/acid-v2-parity.md) for the parity matrix again
 | Topo maps | ~66 GB | 1,729 USGS GeoPDF maps for CA/OR/WA |
 | Street maps | ~2 GB | OpenStreetMap for west coast states |
 | Video tutorials | ~1.7 GB | Baofeng radio, solar power, knot tying |
-| AI models | 9 GB – 131 GB | Gemma 4 (all four), or Ollama for tiny models |
+| AI models | 17 GB – 31 GB current Ollama Qwen; 56 GB raw cache; 9 GB – 131 GB Gemma path | Run the chooser first, then use current Qwen in Ollama or Gemma 4 in llama.cpp |
 
 ## Key surfaces
 
@@ -156,6 +157,8 @@ Helper scripts (in `tools-scripts/`):
 - `launch-wikipedia.sh` — open Kiwix with local ZIM files
 - `launch-maps.sh` — open maps
 - `serve-local-network.sh` — share this repo to a household LAN
+- `choose-local-model.sh` — recommend a sane local model from RAM, disk, and platform
+- `set-opencode-model.py` — point the repo-local OpenCode config at the model you actually pulled
 - `setup-gemma4.sh` — optional local AI: download + build + test Gemma 4 (E2B default; `--all` for all four)
 
 ## License

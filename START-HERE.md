@@ -66,6 +66,14 @@ One weekend of real work, then ongoing.
    ./tools-scripts/verify-all.sh --essential
    ```
 
+   If you want local AI, do not guess from memory. Run:
+
+   ```bash
+   ./tools-scripts/choose-local-model.sh
+   ```
+
+   It prints the exact next steps for this machine. If the Ollama path feels too heavy or too fussy, the self-contained fallback is `Gemma 4 E2B` via `./tools-scripts/setup-gemma4.sh E2B`.
+
 ---
 
 ## Deeper when you want it
@@ -77,7 +85,7 @@ Once the envelope is printed and the weekend is done, the rest of the repo is a 
 - [FIELD-INDEX.md](FIELD-INDEX.md) — file-level index
 - [USAGE.md](USAGE.md) — scenario-based library usage
 - [DOWNLOADS.md](DOWNLOADS.md) — optional large downloads (Wikipedia, maps, AI models)
-- [docs/local-ai-models.md](docs/local-ai-models.md) — local AI setup (Gemma 4, Ollama)
+- [docs/local-ai-models.md](docs/local-ai-models.md) — local AI chooser, current Qwen/Ollama path, Gemma 4 fallback, raw Qwen cache
 
 ### Scripts
 
@@ -92,6 +100,9 @@ Once the envelope is printed and the weekend is done, the rest of the repo is a 
 | `./tools-scripts/launch-wikipedia.sh` | Open Kiwix (offline reference) |
 | `./tools-scripts/launch-maps.sh` | Open offline maps |
 | `./tools-scripts/serve-local-network.sh` | Serve ZIMs and files on a household LAN |
+| `./tools-scripts/choose-local-model.sh` | Recommend a local model from RAM, free disk, and platform |
+| `python3 ./tools-scripts/set-opencode-model.py ...` | Point the repo-local OpenCode config at the model you actually pulled |
+| `./tools-scripts/download-qwen36-27b.py` | Priority high-capability local model cache |
 | `./tools-scripts/setup-gemma4.sh` | Optional local AI (Gemma 4, E2B default; `--all` for all four) |
 
 ## A note on defaults
