@@ -50,9 +50,7 @@ DEDUP_RULES = {
 
 # Image-heavy PDFs (keep as PDF, don't try to convert)
 IMAGE_HEAVY = {
-    "Small_Engine_Service_Repair.pdf",
     "Washington_State_Foraging_Guide.pdf",
-    "FM21-76_Survival_TruePrepper.pdf",
     "Baofeng_UV-5R_Overview_K4MSU.pdf",
 }
 

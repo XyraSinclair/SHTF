@@ -2,6 +2,8 @@
 
 An offline household continuity kit. Run one command, get a manila envelope you can print and put in a drawer. Behind it, a library of playbooks, PDFs, offline Wikipedia, maps, and optional local AI — for when the internet is gone or you just want a serious reference cabinet.
 
+Defaults are tuned for the US West Coast (Cascadia earthquake scenario, CA/OR/WA topo map lists, West Coast NOAA weather frequencies). Everything else is region-neutral — to relocate the kit, swap in your region's maps per [DOWNLOADS.md](DOWNLOADS.md) and your local NOAA/emergency frequencies in `radio/` and [playbooks/cards/radio-frequencies.md](playbooks/cards/radio-frequencies.md).
+
 ## The one thing
 
 ```bash
@@ -26,11 +28,11 @@ The playbooks give conservative defaults and point to sources. Change them for y
 
 This repo can mean very different things on disk depending on how far you go.
 
-As of **April 23, 2026**:
+As of **September 2, 2026**:
 
-- fresh tracked checkout from GitHub: about **1.1 GB**
-- typical local `git clone` + checkout: about **1.8-2.0 GB** on disk
-- current fully loaded maintainer tree with optional downloads and local models already present: about **974 GB**
+- fresh tracked checkout from GitHub: about **0.9 GB**
+- typical local `git clone` + checkout: about **1.6-1.8 GB** on disk
+- fully loaded maintainer tree with optional downloads and local models already present: about **974 GB** (measured April 23, 2026)
 
 You do **not** need 974 GB to use SHTF. That number is a fully loaded machine with optional Wikipedia, reference bundles, maps, and multiple model stacks already cached.
 
@@ -38,7 +40,7 @@ Short version:
 
 | If you want... | Budget for... |
 |---|---:|
-| Base repo only | ~1.1 GB ZIP / ~1.8-2.0 GB Git clone |
+| Base repo only | ~0.9 GB ZIP / ~1.6-1.8 GB Git clone |
 | Base repo + one current Ollama Qwen path | ~20-33 GB total |
 | Base repo + raw HF Qwen cache | ~54-58 GB total |
 | Base repo + Gemma 4 E2B retained locally | ~25 GB total |
@@ -53,7 +55,7 @@ Detailed breakdown: [docs/storage-footprint.md](docs/storage-footprint.md)
 Two halves:
 
 1. **[Playbooks](playbooks/)** — short checklists and cards for when a full manual is too much.
-2. **Library** — the authoritative references the playbooks point into. 144 Kindle-ready books plus source PDFs, offline Wikipedia, topo maps.
+2. **Library** — the authoritative references the playbooks point into. 135 Kindle-ready books plus source PDFs, offline Wikipedia, topo maps.
 
 Everything is sourced from US government publications (public domain), WHO/UN freely distributed guides, Peace Corps manuals, Project Gutenberg, and FEMA / CDC / NOAA / FCC guidance.
 
@@ -105,20 +107,20 @@ The rest: summons · first aid · stop the bleed · water purification · psycho
 
 ## 2. Library — what to LOOK UP
 
-### Kindle-ready (144 books, drag-and-drop)
+### Kindle-ready (135 books, drag-and-drop)
 
 `kindle-ready/` is flattened so you can drop it straight onto a Kindle via USB. Files are category-prefixed so they sort together on the device.
 
 | # | Category | Count | Highlights |
 |---|----------|-------|------------|
 | 01 | **Medical** | 10 | *Where There Is No Doctor/Dentist*, WHO surgical guide, psychological first aid, essential medicines |
-| 02 | **Survival** | 42 | US Army field manuals (survival, marksmanship, urban ops, cold weather, mountain), FEMA, nuclear survival, knots, trapping |
-| 03 | **Food & Water** | 38 | Gardening, seed saving, beekeeping, canning, foraging, fishing, butchering, sausage, distillation, brewing, water purification |
+| 02 | **Survival** | 41 | US Army field manuals (survival, marksmanship, urban ops, cold weather, mountain), FEMA, nuclear survival, knots, trapping |
+| 03 | **Food & Water** | 35 | Gardening, seed saving, beekeeping, canning, foraging, fishing, butchering, sausage, distillation, brewing, water purification |
 | 04 | **Herbal Medicine** | 5 | Culpeper's, WHO medicinal plant monographs |
-| 05 | **Radio & Comms** | 11 | Baofeng UV-5R programming, ARRL emergency comms, CHIRP |
+| 05 | **Radio & Comms** | 9 | Baofeng UV-5R programming, ARRL ARES field resources, CHIRP |
 | 06 | **Power & Solar** | 4 | Off-grid solar, wind, biogas, solar cookers |
 | 07 | **Sanitation** | 6 | Emergency hygiene, composting toilets, WHO WASH |
-| 08 | **Mechanical** | 9 | Engine repair, soap making, weaving, leather tanning, micro hydro |
+| 08 | **Mechanical** | 6 | Soap making, weaving, leather tanning, micro hydro, practical mechanics |
 | 09 | **Navigation & Weather** | 4 | Celestial navigation, meteorology, weather patterns |
 | 10 | **Construction** | 10 | Log cabin, brickmaking, carpentry, barn construction, FEMA safe rooms |
 | 11 | **Metalworking & Crafts** | 5 | Blacksmithing, forge work, pottery |
@@ -189,4 +191,4 @@ Helper scripts (in `tools-scripts/`):
 
 ## License
 
-Repository structure, scripts, docs, and playbooks are released under [MIT](LICENSE). The books and guides within have their own licenses — primarily US government works (public domain), WHO/UN, and Project Gutenberg. See individual files.
+Repository structure, scripts, docs, and playbooks are released under [MIT](LICENSE). The books and guides within have their own licenses — primarily US government works (public domain), WHO/UN, Hesperian, and Project Gutenberg. See [CONTENT-LICENSES.md](CONTENT-LICENSES.md).

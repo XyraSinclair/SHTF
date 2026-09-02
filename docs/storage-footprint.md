@@ -10,12 +10,12 @@ Do not confuse the fully loaded maintainer machine with what a fresh downloader 
 
 ## Short Version
 
-As of **April 23, 2026**:
+As of **September 2, 2026**:
 
-- Fresh tracked checkout from GitHub: about **1.1 GB** of working files
-- Local `.git` metadata in this clone: about **740 MB**
-- Practical budget for a normal `git clone` + checkout: about **1.8-2.0 GB**
-- Current fully loaded maintainer working tree with optional downloads and models already present: about **974 GB**
+- Fresh tracked checkout from GitHub: about **0.9 GB** of working files
+- Local `.git` metadata in this clone: about **735 MB**
+- Practical budget for a normal `git clone` + checkout: about **1.6-1.8 GB**
+- Fully loaded maintainer working tree with optional downloads and models already present: about **974 GB** (measured April 23, 2026)
 
 The base repo is not a 974 GB download. The 974 GB number is what happens after piling on Wikipedia, Stack Exchange, topo maps, multiple local model stacks, and heavyweight experiments.
 
@@ -25,17 +25,17 @@ These are part of the Git checkout itself, not optional pull-afterward extras.
 
 | Path | Rough size | Notes |
 |---|---:|---|
-| `kindle-ready/` | ~675 MB | Flattened Kindle library; biggest tracked chunk |
-| `food-water/` | ~95 MB | Source PDFs and references |
-| `survival-guides/` | ~57 MB | Core field manuals and guides |
-| `maps/` | ~55 MB | Tracked map pointers and supporting files, not the giant topo PDFs |
-| `sanitation/` | ~47 MB | Bundled references |
-| `herbal-medicine/` | ~31 MB | Bundled references |
+| `kindle-ready/` | ~620 MB | Flattened Kindle library; biggest tracked chunk |
+| `food-water/` | ~73 MB | Source PDFs and references |
+| `survival-guides/` | ~46 MB | Core field manuals and guides |
+| `maps/` | ~58 MB | Tracked map pointers and supporting files, not the giant topo PDFs |
+| `sanitation/` | ~49 MB | Bundled references |
+| `herbal-medicine/` | ~32 MB | Bundled references |
 | `medical/` | ~17 MB tracked | Core PDFs only; MDWiki is an optional extra |
-| `radio/` | ~15 MB tracked | Core PDFs only; local extras can make it much larger |
+| `radio/` | ~12 MB tracked | Core PDFs only; local extras can make it much larger |
 | `playbooks/`, `docs/`, `tools-scripts/` | tiny | Operational glue, not the storage problem |
 
-The biggest single reason the base checkout is already around 1.1 GB is the bundled `kindle-ready/` library.
+The biggest single reason the base checkout is already around 0.9 GB is the bundled `kindle-ready/` library.
 
 ## Optional Add-Ons: Real Disk Budget
 
@@ -62,8 +62,8 @@ Use this if you just want to know whether the machine is in the right ballpark.
 
 | What you want | Rough total budget |
 |---|---:|
-| Base repo only, downloaded as ZIP | ~1.1 GB |
-| Base repo only, cloned with Git | ~1.8-2.0 GB |
+| Base repo only, downloaded as ZIP | ~0.9 GB |
+| Base repo only, cloned with Git | ~1.6-1.8 GB |
 | Base repo + one current Ollama Qwen path | ~20-33 GB |
 | Base repo + raw HF Qwen cache | ~54-58 GB |
 | Base repo + Gemma 4 E2B retained locally | ~25 GB |

@@ -6,9 +6,7 @@ BASE = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
 
 # PDFs that are scanned images - skip conversion
 IMAGE_HEAVY = {
-    "Small_Engine_Service_Repair.pdf",
     "Washington_State_Foraging_Guide.pdf",
-    "FM21-76_Survival_TruePrepper.pdf",
     "Baofeng_UV-5R_Overview_K4MSU.pdf",
     "Composting_Toilet_Construction.pdf",
 }
@@ -17,11 +15,11 @@ IMAGE_HEAVY = {
 ALREADY_CONVERTED = {
     "Shelter_Construction_Techniques.pdf", "Saving_Seed_Hawaii_Guide.pdf",
     "Seed_Saving_Guide_Organic_Seed_Alliance.pdf", "Seed_Saving_Guide_Seed_Savers.pdf",
-    "Food_Dehydration_Drying_Manual.pdf", "Handbook_of_Food_Preservation.pdf",
+    "Food_Dehydration_Drying_Manual.pdf",
     "WHO_Monographs_Medicinal_Plants_Vol1.pdf", "WHO_Monographs_Medicinal_Plants_Vol4.pdf",
     "Where_Women_Have_No_Doctor_2023.pdf", "Celestial_Navigation_Sextant_Intro.pdf",
     "Celestial_Navigation_Short_Guide.pdf", "ARRL_ARES_Field_Resources_Manual.pdf",
-    "ARRL_ARES_Plan_2025.pdf", "Baofeng_Radio_Bible_10in1.pdf",
+    "ARRL_ARES_Plan_2025.pdf",
     "Baofeng_Radio_Manual_Archer.pdf", "Baofeng_UV-5R_Programming_Guide.pdf",
     "Baofeng_UV-5R_Quick_Setup.pdf", "UV-5R_Programming_Cheat_Sheet.pdf",
     "CDC_Emergency_Hygiene_Guidelines.pdf", "Sanitation_Hygiene_Guide.pdf",

@@ -6,11 +6,11 @@ These files are too large for GitHub but are freely available. You'll need **Kiw
 
 Before downloading anything in this file, understand the difference between the base repo and the optional giant extras.
 
-As of **April 23, 2026**:
+As of **September 2, 2026**:
 
-- base tracked checkout from GitHub: about **1.1 GB**
-- typical local `git clone` + checkout: about **1.8-2.0 GB**
-- current fully loaded maintainer tree with optional downloads and models: about **974 GB**
+- base tracked checkout from GitHub: about **0.9 GB**
+- typical local `git clone` + checkout: about **1.6-1.8 GB**
+- fully loaded maintainer tree with optional downloads and models: about **974 GB** (measured April 23, 2026)
 
 Fast budgeting:
 

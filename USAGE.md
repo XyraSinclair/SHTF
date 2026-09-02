@@ -31,7 +31,7 @@ Treat every checklist as a default to adapt. Your plan changes with disability, 
 - Reference: `medical/Where_There_Is_No_Doctor_FULL.pdf`
 - First aid manual: `survival-guides/FM4-25.11_First_Aid_Manual.pdf`
 - Dental: `medical/Where_There_Is_No_Dentist_FULL.pdf`
-- Full offline medical: Kiwix with `medical/mdwiki_en_all_2025-11.zim`
+- Full offline medical: Kiwix with `medical/mdwiki_en_all_2025-11.zim` [optional download — see DOWNLOADS.md]
 
 ### I need safe water and sanitation
 - Card: [playbooks/cards/water-purification.md](playbooks/cards/water-purification.md)
@@ -58,7 +58,7 @@ Treat every checklist as a default to adapt. Your plan changes with disability, 
 - Open `food-water/Seed_Saving_Guide.pdf`
 
 ### I need broad offline reference search
-- Run `./tools-scripts/launch-wikipedia.sh`
+- Run `./tools-scripts/launch-wikipedia.sh` (needs ZIM files in `wikipedia/` — [optional download — see DOWNLOADS.md])
 - If you want LAN access to raw files or Kiwix-served ZIMs, run `./tools-scripts/serve-local-network.sh`
 
 ## Kindle Books
@@ -103,17 +103,17 @@ For detailed manual paths, Qwen serving notes, the Gemma four-model ladder (E2B 
 
 ## Maps (requires download)
 
-**Desktop:** Install [QGIS](https://qgis.org) (`brew install --cask qgis`), open `.osm.pbf` files from `maps/`.
+**Desktop:** Install [QGIS](https://qgis.org) (`brew install --cask qgis`), open `.osm.pbf` files from `maps/` [optional download — see DOWNLOADS.md].
 
 **Phone:** Install [Organic Maps](https://organicmaps.app/) and download regions while you still have internet.
 
-**USGS Topo Maps:** Open the GeoPDF files in `maps/topo/pdfs/` with any PDF viewer. These show elevation contours, trails, water features, and terrain detail.
+**USGS Topo Maps:** Open the GeoPDF files in `maps/topo/pdfs/` [optional download — see DOWNLOADS.md] with any PDF viewer. These show elevation contours, trails, water features, and terrain detail.
 
 ## Medical Reference
 
 Priority reading: **Where There Is No Doctor** -- a broad primary-care reference for low-resource settings. Use it as a sourcebook when professional medical help is unavailable or delayed.
 
-Also available: dental care guide, women's health guide, WHO surgical manual, and the full MDWiki medical encyclopedia (via Kiwix).
+Also available: dental care guide, women's health guide, WHO surgical manual, and the full MDWiki medical encyclopedia (via Kiwix; [optional download — see DOWNLOADS.md]).
 
 ## Radio Communications
 
@@ -134,7 +134,7 @@ Program your Baofeng UV-5R using the guides in `kindle-ready/` (search for `05-R
 - **Canning:** USDA Complete Guide to Home Canning is the primary reference
 - **Foraging:** Washington State guide has plant photos for PNW identification
 - **Seeds:** Multiple seed saving guides cover harvest, storage, and replanting
-- **Preservation:** Dehydration, smoking, and raw food preservation methods
+- **Preservation:** Dehydration and canning-based preservation methods
 - **Water:** Purification guides covering boiling, chemical treatment, solar disinfection, and filtration
 
 ## Solar & Power

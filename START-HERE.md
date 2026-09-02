@@ -51,7 +51,7 @@ If you cannot run a shell script, just open [`playbooks/cards/tonight.md`](playb
 
 One weekend of real work, then ongoing.
 
-Storage reality before you start downloading extras: the base repo is about **1.1 GB** of tracked files, but a fully loaded machine with optional maps, Wikipedia, reference bundles, and local models can exceed **900 GB**. Read [docs/storage-footprint.md](docs/storage-footprint.md) before pulling giant add-ons.
+Storage reality before you start downloading extras: the base repo is about **0.9 GB** of tracked files, but a fully loaded machine with optional maps, Wikipedia, reference bundles, and local models can exceed **900 GB**. Read [docs/storage-footprint.md](docs/storage-footprint.md) before pulling giant add-ons.
 
 1. Read [`playbooks/tier-1-setup/00-first-weekend.md`](playbooks/tier-1-setup/00-first-weekend.md) — the canonical first weekend.
 2. Before buying gear, read [`cards/what-kills.md`](playbooks/cards/what-kills.md) and [`cards/when-not-to.md`](playbooks/cards/when-not-to.md). They change what you buy.

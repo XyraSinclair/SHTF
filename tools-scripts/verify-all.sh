@@ -126,7 +126,6 @@ check_file "$SHTF_DIR/medical/Where_There_Is_No_Dentist_FULL.pdf" 5000000 "Where
 echo ""
 echo "--- SURVIVAL GUIDES ---"
 check_file "$SHTF_DIR/survival-guides/FM21-76_US_Army_Survival_Manual.pdf" 1000000 "US Army Survival Manual"
-check_file "$SHTF_DIR/survival-guides/FM21-76_Survival_TruePrepper.pdf" 5000000 "Survival Manual (TruePrepper)"
 check_file "$SHTF_DIR/survival-guides/FM21-10_Field_Hygiene_Sanitation.pdf" 3000000 "Field Hygiene & Sanitation"
 check_file "$SHTF_DIR/survival-guides/FM4-25.11_First_Aid_Manual.pdf" 1000000 "First Aid Manual"
 check_file "$SHTF_DIR/survival-guides/FM3-25.26_Map_Reading_Land_Navigation.pdf" 5000000 "Map Reading Manual"
@@ -152,7 +151,7 @@ echo "--- FOOD & WATER ---"
 check_file "$SHTF_DIR/food-water/USDA_Complete_Guide_Home_Canning_2015.pdf" 10000000 "USDA Canning Guide"
 check_file "$SHTF_DIR/food-water/Washington_State_Foraging_Guide.pdf" 10000000 "WA Foraging Guide"
 check_file "$SHTF_DIR/food-water/Seed_Saving_Guide.pdf" 3000000 "Seed Saving Guide"
-check_file "$SHTF_DIR/food-water/preservation/Handbook_of_Food_Preservation.pdf" 5000000 "Food Preservation Handbook"
+check_file "$SHTF_DIR/food-water/preservation/Food_Dehydration_Drying_Manual.pdf" 400000 "Food Dehydration & Drying Manual"
 
 echo ""
 echo "--- ACID V2 PARITY BUNDLE (optional) ---"
@@ -249,7 +248,7 @@ fi
 
 echo ""
 echo "--- RADIO ---"
-check_file "$SHTF_DIR/radio/Baofeng_Radio_Bible_10in1.pdf" 1000000 "Baofeng Radio Bible"
+check_file "$SHTF_DIR/radio/Baofeng_UV-5R_Programming_Guide.pdf" 50000 "Baofeng UV-5R Programming Guide"
 check_file "$SHTF_DIR/radio/ARRL_ARES_Field_Resources_Manual.pdf" 500000 "ARRL ARES Manual"
 
 if [ "$MODE" = "full" ]; then

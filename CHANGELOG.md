@@ -7,6 +7,19 @@ Evidence sources:
 - commit messages and touched-file scopes
 - current top-level docs (`README.md`, `START-HERE.md`, `FIELD-INDEX.md`, `USAGE.md`)
 
+## 2026-09-02 — Provenance cleanup: commercial titles removed, licenses untangled
+
+What changed
+- **Removed nine likely-infringing commercial titles** (18 files: each source PDF plus its `kindle-ready/` variant): the Baofeng Radio Bible (commercial Kindle book), Handbook of Food Preservation (Macmillan/CRC academic title), Raw Foods Bible, Science of Smoking Foods, the ARRL Emergency Comms "manual" (which was actually a 5-page scrape of ARRL's website), three commercial small-engine repair manuals under `mechanical/`, and the TruePrepper-branded FM 21-76 repack (FM 21-76 itself is public domain and remains as `FM21-76_US_Army_Survival_Manual.pdf`). Kindle library: 144 → 135 books. Counts updated in README, FIELD-INDEX, USAGE, verify-all.sh, and the kindle conversion scripts.
+- **LICENSE is now pure MIT** (named copyright holder) so GitHub detects it; the per-content licensing notes moved to `CONTENT-LICENSES.md`, which also corrects the wrong claim that ARRL publications are freely distributed — only the ARES field resources are.
+- **Optional downloads are now marked** in FIELD-INDEX.md and USAGE.md with `[optional download — see DOWNLOADS.md]` so an in-crisis reader can tell tracked files from things a fresh clone does not contain.
+- **Repointed rotted download URLs** in `download-kindle-content.sh`: the seven `www.fema.gov` PDFs (Akamai now 403s non-browser clients) and the armypubs TC 4-02.1 link now fetch verified Wayback Machine captures; the USMC survival manual moved off a third-party mirror.
+- **New: `tools-scripts/check-links.sh`** — HEAD-checks every URL in the download scripts and key docs and reports dead ones.
+- **README states the regional scope** (US West Coast defaults) and how to re-region the kit; storage numbers re-measured (base checkout ~0.9 GB after removals).
+
+Why it matters
+- A DMCA takedown is the one event that deletes the kit for everyone at once. Removing the commercial titles and telling the truth about content licensing is what keeps the repo durable.
+
 ## 2026-04-21 — The envelope, and Gemma 4 as the default local AI
 
 What changed

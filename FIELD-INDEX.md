@@ -86,7 +86,7 @@ If you only need the smallest serious subset, start here:
 - medical/Where_There_Is_No_Dentist_FULL.pdf
 - medical/Where_Women_Have_No_Doctor_2023.pdf
 - survival-guides/FM4-25.11_First_Aid_Manual.pdf
-- medical/mdwiki_en_all_2025-11.zim
+- medical/mdwiki_en_all_2025-11.zim [optional download — see DOWNLOADS.md]
 
 ## Water and sanitation
 - survival-guides/Emergency_Water_Purification_Guide.pdf
@@ -100,19 +100,17 @@ If you only need the smallest serious subset, start here:
 - radio/UV-5R_Quick_Reference_Card.pdf
 - radio/UV-5R_Programming_Cheat_Sheet.pdf
 - radio/Baofeng_UV-5R_Programming_Guide.pdf
-- radio/Baofeng_Radio_Bible_10in1.pdf
 - radio/ARRL_ARES_Field_Resources_Manual.pdf
 - radio/NOAA_Weather_Radio_Frequencies_West_Coast.txt
 
 ## Navigation and maps
 - survival-guides/FM3-25.26_Map_Reading_Land_Navigation.pdf
-- maps/*.osm.pbf
-- maps/topo/pdfs/
+- maps/*.osm.pbf [optional download — see DOWNLOADS.md]
+- maps/topo/pdfs/ [optional download — see DOWNLOADS.md]
 - ./tools-scripts/launch-maps.sh
 
 ## Survival fundamentals
 - survival-guides/FM21-76_US_Army_Survival_Manual.pdf
-- survival-guides/FM21-76_Survival_TruePrepper.pdf
 - survival-guides/Nuclear_War_Survival_Skills.pdf
 - survival-guides/survivor-library/wilderness-survival-skills.pdf
 
@@ -120,7 +118,6 @@ If you only need the smallest serious subset, start here:
 - food-water/USDA_Complete_Guide_Home_Canning_2015.pdf
 - food-water/Washington_State_Foraging_Guide.pdf
 - food-water/Seed_Saving_Guide.pdf
-- food-water/preservation/Handbook_of_Food_Preservation.pdf
 - food-water/preservation/Food_Dehydration_Drying_Manual.pdf
 
 ## Power
@@ -129,19 +126,23 @@ If you only need the smallest serious subset, start here:
 - survival-guides/solar-power/DIY_Solar_Panel_Build_Guide.pdf
 
 ## Offline reference libraries
-- wikipedia/*.zim
-- medical/*.zim
-- reference/*.zim
-- reference/devdocs/*.zim
-- reference/ifixit_en_all_*.zim
-- reference/gutenberg_en_all_*.zim
-- reference/khanacademy_en_all_*.zim
-- reference/ted_mul_*.zim
-- reference/wikispecies_en_all_*.zim
-- reference/wikivoyage_en_all_*.zim
-- reference/appropedia_en_all_*.zim
-- reference/zimgit-post-disaster_en_*.zim
-- ready-gov/*.pdf
+
+Everything in this section except the READMEs and scripts is an
+[optional download — see DOWNLOADS.md]; a fresh clone does not contain it.
+
+- wikipedia/*.zim [optional download — see DOWNLOADS.md]
+- medical/*.zim [optional download — see DOWNLOADS.md]
+- reference/*.zim [optional download — see DOWNLOADS.md]
+- reference/devdocs/*.zim [optional download — see DOWNLOADS.md]
+- reference/ifixit_en_all_*.zim [optional download — see DOWNLOADS.md]
+- reference/gutenberg_en_all_*.zim [optional download — see DOWNLOADS.md]
+- reference/khanacademy_en_all_*.zim [optional download — see DOWNLOADS.md]
+- reference/ted_mul_*.zim [optional download — see DOWNLOADS.md]
+- reference/wikispecies_en_all_*.zim [optional download — see DOWNLOADS.md]
+- reference/wikivoyage_en_all_*.zim [optional download — see DOWNLOADS.md]
+- reference/appropedia_en_all_*.zim [optional download — see DOWNLOADS.md]
+- reference/zimgit-post-disaster_en_*.zim [optional download — see DOWNLOADS.md]
+- ready-gov/*.pdf [optional download — see DOWNLOADS.md]
 - aviation/README.md (FAA handbook pointers)
 - mechanical/vehicle-repair/README.md
 - ./tools-scripts/launch-wikipedia.sh
@@ -150,7 +151,7 @@ If you only need the smallest serious subset, start here:
 
 ## Local AI
 - docs/local-ai-models.md
-- models/gemma-4/
+- models/gemma-4/ [optional download — see DOWNLOADS.md]
 - tools-scripts/download-gemma4-models.py
 - tools-scripts/test-gemma4-models.py
 - tools-scripts/audit-gemma4-artifacts.py
