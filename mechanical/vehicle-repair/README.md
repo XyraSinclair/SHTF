@@ -5,7 +5,8 @@ repair manuals from the late 1940s through the early 1980s. These are valuable f
 mechanical fundamentals but won't cover modern OBD-II vehicles.
 
 Browse and pick titles matching any vehicle you actually own:
-http://www.survivorlibrary.com/index.php/main-library-index/
+https://www.survivorlibrary.com/ (site rebuilt mid-2026; the old deep
+index link is gone — use the library index from the front page)
 
 For modern vehicles, the practical free resources are:
 - YouTube (ChrisFix, ScannerDanner, South Main Auto) — download with yt-dlp

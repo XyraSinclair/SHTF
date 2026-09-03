@@ -26,8 +26,8 @@ wget --continue -q --show-progress \
 echo ""
 echo ">>> Wikivoyage (1.1GB)"
 wget --continue -q --show-progress \
-    "https://download.kiwix.org/zim/wikivoyage/wikivoyage_en_all_maxi_2025-12.zim" \
-    -O "wikivoyage_en_all_maxi_2025-12.zim" || true
+    "https://download.kiwix.org/zim/wikivoyage/wikivoyage_en_all_maxi_2026-06.zim" \
+    -O "wikivoyage_en_all_maxi_2026-06.zim" || true
 
 # MDWiki medical encyclopedia
 echo ""

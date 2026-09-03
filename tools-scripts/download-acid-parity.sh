@@ -141,8 +141,11 @@ fetch_ready_gov() {
   echo "==> Ready.gov / FEMA preparedness PDFs"
   local dest="$SHTF_DIR/ready-gov"
   mkdir -p "$dest"
-  # HEAD-verified April 2026. Ready.gov / FEMA rearrange URLs often — if something
+  # Re-verified 2026-09-02. Ready.gov / FEMA rearrange URLs often — if something
   # 404s, check https://www.ready.gov/publications or https://www.fema.gov/are-you-ready
+  # www.fema.gov sits behind Akamai bot-blocking that 403s curl, so the FEMA
+  # titles fetch Wayback Machine captures of the same public-domain PDFs
+  # (the id_ suffix serves the original bytes).
   local urls=(
     # Ready.gov
     "https://www.ready.gov/sites/default/files/documents/files/checklist3.pdf"
@@ -150,10 +153,10 @@ fetch_ready_gov() {
     "https://www.ready.gov/sites/default/files/2022-05/emergency_checklist_kids.pdf"
     "https://www.ready.gov/sites/default/files/documents/files/RRToolkit.pdf"
     # FEMA "Are You Ready?" — the authoritative FEMA household preparedness book
-    "https://www.fema.gov/pdf/areyouready/basic_preparedness.pdf"
-    "https://www.fema.gov/pdf/areyouready/appendix_b.pdf"
-    "https://www.fema.gov/pdf/areyouready/recovering_from_disaster.pdf"
-    "https://www.fema.gov/pdf/hazard/hurricane/hurricanes_are_you_ready.pdf"
+    "https://web.archive.org/web/20260302021914id_/https://www.fema.gov/pdf/areyouready/basic_preparedness.pdf"
+    "https://web.archive.org/web/20250717111709id_/https://www.fema.gov/pdf/areyouready/appendix_b.pdf"
+    "https://web.archive.org/web/20260723231501id_/https://www.fema.gov/pdf/areyouready/recovering_from_disaster.pdf"
+    "https://web.archive.org/web/20260522035156id_/https://www.fema.gov/pdf/hazard/hurricane/hurricanes_are_you_ready.pdf"
   )
   for u in "${urls[@]}"; do
     local f="$dest/$(basename "$u")"
@@ -249,7 +252,7 @@ fetch_vehicle_repair() {
   local dest="$SHTF_DIR/mechanical/vehicle-repair"
   mkdir -p "$dest"
   echo "    Survivor Library mirrors extensive public-domain auto repair manuals."
-  echo "    Visit: http://www.survivorlibrary.com/index.php/main-library-index/"
+  echo "    Visit: https://www.survivorlibrary.com/ (site rebuilt mid-2026; browse to the library index)"
   echo "    Section: 'Automobile' (late-1940s-to-early-1980s repair manuals, public domain)."
   echo
   cat >"$dest/README.md" <<'EOF'
@@ -260,7 +263,8 @@ repair manuals from the late 1940s through the early 1980s. These are valuable f
 mechanical fundamentals but won't cover modern OBD-II vehicles.
 
 Browse and pick titles matching any vehicle you actually own:
-http://www.survivorlibrary.com/index.php/main-library-index/
+https://www.survivorlibrary.com/ (site rebuilt mid-2026; the old deep
+index link is gone — use the library index from the front page)
 
 For modern vehicles, the practical free resources are:
 - YouTube (ChrisFix, ScannerDanner, South Main Auto) — download with yt-dlp

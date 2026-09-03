@@ -71,10 +71,18 @@ dl "02-Survival" "FM5-103_Survivability.pdf" \
     "https://www.bits.de/NRANEU/others/amd-us-archive/fm5-103(85).pdf"
 
 dl "02-Survival" "MCRP3-02F_USMC_Survival.pdf" \
-    "https://modernsurvivalonline.com/Files/books/US%20Marine%20Corps%20-%20Survival%20-%20MCRP%203-02F.pdf"
+    "https://archive.org/download/milmanual-mcrp-3-02f-fm-21-76-survival/mcrp_3-02f_fm_21-76_survival.pdf"
 
+# armypubs.army.mil refuses non-browser connections (verified 2026-09-02);
+# fetch the Wayback capture of the same public-domain manual.
 dl "01-Medical" "TC4-02.1_First_Aid.pdf" \
-    "https://armypubs.army.mil/epubs/DR_pubs/DR_a/pdf/web/ARN14135_TC%204-02x1%20C2%20INCL%20FINAL%20WEB.pdf"
+    "https://web.archive.org/web/20220227033544id_/https://armypubs.army.mil/epubs/DR_pubs/DR_a/pdf/web/ARN14135_TC%204-02x1%20C2%20INCL%20FINAL%20WEB.pdf"
+
+# FM 21-76 (US Army Survival Manual) is public domain; the repo tracks an
+# unbranded copy at survival-guides/FM21-76_US_Army_Survival_Manual.pdf.
+# If you ever need to re-fetch it, use the plain scan at
+# https://archive.org/download/Fm21-76SurvivalManual/FM21-76_SurvivalManual.pdf
+# — not third-party "prepper" repacks, which add commercial branding.
 
 dl "07-Sanitation" "FM3-34.5_Environmental_Considerations.pdf" \
     "https://www.globalsecurity.org/military/library/policy/army/fm/3-34-5/fm3-34-5.pdf"
@@ -82,6 +90,9 @@ dl "07-Sanitation" "FM3-34.5_Environmental_Considerations.pdf" \
 # ============================================================
 # 2. FEMA / GOVERNMENT EMERGENCY GUIDES (Public Domain)
 # ============================================================
+# www.fema.gov sits behind Akamai bot-blocking that 403s curl (verified
+# 2026-09-02), so FEMA titles fetch Wayback Machine captures of the same
+# public-domain PDFs. The id_ suffix serves the original bytes.
 echo ""
 echo "=== FEMA / GOVERNMENT GUIDES ==="
 
@@ -89,25 +100,25 @@ dl "02-Survival" "FEMA_Are_You_Ready_Guide.pdf" \
     "https://www.ready.gov/sites/default/files/2021-11/are-you-ready-guide.pdf"
 
 dl "02-Survival" "FEMA_CERT_Training_Manual.pdf" \
-    "https://www.fema.gov/sites/default/files/2020-07/fema-cert_basic-training-participant-manual_01-01-2011.pdf"
+    "https://web.archive.org/web/20250427220303id_/https://www.fema.gov/sites/default/files/2020-07/fema-cert_basic-training-participant-manual_01-01-2011.pdf"
 
 dl "02-Survival" "FEMA_All_Hazard_Info_Sheets.pdf" \
     "https://www.ready.gov/sites/default/files/2025-02/fema_full-suite-hazard-info-sheets.pdf"
 
 dl "02-Survival" "FEMA_Nuclear_Response_72hr.pdf" \
-    "https://www.fema.gov/sites/default/files/documents/fema_oet-72-hour-nuclear-detonation-response-guidance.pdf"
+    "https://web.archive.org/web/20260621225237id_/https://www.fema.gov/sites/default/files/documents/fema_oet-72-hour-nuclear-detonation-response-guidance.pdf"
 
 dl "02-Survival" "FEMA_Radiological_Emergency_Manual.pdf" \
-    "https://www.fema.gov/sites/default/files/documents/fema_npd-rpm-2023.pdf"
+    "https://web.archive.org/web/20250402153512id_/https://www.fema.gov/sites/default/files/documents/fema_npd-rpm-2023.pdf"
 
 dl "10-Construction" "FEMA_P361_Safe_Rooms.pdf" \
-    "https://www.fema.gov/sites/default/files/documents/fema_p-361_safe-rooms-for-tornadoes-and-hurricanes_122024.pdf"
+    "https://web.archive.org/web/20250413110107id_/https://www.fema.gov/sites/default/files/documents/fema_p-361_safe-rooms-for-tornadoes-and-hurricanes_122024.pdf"
 
 dl "10-Construction" "FEMA_P320_Building_Safe_Room.pdf" \
-    "https://www.fema.gov/sites/default/files/documents/fema_taking-shelter-from-the-storm_p-320.pdf"
+    "https://web.archive.org/web/20250406174145id_/https://www.fema.gov/sites/default/files/documents/fema_taking-shelter-from-the-storm_p-320.pdf"
 
 dl "02-Survival" "FEMA_P530_Earthquake_Safety.pdf" \
-    "https://www.fema.gov/sites/default/files/2020-08/fema_earthquakes_fema-p-530-earthquake-safety-at-home-march-2020.pdf"
+    "https://web.archive.org/web/20260829014421id_/https://www.fema.gov/sites/default/files/2020-08/fema_earthquakes_fema-p-530-earthquake-safety-at-home-march-2020.pdf"
 
 dl "03-Food-Water" "EPA_Emergency_Water_Disinfection.pdf" \
     "https://www.epa.gov/sites/default/files/2017-09/documents/emergency_disinfection_of_drinking_water_sept2017.pdf"
@@ -122,7 +133,7 @@ dl "02-Survival" "FEMA_Wildfire_Protection.pdf" \
     "https://www.usfa.fema.gov/downloads/pdf/publications/wildfires_protect_yourself_and_your_community.pdf"
 
 dl "02-Survival" "FEMA_Flood_Damage_Guide.pdf" \
-    "https://www.fema.gov/pdf/fima/FEMA511-complete.pdf"
+    "https://web.archive.org/web/20260105184909id_/https://www.fema.gov/pdf/fima/FEMA511-complete.pdf"
 
 # Water supply engineering
 dl "03-Food-Water" "USACE_Water_Supply_Sources.pdf" \
