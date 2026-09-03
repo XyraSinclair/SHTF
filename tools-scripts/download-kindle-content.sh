@@ -124,10 +124,10 @@ dl "03-Food-Water" "EPA_Emergency_Water_Disinfection.pdf" \
     "https://www.epa.gov/sites/default/files/2017-09/documents/emergency_disinfection_of_drinking_water_sept2017.pdf"
 
 dl "03-Food-Water" "USDA_Kitchen_Companion_Food_Safety.pdf" \
-    "https://www.fsis.usda.gov/sites/default/files/media_file/2020-12/Kitchen-Companion.pdf"
+    "https://web.archive.org/web/20251002222122id_/https://www.fsis.usda.gov/sites/default/files/media_file/2020-12/Kitchen-Companion.pdf"
 
 dl "03-Food-Water" "USDA_Canning_Meat_Poultry_Game.pdf" \
-    "https://www.nifa.usda.gov/sites/default/files/resource/Canning%20Meat%20Poultry%20and%20Game.pdf"
+    "https://web.archive.org/web/20251206205827id_/https://www.nifa.usda.gov/sites/default/files/resource/Canning%20Meat%20Poultry%20and%20Game.pdf"
 
 dl "02-Survival" "FEMA_Wildfire_Protection.pdf" \
     "https://www.usfa.fema.gov/downloads/pdf/publications/wildfires_protect_yourself_and_your_community.pdf"
@@ -137,10 +137,10 @@ dl "02-Survival" "FEMA_Flood_Damage_Guide.pdf" \
 
 # Water supply engineering
 dl "03-Food-Water" "USACE_Water_Supply_Sources.pdf" \
-    "https://www.publications.usace.army.mil/Portals/76/Publications/EngineerManuals/EM_1110-2-503.pdf"
+    "https://web.archive.org/web/20250526053259id_/https://www.publications.usace.army.mil/Portals/76/Publications/EngineerManuals/EM_1110-2-503.pdf"
 
 dl "03-Food-Water" "USACE_Well_Drilling_Water_Supply.pdf" \
-    "https://www.publications.usace.army.mil/portals/76/publications/engineermanuals/em_1110-2-501.pdf"
+    "https://web.archive.org/web/20250526053254id_/https://www.publications.usace.army.mil/portals/76/publications/engineermanuals/em_1110-2-501.pdf"
 
 # ============================================================
 # 3. WHO / UN PUBLICATIONS (Freely Distributed)
@@ -167,7 +167,7 @@ dl "01-Medical" "WHO_Essential_Medicines_List_2025.pdf" \
     "https://iris.who.int/server/api/core/bitstreams/17642505-ecd3-4940-a691-4f1dfa0d835a/content"
 
 dl "02-Survival" "Sphere_Handbook_Humanitarian_Standards.pdf" \
-    "https://spherestandards.org/wp-content/uploads/Sphere-Handbook-2018-EN.pdf"
+    "https://web.archive.org/web/20260424170603id_/https://spherestandards.org/wp-content/uploads/Sphere-Handbook-2018-EN.pdf"
 
 dl "01-Medical" "Hesperian_Where_No_Doctor_2024.pdf" \
     "https://hesperian.org/wp-content/uploads/pdf/en_wtnd_2024/en_wtnd_2024_fm.pdf"
@@ -197,7 +197,7 @@ echo ""
 echo "=== PRACTICAL GUIDES ==="
 
 dl "06-Power-Solar" "Solar_Cooker_Guide.pdf" \
-    "https://www.solarcookers.org/files/7914/5687/8521/How_to_make_use_understand_English_Update.pdf"
+    "https://web.archive.org/web/20250625005811id_/https://www.solarcookers.org/files/7914/5687/8521/How_to_make_use_understand_English_Update.pdf"
 
 dl "06-Power-Solar" "DOE_Small_Wind_Guidebook.pdf" \
     "https://windexchange.energy.gov/small-wind-guidebook.pdf"
